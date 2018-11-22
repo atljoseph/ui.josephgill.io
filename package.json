@@ -1,6 +1,8 @@
 {
-  "name": "josephgill.io",
+  "name": "ui.josephgill.io",
   "version": "1.0.0",
+  "homepage": "http://josephgill.io",
+  "description": "This is an angular app build to communicate with a FeatherJs API.",
   "scripts": {
     "ng": "ng",
     "start": "ng s",
