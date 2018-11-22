@@ -1,0 +1,32 @@
+
+<div class="menu-button cursor-pointer dropleft"
+  *ngIf="!menu.isOpened"
+  [style.right]="menuButtonLeftOffset"
+  [style.top]="menuButtonTopOffset"
+  [style.width]="menuButtonDiameter"
+  [style.height]="menuButtonDiameter"
+  [style.border-radius]="menuButtonBorderRadius"
+  [class.bg-light]="menu.isOpened || (!menu.isOpened && hover)"
+  (mouseover)="hover=true" 
+  (mouseleave)="hover=false">
+<app-shared-icon-sun 
+  class="menu-button-icon"
+  (click)="onClickSettingsButton()">
+</app-shared-icon-sun>
+<div class="dropdown-menu" [class.show]="showDropdownMenu">
+  <button class="dropdown-item" (click)="goFullscreen()">Fullscreen</button>
+  <button class="dropdown-item" (click)="toggleTheme()">Toggle Theme</button>
+  <button class="dropdown-item" (click)="scrollToTop()">Scroll To Top</button>
+  <button class="dropdown-item" (click)="scrollToBottom()">Scroll To Bottom</button>
+</div>
+</div>
+
+<!-- <div class="btn-group dropright">
+  <button type="button" class="btn btn-secondary dropdown-toggle" (click)="soundboardIsRandomDropdownShown = !soundboardIsRandomDropdownShown">
+    {{ soundboardIsRandomLabel }}
+  </button>
+  <div class="dropdown-menu" [class.show]="soundboardIsRandomDropdownShown">
+    <button class="dropdown-item" (click)="soundBoardChangeIsRandom(false, 'Ordered')">Ordered</button>
+    <button class="dropdown-item" (click)="soundBoardChangeIsRandom(true, 'Random')">Random</button>
+  </div>
+</div> -->

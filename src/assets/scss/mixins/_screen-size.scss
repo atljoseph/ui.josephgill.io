@@ -1,0 +1,47 @@
+@import '../vendor/bootstrap/_grid';
+
+@import '../../../../node_modules/bootstrap/scss/_functions';
+@import '../../../../node_modules/bootstrap/scss/_variables';
+@import '../../../../node_modules/bootstrap/scss/_mixins';
+
+@mixin screenSize($screenClass) {
+    @if $screenClass == phone {
+        @include media-breakpoint-between(xs, md) {
+            @content;
+        }
+    }
+    @else if $screenClass == tablet {
+        @include media-breakpoint-between(md, lg) {
+            @content;
+        }
+    }
+    @else if $screenClass == desktop {
+        @include media-breakpoint-up(lg) {
+            @content;
+        }
+    }
+    @else {
+        @warn "Breakpoint mixin supports 'phone', 'tablet', or 'desktop'";
+    }
+}
+
+@mixin screenSizeUp($screenClass) {
+    @if $screenClass == phone {
+        @include media-breakpoint-up(xs) {
+            @content;
+        }
+    }
+    @else if $screenClass == tablet {
+        @include media-breakpoint-up(md) {
+            @content;
+        }
+    }
+    @else if $screenClass == desktop {
+        @include media-breakpoint-up(lg) {
+            @content;
+        }
+    }
+    @else {
+        @warn "Breakpoint mixin supports 'phone', 'tablet', or 'desktop'";
+    }
+}

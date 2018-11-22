@@ -1,0 +1,69 @@
+
+
+@import '../../../assets/scss/_';
+
+.home-group {
+    @include screenSize(phone) {
+        padding-top: 20px;
+    }
+    @include screenSizeUp(tablet) {
+        padding-top: 30px;
+    }
+
+    display: flex;
+    flex-direction: column;
+
+    &-no-padding {
+        padding: 0;
+    }
+}
+
+.home-group:last-of-type {
+    padding-bottom: 100px;
+}
+
+.home-blurb {
+    display: flex;
+    flex-direction: column;
+    text-align: center;
+
+    &-title {
+        @extend .text-xl;
+    }
+
+    &-description {
+        @extend .text-sm;
+        @extend .pt-2;
+    }
+
+    &-earth-and-moon {
+        opacity: 0.7;
+        // width: 250px;
+        @include screenSize(phone) {
+            margin: -25px;
+            margin-bottom: -50px;
+            margin-top: -30px;
+            margin-right: -20px;
+        }
+        @include screenSizeUp(tablet) {
+            margin: -75px;
+            margin-bottom: -120px;
+            margin-top: -90px;
+            margin-right: -65px;
+        }
+    }
+
+    @include screenSize(phone) {
+        img, app-scroll-photo {
+            width: 100%;
+            padding-top: 10px;
+        }
+
+    }
+    @include screenSizeUp(tablet) {
+        img, app-scroll-photo {
+            width: 50%;
+            padding-top: 10px;
+        }
+    }
+}

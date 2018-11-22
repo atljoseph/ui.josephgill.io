@@ -1,0 +1,15 @@
+<span class="header-link text-md cursor-pointer"
+  *ngIf="isVisible && !nav.isHiddenRoute(route)"
+  (mouseover)="hover=true"
+  (mouseleave)="hover=false"
+  [class.hover-left]="(hover && hoverDirection === 'left')"
+  [class.hover-right]="(hover && hoverDirection === 'right')"
+  [class.selected]="(nav.isRouteSelected(route, 'like') && routeHighlight)"
+  [class.text-secondary]="header.isTransparent && !hover"
+  [class.text-team]="hover || (nav.isRouteSelected(route, 'like') && routeHighlight)"
+  [class.bg-light]="hover || (nav.isRouteSelected(route, 'like') && routeHighlight)"
+  [class.text-light]="!header.isTransparent && !hover"
+  [class.bg-transparent]="!header.isTransparent && !hover"
+  (click)="nav.go(route)">
+  <ng-content></ng-content>
+</span>

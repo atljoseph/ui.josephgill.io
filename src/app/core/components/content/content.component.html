@@ -1,0 +1,19 @@
+
+<div class="content" id="scroll-content"
+  [style.left]="menuWidthWhenClosed"
+  [style.]
+  (click)="menu.hide()">
+    <div class="content-wrapper"
+      [@RouterAnimation]="nav.animationState(o)">
+      <div [style.height]="headerHeight"></div>
+      <router-outlet #o="outlet"></router-outlet>
+    </div>
+    <!-- Footer moved to Menu -->
+    <!-- <div class="footer-wrapper">
+        <span>Joseph Gill <i class="fa fa-fw fa-copyright"></i>2018 {{ appVersion }} {{ appEnvCode }}</span>
+    </div> -->
+</div>
+<!-- <div class="content-overlay"
+  *ngIf="menu.isOpened"
+  (click)="menu.hide()">
+</div> -->

@@ -1,0 +1,8 @@
+<div class="board"
+  [style.height]="soundBoardHeight + 'px'">
+  <div class="board-row" *ngFor="let soundRow of soundboardData">
+    <app-soundboard-cell *ngFor="let soundCell of soundRow" 
+      [cellData]="soundCell">
+    </app-soundboard-cell>
+  </div>
+</div>

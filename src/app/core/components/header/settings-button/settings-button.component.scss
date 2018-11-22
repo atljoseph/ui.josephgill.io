@@ -1,0 +1,36 @@
+
+@import '../../../../../assets/scss/_variables';
+
+.menu-button {
+    position: absolute;
+    // right: $menuButtonLeft;
+    // top: $menuButtonTop;
+    // height: $menuButtonDiameter;
+    // width: $menuButtonDiameter;
+    // border-radius: $menuButtonDiameter/2;
+    z-index: $headerZIndex + 2;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    transition: all .3s ease-in-out;
+}
+.menu-button:hover {
+    transform: translateX(4px);
+    transition: all .3s ease-in-out;
+}
+
+.menu-button-icon {
+    // box-shadow: 0 2px 5px 0 rgba(0,0,0,0.3);
+    height: 75%;
+    width: 75%;
+    // padding-right: 1.5px;
+    // transform: scale(1.0);
+    transition: all .3s ease-in-out;
+}
+
+.menu-button-icon:hover {
+    // transform: scale(1.1);
+    height: 85%;
+    width: 85%;
+    transition: all .3s ease-in-out;
+}

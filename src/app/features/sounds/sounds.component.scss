@@ -1,0 +1,80 @@
+
+// @import '../../../assets/scss/mixins/_';
+
+// .sounds-blurb {
+//     @include screenSize(phone) {
+//         padding-top: 20px;
+//     }
+//     @include screenSizeUp(tablet) {
+//         padding-top: 30px;
+//     }
+//     display: flex;
+//     flex-direction: column;
+
+//     &-last {
+//         padding-bottom: 0;
+//     }
+
+//     // span {
+//     //     padding-bottom: 10px;
+//     // }
+
+//     @include screenSize(phone) {
+//         img {
+//             width: 100%;
+//             padding-top: 10px;
+//         }
+//     }
+//     @include screenSizeUp(tablet) {
+//         img {
+//             width: 50%;
+//             padding-top: 10px;
+//         }
+//     }
+
+// }
+
+
+@import '../../../assets/scss/_';
+
+.sounds-blurb-group {
+    @include screenSize(phone) {
+        padding-top: 20px;
+    }
+    @include screenSizeUp(tablet) {
+        padding-top: 30px;
+    }
+    display: flex;
+    flex-direction: column;
+
+    &-no-padding {
+        padding: 0;
+    }
+}
+
+.sounds-blurb {
+    display: flex;
+    flex-direction: column;
+
+    &-last {
+        padding-bottom: 0;
+    }
+
+    &-title {
+        @extend .text-xl;
+    }
+
+    @include screenSize(phone) {
+        img, app-scroll-photo {
+            width: 100%;
+            padding-top: 10px;
+        }
+
+    }
+    @include screenSizeUp(tablet) {
+        img, app-scroll-photo {
+            width: 50%;
+            padding-top: 10px;
+        }
+    }
+}

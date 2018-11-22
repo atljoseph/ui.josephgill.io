@@ -1,0 +1,91 @@
+<app-animation-hover-click></app-animation-hover-click>
+
+<div class="pb-3 d-flex flex-row">
+  <app-animation-flip-card 
+    [flipOnHover]="true" 
+    [height]="100"
+    [width]="100"
+    (flipStart)="onFlipStart($event)"
+    >
+    <ng-template #frontTemplate>
+      Hey
+    </ng-template>
+    <ng-template #backTemplate>
+      Hoe
+    </ng-template>
+  </app-animation-flip-card>
+  <app-animation-flip-card 
+    [flipOnHover]="true" 
+    [height]="100"
+    [width]="100"
+    (flipStart)="onFlipStart($event)"
+    >
+    <ng-template #frontTemplate>
+      Whatcha
+    </ng-template>
+    <ng-template #backTemplate>
+      Know
+    </ng-template>
+  </app-animation-flip-card>
+  <app-animation-flip-card 
+    [flipOnHover]="true" 
+    [height]="100"
+    [width]="100"
+    (flipStart)="onFlipStart($event)"
+    >
+    <ng-template #frontTemplate>
+      Whatcha
+    </ng-template>
+    <ng-template #backTemplate>
+      Know
+    </ng-template>
+  </app-animation-flip-card>
+  <app-animation-flip-card 
+    [flipOnHover]="true" 
+    [height]="100"
+    [width]="100"
+    (flipStart)="onFlipStart($event)"
+    >
+    <ng-template #frontTemplate>
+      Whatcha
+    </ng-template>
+    <ng-template #backTemplate>
+      Know
+    </ng-template>
+  </app-animation-flip-card>
+</div>
+
+
+<p class="text-xl">
+    Soundboards
+  </p>
+  
+  <div class="cool-stuff-blurb">
+    <p class="text-sm">
+      The Alphabet (upper-cased):
+    </p>
+    <app-soundboard [soundSourceArrayKey]="'alphabet::upper'"
+      [isOrderedRandomly]="false"
+      [soundBoardHeight]="300">
+    </app-soundboard>
+  </div>
+  
+  <div class="cool-stuff-blurb">
+    <p class="text-sm">
+        The Alphabet (lower-cased):
+    </p>
+    <app-soundboard [soundSourceArrayKey]="'alphabet::lower'"
+      [isOrderedRandomly]="true"
+      [soundBoardHeight]="300">
+    </app-soundboard>
+  </div>
+  
+  <div class="cool-stuff-blurb">
+    <p class="text-sm">
+      Numbers 1 - 100:
+    </p>
+    <app-soundboard [soundSourceArrayKey]="'numbers'"
+      [isOrderedRandomly]="false"
+      [soundBoardHeight]="600">
+    </app-soundboard>
+  </div>

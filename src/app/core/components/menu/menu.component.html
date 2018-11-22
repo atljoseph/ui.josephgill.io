@@ -1,0 +1,74 @@
+
+<div class="menu"
+    [class.bg-team]="!header.isTransparent"
+    [class.bg-team-alt]="header.isTransparent"
+    [@menuOpenCloseAnimation]="menu.animationMenuButtonTranslationState">
+    <div class="menu-wrapper"
+        *ngIf="menu.isOpened">
+        <div class="menu-header" 
+            [class.bg-team-light]="!header.isTransparent"
+            [class.bg-team-light-alt]="header.isTransparent"
+            [class.border-bottom]="menu.isOpened"
+            [class.border-secondary]="menu.isOpened"
+            [style.height]="headerHeight"
+            [style.padding-right]="titleMarginRight"
+        >
+            <app-core-header-link 
+                [routeHighlight]="false"
+                [hoverDirection]="'left'"
+                [route]="'home'">
+                <span><b>josephgill.io</b></span>
+            </app-core-header-link>
+            <!-- <span class="menu-title text-sm cursor-pointer"
+                [style.margin-right]="titleMarginRight"
+                (mouseover)="hover=true" 
+                (mouseleave)="hover=false"
+                [class.text-team]="hover"
+                [class.bg-secondary]="hover"
+                [class.text-secondary]="!hover"
+                [class.bg-team]="!hover"
+                (click)="nav.go('home')"> 
+                josephgill.io
+            </span> -->
+        </div>
+        <div class="menu-body">
+            <div class="menu-body-column">
+                <app-core-menu-item
+                    [label]="'Home'"
+                    [route]="'home'">
+                </app-core-menu-item>
+                <app-core-menu-item
+                    [label]="'About'"
+                    [route]="'about'">
+                </app-core-menu-item>
+                <app-core-menu-item
+                    [label]="'Music'"
+                    [route]="'music'">
+                </app-core-menu-item>
+                <app-core-menu-item
+                    [label]="'Photos'"
+                    [route]="'photos'">
+                </app-core-menu-item>
+                <app-core-menu-item
+                    [label]="'Sounds'"
+                    [route]="'sounds'">
+                </app-core-menu-item>
+                <app-core-menu-item
+                    [label]="'Examples'"
+                    [route]="'examples'">
+                </app-core-menu-item>
+            </div>
+        </div>
+    </div>
+    <div class="footer-wrapper border-top border-secondary text-secondary"
+        *ngIf="menu.isOpened">
+        <span class="text-xs">
+            Joseph Gill <i class="fa fa-fw fa-copyright"></i>2018 
+            {{ appVersion }} {{ appEnvCode }}
+        </span>
+    </div>
+</div>
+
+
+
+

@@ -1,0 +1,51 @@
+<div class="header"
+    [style.left]="menuWidthWhenClosed"
+    [style.height]="headerHeight"
+    [class.header-alt]="header.isTransparent"
+    [class.bg-transparent-light]="header.isTransparent"
+    (click)="menu.hide()">
+
+    <div class="header-links"
+        *ngIf="!menu.isOpened"
+        [style.margin-left]="headerLinksLeftRightMargin"
+        [style.margin-right]="headerLinksLeftRightMargin">
+
+        <app-core-header-link 
+            [route]="'home'">
+            <span><b>josephgill.io</b></span>
+        </app-core-header-link>
+        <app-core-header-link 
+            [route]="'about'">
+            <span>about</span>
+        </app-core-header-link>
+        <app-core-header-link 
+            [route]="'music'">
+            <span>music</span>
+        </app-core-header-link>
+        <app-core-header-link 
+            [route]="'photos'">
+            <span>photos</span>
+        </app-core-header-link>
+        <app-core-header-link 
+            [route]="'sounds'">
+            <span>sounds</span>
+        </app-core-header-link>
+        <app-core-header-link
+            [route]="'examples'">
+            <span>examples</span>
+        </app-core-header-link>
+
+        <!-- <span class="header-link text-sm cursor-pointer"
+            *ngIf="!menu.isOpened"
+            (mouseover)="hoverDomain=true" 
+            (mouseleave)="hoverDomain=false"
+            [class.text-team]="(!header.isTransparent && hoverDomain) || header.isTransparent"
+            [class.bg-light]="!header.isTransparent && hoverDomain"
+            [class.text-light]="!header.isTransparent && !hoverDomain"
+            [class.bg-transparent]="!header.isTransparent && !hoverDomain"
+            (click)="nav.go('home')">
+            josephgill.io</span>    
+             
+        </div> -->
+
+</div>

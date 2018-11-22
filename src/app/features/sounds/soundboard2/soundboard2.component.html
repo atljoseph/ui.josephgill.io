@@ -1,0 +1,35 @@
+
+<!-- [style.height]="soundBoardHeight + 'px'" -->
+<div class="board" #board>
+  <div class="board-row" *ngFor="let soundRow of soundboardData">
+    <!-- [flipOnHover]="true" -->
+    <app-shared-animated-flip-card #flipFlop="flipFlopApi"
+      *ngFor="let soundCell of soundRow" 
+      [height]="cellSize"
+      [width]="cellSize"
+      (flipStart)="onFlipStart(soundCell, flipFlop)"
+      (flipDone)="onFlipDone(soundCell, flipFlop)"
+      (click)="onFlipperClick(soundCell, flipFlop)"
+      >
+      <ng-template #frontTemplate>
+        <div class="front text-xxl text-secondary border border-secondary bg-team-light">
+          {{ soundCell.labelFront }}
+        </div>
+      </ng-template>
+      <ng-template #backTemplate>
+        <div class="back text-bold text-xxl text-team-light border border-secondary bg-light">
+          {{ soundCell.labelBack }}
+        </div>
+      </ng-template>
+      <ng-template #flipBackTemplate>
+        <div class="flipBack">
+            <app-shared-icon-planet [isAnimating]="false"></app-shared-icon-planet>
+        </div>
+      </ng-template>
+    </app-shared-animated-flip-card>
+  </div>
+</div>
+<!-- 
+[isFlipped]="soundCell.isFlipped"
+      (mouseenter)="soundCell.isFlipped = true"
+      (mouseleave)="soundCell.isFlipped = false" -->

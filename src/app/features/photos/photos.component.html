@@ -1,0 +1,21 @@
+<!-- <app-shared-scroll-fly-in>
+  <h1>
+    Photos
+  </h1>
+</app-shared-scroll-fly-in> -->
+
+<div class="photo-group" *ngFor="let group of photoGroups; trackBy: groupTrackBy">
+  <app-shared-scroll-fly-in>
+    <span class="photo-group-title">
+      {{ group.title }}
+    </span>
+  </app-shared-scroll-fly-in>
+  <app-shared-scroll-fly-in *ngFor="let photo of group.photos; trackBy: photoTrackBy">
+    <div class="photo">
+      <span class="photo-title">
+        {{ photo.description }}
+      </span>
+      <img [attr.src]="'../../../assets/images/' + photo.src" />
+    </div>
+  </app-shared-scroll-fly-in>
+</div>

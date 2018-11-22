@@ -1,0 +1,13 @@
+<div class="menu-item text-lg cursor-pointer"
+  *ngIf="!nav.isHiddenRoute(route)"
+  (mouseover)="hover=true" 
+  (mouseleave)="hover=false"
+  [class.text-team-light]="hover || nav.isRouteSelected(route, 'like')"
+  [class.bg-light]="hover || nav.isRouteSelected(route, 'like')"
+  [class.menu-item-hover]="hover || nav.isRouteSelected(route, 'like')"
+  [class.text-secondary]="!hover && !nav.isRouteSelected(route, 'like')"
+  [class.bg-transparent]="!hover && !nav.isRouteSelected(route, 'like')"
+  (click)="nav.go(route)"
+  >
+    {{ label }}
+</div>

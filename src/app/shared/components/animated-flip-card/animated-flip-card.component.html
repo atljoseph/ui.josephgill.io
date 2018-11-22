@@ -1,0 +1,22 @@
+<div class="flip-wrapper" [@FadeOuterAnimation] [style.height]="h" [style.width]="w" (mouseenter)="flipOnHover ? flipBack() : null"
+  (mouseleave)="flipOnHover ? flipFront() : null" (click)="flipOnClick ? toggle() : null">
+  <div class="flip-container" [@FlipYAnimation]="flipState" (@FlipYAnimation.start)="onFlipStart()"
+    (@FlipYAnimation.done)="onFlipDone()" [style.height]="h" [style.width]="w">
+    <div class="flip-front" [style.height]="h" [style.width]="w">
+      <div class="flip-content" *ngIf="isFrontShowing">
+        <ng-container [ngTemplateOutlet]="frontTemplate"></ng-container>
+      </div>
+      <div class="flip-content-alt" *ngIf="!isFrontShowing">
+        <ng-container [ngTemplateOutlet]="flipBackTemplate"></ng-container>
+      </div>
+    </div>
+    <div class="flip-back" [style.height]="h" [style.width]="w">
+      <div class="flip-content" *ngIf="!isFrontShowing">
+        <ng-container [ngTemplateOutlet]="backTemplate"></ng-container>
+      </div>
+      <div class="flip-content-alt" *ngIf="isFrontShowing">
+        <ng-container [ngTemplateOutlet]="flipBackTemplate"></ng-container>
+      </div>
+    </div>
+  </div>
+</div>

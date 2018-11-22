@@ -1,0 +1,45 @@
+
+
+
+
+// :host {
+//     height: 100px;
+//     width: 100px;
+// }
+
+.board {
+    // width: inherit;
+    display: flex;
+    flex-direction: column;
+    // height: calc(100%);
+    // width: 100%;
+}
+
+.board-row {
+    display: flex;
+    flex: 1;
+}
+
+
+
+.front {
+    // background-color: blue;
+    height: 100%;
+
+    display:flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.back {
+    // background-color: orange;
+    height: 100%;
+
+    display:flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.flipBack {
+    opacity: 0.1;
+}

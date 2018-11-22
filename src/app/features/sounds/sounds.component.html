@@ -1,0 +1,39 @@
+<!-- <h1>
+  Sounds
+</h1> -->
+
+<div class="sounds-blurb-group sounds-blurb-group-no-padding">
+  <div class="sounds-blurb">
+
+    <div class="d-flex flex-row align-items-center">
+      <!-- <span class="text-sm">
+      The First:
+    </span> -->
+      <div class="btn-group dropright">
+        <button type="button" class="btn btn-secondary dropdown-toggle" (click)="soundboardTypeDropdownShown = !soundboardTypeDropdownShown">
+          {{ soundboardTypeLabel }}
+        </button>
+        <!-- dropdown-menu-right -->
+        <div class="dropdown-menu" [class.show]="soundboardTypeDropdownShown">
+          <button class="dropdown-item" (click)="soundBoardChangeType('numbers', 'Numbers')">Numbers</button>
+          <button class="dropdown-item" (click)="soundBoardChangeType('alphabet::upper', 'Alphabet')">Alphabet</button>
+        </div>
+      </div>
+      <div class="btn-group dropright">
+        <button type="button" class="btn btn-secondary dropdown-toggle" (click)="soundboardIsRandomDropdownShown = !soundboardIsRandomDropdownShown">
+          {{ soundboardIsRandomLabel }}
+        </button>
+        <!-- dropdown-menu-right -->
+        <div class="dropdown-menu" [class.show]="soundboardIsRandomDropdownShown">
+          <button class="dropdown-item" (click)="soundBoardChangeIsRandom(false, 'Ordered')">Ordered</button>
+          <button class="dropdown-item" (click)="soundBoardChangeIsRandom(true, 'Random')">Random</button>
+        </div>
+      </div>
+
+    </div>
+
+    <app-soundboard2 [soundSourceArrayKey]="soundboardTypeKey" [isOrderedRandomly]="soundboardIsRandom"
+      [soundBoardHeight]="300">
+    </app-soundboard2>
+  </div>
+</div>

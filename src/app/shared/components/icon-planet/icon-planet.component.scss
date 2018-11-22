@@ -1,0 +1,34 @@
+
+:host {
+    height: 100%;
+    width: 100%;
+}
+
+#Layer_1 {
+    // transform: scale(0.09);
+    transform-origin: 0 0;
+}
+
+
+@keyframes fullCircle {
+    from {
+      transform: rotate(0deg);
+    }
+  
+    to {
+        transform: rotate(360deg);
+    }
+  }
+
+#moon {
+    // transform: scale(0.25);
+    transform-origin: 255.973px 255.984px;
+} 
+
+#moon.animating {
+    animation-timing-function: linear;
+    animation-duration: 1.5s;
+    animation-name: fullCircle;
+    animation-iteration-count: infinite;
+    // animation-direction: alternate;
+}

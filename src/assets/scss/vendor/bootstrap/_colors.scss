@@ -1,0 +1,31 @@
+
+
+// @function solid-lighter($color, $percentage) {
+//     @return lighten($color, (1-$percentage) * 100%);
+// }
+
+// @function solid-darker($color, $percentage) {
+//     @return darken($color, (1-$percentage)*5%);
+// }
+
+// $blue: mix(blue, white, 75%);
+// $purple-blue: solid-lighter($blue, 0.9);
+
+// can use other functions here too, like opacify() and hlsa()
+
+$theme-colors: (
+    "primary": black,
+    "secondary": white,
+    "success": #7Ca979,
+    "info": lightblue,
+    "warning": yellow,
+    "danger": red,
+    "light": silver,
+    "team": #3779e1,
+    "team-light": #4580df,
+    "team-alt": rgba(#4c84dd, 1),
+    "team-alt-light": rgba(#6492db, 1),
+    "transparent": transparent,
+    "transparent-light": rgba(silver, 0.85),
+    "transparent-highlight": rgba(yellow, 0.85)
+);
