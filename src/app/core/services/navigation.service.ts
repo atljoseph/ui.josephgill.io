@@ -47,10 +47,10 @@ export class NavService implements IAppInitService {
     this.logger.log('Navigating to route.', this.logHandle, { route, delayOverride });
     // this.sound.play('pew.mp3', 0.5);
     this.sound.play('cowboy-spurs.mp3', 0.1);
-    this.content.scrollSmoothToTop();
+    // this.content.scrollSmoothToTop();
+    this.content.scrollToTop();
     setTimeout(() => {
       this.menu.hide();
-      // this.content.scrollToTop();
       this.router.navigate([route]);
     }, delayOverride || this.animationDelayDefault);
   }
