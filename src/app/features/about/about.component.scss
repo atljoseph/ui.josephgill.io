@@ -1,6 +1,53 @@
 
 @import '../../../assets/scss/_';
 
+// .about-blurb-group {
+//     @include screenSize(phone) {
+//         padding-top: 20px;
+//     }
+//     @include screenSizeUp(tablet) {
+//         padding-top: 30px;
+//     }
+//     display: flex;
+//     flex-direction: column;
+// }
+
+// .about-blurb-group:first-of-type {
+//     padding-top: 0;
+// }
+
+// .about-blurb-group:last-of-type {
+//     padding-bottom: 100px;
+// }
+
+// .about-blurb {
+//     display: flex;
+//     flex-direction: column;
+
+//     &-title {
+//         @extend .text-xl;
+//     }
+
+//     &-description {
+//         @extend .text-sm;
+//         @extend .pt-2;
+//     }
+
+//     @include screenSize(phone) {
+//         img, app-scroll-photo {
+//             width: 100%;
+//             padding-top: 10px;
+//         }
+
+//     }
+//     @include screenSizeUp(tablet) {
+//         img, app-scroll-photo {
+//             width: 50%;
+//             padding-top: 10px;
+//         }
+//     }
+// }
+
 .about-blurb-group {
     @include screenSize(phone) {
         padding-top: 20px;
@@ -11,15 +58,14 @@
     display: flex;
     flex-direction: column;
 
-    &-no-padding {
-        padding: 0;
+    &-title {
+        @extend .text-xxl;
     }
 }
 
 .about-blurb-group:first-of-type {
     padding-top: 0;
 }
-
 .about-blurb-group:last-of-type {
     padding-bottom: 100px;
 }
@@ -29,12 +75,7 @@
     flex-direction: column;
 
     &-title {
-        @extend .text-xl;
-    }
-
-    &-description {
-        @extend .text-sm;
-        @extend .pt-2;
+        @extend .text-lg;
     }
 
     @include screenSize(phone) {
