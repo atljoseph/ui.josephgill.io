@@ -45,6 +45,12 @@ export class ContentService implements IAppInitService {
      // scroll by 1 px to trigger a scroll event
     this.logger.log('scrollToTop()', this.handleId, { });
     this.scrollableHTMLElement.scrollTo(0,0);
+    // window.scrollTo(0,0);
+    // this.scrollableHTMLElement.scrollTo({
+    //   top: 0,
+    //   left: 0,
+    //   behavior: 'smooth'
+    // });
    }
 
    scrollSmoothToTop() {
