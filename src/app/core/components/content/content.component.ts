@@ -5,7 +5,7 @@ import { NavService } from '../../services/navigation.service';
 import { LogService } from '../../services/log.service';
 import { MenuService } from '../../services/menu.service';
 import { HeaderService } from '../../services/header.service';
-import { ScrollService } from '../../services/scroll.service';
+import { ContentService } from '../../services/content.service';
 
 import { RouterAnimation } from './content.animation';
 
@@ -27,7 +27,7 @@ export class ContentComponent implements OnInit {
     public menu: MenuService,
     public header: HeaderService,
     public log: LogService,
-    private scroll: ScrollService,
+    private content: ContentService,
   ) { }
 
   ngOnInit() {

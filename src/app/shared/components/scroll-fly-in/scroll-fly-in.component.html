@@ -1,4 +1,17 @@
-<div [@scrollAnimation]="animationState">
-  <ng-content></ng-content>
+
+
+<div *ngIf="shouldLoad"
+  [@scrollAnimation]="animationState">
+  <!-- <app-shared-icon-planet [isAnimating]="false"></app-shared-icon-planet> -->
+  <ng-container *ngTemplateOutlet="contentTemplate"></ng-container>
+  <!-- <ng-content></ng-content> -->
   <!-- <img [attr.src]="src"> -->
 </div>
+<!-- [@scrollAnimation]="animationState"
+(@scrollAnimation.done)="isLoaded = true" -->
+<div *ngIf="!shouldLoad"
+  style="opacity: 0.5;"
+  [style.height]="placeholderHeight + 'px'">
+</div>
+
+  <!-- <app-shared-icon-planet [isAnimating]="true"></app-shared-icon-planet> -->

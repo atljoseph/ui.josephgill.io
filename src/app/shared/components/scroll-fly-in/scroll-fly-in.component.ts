@@ -1,9 +1,9 @@
 
-import { Component, OnInit, Input, ElementRef } from '@angular/core';
+import { Component, OnInit, AfterViewInit, Input, ElementRef, EventEmitter, Output, TemplateRef, ContentChild } from '@angular/core';
 import { Observable, fromEvent } from 'rxjs';
 
 import { LogService } from '../../../core/services/log.service';
-import { ScrollService, IContentScrollContext } from '../../../core/services/scroll.service';
+import { ContentService, IContentScrollContext } from '../../../core/services/content.service';
 import { scrollAnimation } from './scroll-fly-in.animation';
 
 @Component({
@@ -12,11 +12,12 @@ import { scrollAnimation } from './scroll-fly-in.animation';
   styleUrls: ['./scroll-fly-in.component.scss'],
   animations: [scrollAnimation]
 })
-export class ScrollFlyInComponent implements OnInit {
+export class ScrollFlyInComponent implements OnInit, AfterViewInit {
 
   @Input() src: string;
   // @Input() isInitiallyVisible: boolean = false;
   @Input() scrollHideType: string = 'vertical-horizontal-scaled'; // default, vertical, horizontal, vertical-horizontal-scaled
+  @Input() loadHeightThresholdFactor: number = 40; // about 10 pixels per image initial load
 
   animationState = 'show';
   // animationState = 'hideLeft';
@@ -41,13 +42,17 @@ export class ScrollFlyInComponent implements OnInit {
     }
   };
 
+  @ContentChild(TemplateRef) contentTemplate;
+  shouldLoad: boolean = false;
+  placeholderHeight: number = 300;
+
   constructor(
     public el: ElementRef,
     private logger: LogService,
-    private scroll: ScrollService
+    private content: ContentService
   ) {
   }
-  
+
   setScrollAnimationShowState(): void {
     this.animationState = 'show';
   }
@@ -56,12 +61,16 @@ export class ScrollFlyInComponent implements OnInit {
     this.animationState = this.animationStates[this.scrollHideType][direction.toLowerCase()];
   }
 
+  ngAfterViewInit() {
+    // console.log('hey');
+  }
+
   ngOnInit() {
-    // this.scroll.scrollTick();
+    // this.content.scrollTick();
     // this.logger.log('ngOnInit()', 'ScrollFlyInComponent', { scroll: this.scroll });
     // if (this.isInitiallyVisible) this.setScrollAnimationShowState();
 
-    this.scroll.scrollContextObservable.subscribe((scrollContext: IContentScrollContext) => {
+    this.content.scrollContextObservable.subscribe((scrollContext: IContentScrollContext) => {
       const componentHeight = this.el.nativeElement.offsetHeight;
       const componentTop = this.el.nativeElement.offsetTop;
       const componentBottom = componentTop + componentHeight;
@@ -74,10 +83,10 @@ export class ScrollFlyInComponent implements OnInit {
       // const varianceShow = scrollContext.clientHeight * 0.075;
       // this.logger.log(`scrollContextObservable.subscribe()`, 'ScrollFlyInComponent', { });
 
-      if (scrollContext.scrollTop === 0 
-          && componentBottom >= contentTopBorder
-          && componentTop <= contentBottomBorder
-          ) {
+      if (scrollContext.scrollTop === 0
+        && componentBottom >= contentTopBorder
+        && componentTop <= contentBottomBorder
+      ) {
         // this.logger.log(`scrollContextObservable.subscribe() init show items in contentWindow`, 'ScrollFlyInComponent', { });
         this.setScrollAnimationShowState();
       }
@@ -98,10 +107,17 @@ export class ScrollFlyInComponent implements OnInit {
         this.setScrollAnimationShowState();
         // this.animationState = 'show';
       }
-      // else if (componentBottom >= contentTopBorder + varianceShow
-      //   && componentTop <= contentBottomBorder - varianceShow) {
-      //   this.animationState = 'show';
-      //   }
+
+      // const initialHeightLoadThreshold = this.placeholderHeight / 3;
+      // const initialHeightLoadThreshold = 51;
+      const initialHeightLoadThreshold = this.content.artificialContentScrollUnderHeaderOffset + this.loadHeightThresholdFactor;
+      if ((scrollContext.scrollTop === 0 && componentTop < initialHeightLoadThreshold) || scrollContext.scrollTop !== 0) {
+        const viewportFactor = 2;
+        if (componentTop < contentBottomBorder + scrollContext.clientHeight * viewportFactor) {
+          // console.log({ componentBottom, componentTop, contentTopBorder, contentBottomBorder });
+          this.shouldLoad = true;
+        }
+      }
     });
   }
 }

@@ -9,7 +9,7 @@ import { IAppInitService } from '../core.types';
 import { MenuService } from './menu.service';
 import { LogService } from './log.service';
 import { SoundService } from './sound.service';
-import { ScrollService } from './scroll.service';
+import { ContentService } from './content.service';
 
 @Injectable({
   providedIn: 'root'
@@ -26,7 +26,7 @@ export class NavService implements IAppInitService {
     private menu: MenuService,
     private logger: LogService,
     private sound: SoundService,
-    private scroll: ScrollService,
+    private content: ContentService,
   ) {
     this.logger.log('constructor()', 'NavService', {});
     this.router.events.pipe(
@@ -49,7 +49,7 @@ export class NavService implements IAppInitService {
     this.sound.play('cowboy-spurs.mp3', 0.1);
     setTimeout(() => {
       this.menu.hide();
-      this.scroll.scrollToTop();
+      this.content.scrollToTop();
       this.router.navigate([route]);
     }, delayOverride || this.animationDelayDefault);
   }

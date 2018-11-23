@@ -5,9 +5,23 @@ This is my website's UI code. You can visit it at http://josephgill.io :)
 
 ## Install Dependencies 
 
+Install UI Project
+
+`git clone https://github.com/atljoseph/ui.josephgill.io.git`
+
 `npm install -g @angular/cli`
 
 `npm install`
+
+Build Assets and Install into UI Project 
+
+Note: Depends on ImageMagick!
+
+`git clone https://github.com/atljoseph/assets.josephgill.io.git`
+
+`cd ../assets.josephgill.io`
+
+`npm run assets`
 
 ## Run for Development
 
@@ -20,7 +34,7 @@ You might want to edit the angular.json file
         "serve": {
           "builder": "@angular-devkit/build-angular:dev-server",
           "options": {
-            "browserTarget": "jgApp:build",
+            "browserTarget": "ui.josephgill.io:build",
             "host": "1.2.3.4",      <=== THIS can be set to your local IP address.
             "port": 4200            <=== THIS can be used to cutomize the port
           },

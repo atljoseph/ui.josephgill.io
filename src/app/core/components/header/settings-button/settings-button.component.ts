@@ -4,7 +4,7 @@ import { FullScreenService } from '../../../services/full-screen.service';
 import { HeaderService } from '../../../services/header.service';
 import { MenuService } from '../../../services/menu.service';
 import { SoundService } from '../../../services/sound.service';
-import { ScrollService } from '../../../services/scroll.service';
+import { ContentService } from '../../../services/content.service';
 
 import {
   menuButtonMargin,
@@ -27,7 +27,7 @@ export class SettingsButtonComponent implements OnInit {
     public menu: MenuService,
     public sound: SoundService,
     public fullScreen: FullScreenService,
-    public scroll: ScrollService,
+    public content: ContentService,
   ) { }
 
 
@@ -37,13 +37,13 @@ export class SettingsButtonComponent implements OnInit {
   scrollToTop() {
     this.showDropdownMenu = false;
     this.sound.play('punch-whack.mp3', 0.2);
-    this.scroll.scrollSmoothToTop();
+    this.content.scrollSmoothToTop();
   }
 
   scrollToBottom() {
     this.showDropdownMenu = false;
     this.sound.play('punch-whack.mp3', 0.2);
-    this.scroll.scrollSmoothToBottom();
+    this.content.scrollSmoothToBottom();
   }
 
   toggleTheme() {

@@ -19,7 +19,7 @@ import { SessionStorageService } from './services/session-storage.service';
 import { ProxyService } from './services/proxy.service';
 import { FullScreenService } from './services/full-screen.service';
 import { XlsxService } from './services/xlsx.service';
-import { ScrollService } from './services/scroll.service';
+import { ContentService } from './services/content.service';
 
 // components
 import { WindowComponent } from './components/window/window.component';
@@ -79,11 +79,11 @@ import { HeaderLinkComponent } from './components/header/header-link/header-link
     },
     {
       provide: APP_INITIALIZER,
-      useFactory: (instance: ScrollService) => {
+      useFactory: (instance: ContentService) => {
         // console.log(instance, ScrollService);
         return () => instance.appOnInit();
       },
-      deps: [ScrollService],
+      deps: [ContentService],
       multi: true
     },
     NavService
