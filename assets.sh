@@ -23,6 +23,6 @@ then
 else 
     echo "Assets repo already installed"
 fi
-sh $ASSETSREPONAME/scripts/assets-all.sh
+sh $ASSETSREPONAME/scripts/assets-install.sh
 
 cd $THISDIR
