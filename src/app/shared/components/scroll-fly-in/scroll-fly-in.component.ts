@@ -1,5 +1,5 @@
 
-import { Component, OnInit, AfterViewInit, Input, ElementRef, EventEmitter, Output, TemplateRef, ContentChild } from '@angular/core';
+import { Component, OnInit, AfterViewInit, AfterContentInit, Input, ElementRef, EventEmitter, Output, TemplateRef, ContentChild } from '@angular/core';
 import { Observable, fromEvent } from 'rxjs';
 
 import { LogService } from '../../../core/services/log.service';
@@ -12,7 +12,7 @@ import { scrollAnimation } from './scroll-fly-in.animation';
   styleUrls: ['./scroll-fly-in.component.scss'],
   animations: [scrollAnimation]
 })
-export class ScrollFlyInComponent implements OnInit, AfterViewInit {
+export class ScrollFlyInComponent implements OnInit, AfterViewInit, AfterContentInit {
 
   @Input() src: string;
   // @Input() isInitiallyVisible: boolean = false;
@@ -45,6 +45,7 @@ export class ScrollFlyInComponent implements OnInit, AfterViewInit {
   @ContentChild(TemplateRef) contentTemplate;
   shouldLoad: boolean = false;
   placeholderHeight: number = 300;
+  isLoaded: boolean = false;
 
   constructor(
     public el: ElementRef,
@@ -62,7 +63,13 @@ export class ScrollFlyInComponent implements OnInit, AfterViewInit {
   }
 
   ngAfterViewInit() {
-    // console.log('hey');
+    this.logger.log('ngAfterViewInit', 'ScrollFlyInComponent', this.src);
+    // this.isLoaded = true;
+  }
+
+  ngAfterContentInit() {
+    this.logger.log('ngAfterContentInit', 'ScrollFlyInComponent', this.src);
+    this.isLoaded = true;
   }
 
   ngOnInit() {
@@ -81,7 +88,7 @@ export class ScrollFlyInComponent implements OnInit, AfterViewInit {
       // const varianceShow = 50;
       // const varianceHide = scrollContext.clientHeight * 0.15;
       // const varianceShow = scrollContext.clientHeight * 0.075;
-      // this.logger.log(`scrollContextObservable.subscribe()`, 'ScrollFlyInComponent', { });
+      this.logger.log(`scrollContextObservable changed`, 'ScrollFlyInComponent', JSON.stringify(scrollContext, null, 4));
 
       if (scrollContext.scrollTop === 0
         && componentBottom >= contentTopBorder
@@ -107,17 +114,19 @@ export class ScrollFlyInComponent implements OnInit, AfterViewInit {
         this.setScrollAnimationShowState();
         // this.animationState = 'show';
       }
+      // if (this.isLoaded) {
 
-      // const initialHeightLoadThreshold = this.placeholderHeight / 3;
-      // const initialHeightLoadThreshold = 51;
-      const initialHeightLoadThreshold = this.content.artificialContentScrollUnderHeaderOffset + this.loadHeightThresholdFactor;
-      if ((scrollContext.scrollTop === 0 && componentTop < initialHeightLoadThreshold) || scrollContext.scrollTop !== 0) {
-        const viewportFactor = 2;
-        if (componentTop < contentBottomBorder + scrollContext.clientHeight * viewportFactor) {
-          // console.log({ componentBottom, componentTop, contentTopBorder, contentBottomBorder });
-          this.shouldLoad = true;
+        // const initialHeightLoadThreshold = this.placeholderHeight / 3;
+        // const initialHeightLoadThreshold = 51;
+        const initialHeightLoadThreshold = this.content.artificialContentScrollUnderHeaderOffset + this.loadHeightThresholdFactor;
+        if ((scrollContext.scrollTop === 0 && componentTop < initialHeightLoadThreshold) || scrollContext.scrollTop !== 0) {
+          const viewportFactor = 2;
+          if (componentTop < contentBottomBorder + scrollContext.clientHeight * viewportFactor) {
+            // console.log({ componentBottom, componentTop, contentTopBorder, contentBottomBorder });
+            this.shouldLoad = true;
+          }
         }
-      }
+      // }
     });
   }
 }

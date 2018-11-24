@@ -22,7 +22,7 @@ export class PhotosComponent implements OnInit, OnDestroy {
 
   assetBaseDir: string = '../../../assets/images/resized';
   // https://medium.com/hceverything/applying-srcset-choosing-the-right-sizes-for-responsive-images-at-different-breakpoints-a0433450a4a3
-  responsiveSizes: number[] = [640, 768, 1024, 1366, 1600, 1920];
+  responsiveSizes: number[] = [640, 768, 1024]; //, 1366, 1600, 1920
   responsiveSizeFallback: number = 640;
   responsiveTestSrcs: string[] = [
     'candler-and-ngan.jpg', 

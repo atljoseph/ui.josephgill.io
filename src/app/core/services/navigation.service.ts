@@ -47,8 +47,11 @@ export class NavService implements IAppInitService {
     this.logger.log('Navigating to route.', this.logHandle, { route, delayOverride });
     // this.sound.play('pew.mp3', 0.5);
     this.sound.play('cowboy-spurs.mp3', 0.1);
-    // this.content.scrollSmoothToTop();
-    this.content.scrollToTop();
+    // this.content.scrollSmoothToTop(() => { console.log('hey')});
+    // this.content.scrollToTop(() => { console.log('hey')});
+    this.content.scrollToTop(() => { 
+      //idk if the scrollTo method is actually syncronous
+    });
     setTimeout(() => {
       this.menu.hide();
       this.router.navigate([route]);

@@ -2,6 +2,7 @@ import { Component, Injectable, OnInit, HostListener, ElementRef } from '@angula
 import { Observable, fromEvent, from, BehaviorSubject } from 'rxjs';
 import { debounceTime } from 'rxjs/operators';
 import { map } from 'rxjs/operators';
+// import * as moment from 'moment';
 
 import { LogService } from './log.service';
 import { IAppInitService } from '../core.types';
@@ -41,25 +42,29 @@ export class ContentService implements IAppInitService {
     return document.getElementById('scroll-content');
    }
 
-   scrollToTop() {
+   scrollToTop(callback?: Function) {
      // scroll by 1 px to trigger a scroll event
     this.logger.log('scrollToTop()', this.handleId, { });
+    // console.log('this', moment().toString());
     this.scrollableHTMLElement.scrollTo(0,0);
+    // console.log('is syncronous', moment().toString());
     // window.scrollTo(0,0);
     // this.scrollableHTMLElement.scrollTo({
     //   top: 0,
     //   left: 0,
     //   behavior: 'smooth'
     // });
+    if (callback) callback();
    }
 
-   scrollSmoothToTop() {
+   scrollSmoothToTop(callback?: Function) {
     this.logger.log('scrollSmoothToTop()', this.handleId, { });
     this.scrollableHTMLElement.scrollTo({
       top: 0,
       left: 0,
       behavior: 'smooth'
     });
+    if (callback) callback();
    }
 
    scrollSmoothToBottom() {
@@ -89,7 +94,7 @@ export class ContentService implements IAppInitService {
     setTimeout(() => {
        // scroll event
        this.scrollEventObservable = fromEvent(this.scrollableHTMLElement, 'scroll')
-       .pipe(debounceTime(1))
+       .pipe(debounceTime(0.1))
        .pipe(map((event: any): IContentScrollContext => {
         return {
           scrollTop: event.target.scrollTop,
@@ -104,7 +109,7 @@ export class ContentService implements IAppInitService {
        // resize event
        // change context?
        this.resizeEventObservable = fromEvent(window, 'resize')
-        .pipe(debounceTime(1))
+        .pipe(debounceTime(0.1))
         .pipe(map((event: any): IContentScrollContext => {
         return {
           scrollTop: event.target.scrollTop,
