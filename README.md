@@ -2,10 +2,11 @@
 # josephgill.io
 
 This is my website's UI code. You can visit it at http://josephgill.io :)
+NOTE: For Windows users, please use `Git Bash`!
 
 ## Install Dependencies 
 
-Install UI Project
+### Install UI Project
 
 `git clone https://github.com/atljoseph/ui.josephgill.io.git`
 
@@ -13,22 +14,20 @@ Install UI Project
 
 `npm install`
 
-Build Assets and Install into UI Project 
+### Install Assets into UI Project 
 
-Note: Depends on ImageMagick!
-
-`git clone https://github.com/atljoseph/assets.josephgill.io.git`
-
-`cd ../assets.josephgill.io`
-
-`npm run assets`
+Run this to clone the correct asset repo and install the processed assets: `npm run assets`
 
 ## Run for Development
 
 Run `npm start` or `ng serve` to serve the app on the local machine.
 Should be up and running on the host & port defined in `angular.json` (see the note below):
 
+### Development Server Host IP
+
 You might want to edit the angular.json file
+"host" can be "0.0.0.0" (for localhost), or whatever your local IP address is ...
+
 ```
         ...,
         "serve": {
