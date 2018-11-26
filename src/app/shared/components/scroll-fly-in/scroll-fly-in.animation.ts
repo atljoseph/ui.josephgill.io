@@ -4,7 +4,8 @@ import {
   state,
   style,
   animate,
-  transition
+  transition,
+  keyframes
 } from '@angular/animations';
 
 export const scrollAnimation = trigger('scrollAnimation', [
@@ -12,36 +13,36 @@ export const scrollAnimation = trigger('scrollAnimation', [
     opacity: 1,
     transform: "translateX(0)"
   })),
-  state('showPlaceholder', style({
-    opacity: 0.7,
-    transform: "translateX(0)"
-  })),
-  //
+  // state('showPlaceholder', style({
+  //   opacity: 0.7,
+  //   transform: "translateX(0)"
+  // })),
+  // //
   state('hide', style({
     opacity: 0,
   })),
-  transition('hide <=> show', animate(`${500}ms ease-in-out`)),
-  //
-  state('hideLeft', style({
-    opacity: 0,
-    transform: "translateX(-100%)"
-  })),
-  state('hideRight', style({
-    opacity: 0,
-    transform: "translateX(100%)"
-  })),
-  transition('hideLeft <=> show, hideRight <=> show', animate(`${250}ms ease-in-out`)),
-  //
-  state('hideTop', style({
-    opacity: 0,
-    transform: "translateY(-200%)"
-  })),
-  state('hideBottom', style({
-    opacity: 0,
-    transform: "translateY(200%)"
-  })),
-  transition('hideBottom <=> show, hideTop <=> show', animate(`${350}ms ease-in-out`)),
-  //
+  // transition('hide <=> show', animate(`${500}ms ease-in-out`)),
+  // //
+  // state('hideLeft', style({
+  //   opacity: 0,
+  //   transform: "translateX(-100%)"
+  // })),
+  // state('hideRight', style({
+  //   opacity: 0,
+  //   transform: "translateX(100%)"
+  // })),
+  // transition('hideLeft <=> show, hideRight <=> show', animate(`${250}ms ease-in-out`)),
+  // //
+  // state('hideTop', style({
+  //   opacity: 0,
+  //   transform: "translateY(-200%)"
+  // })),
+  // state('hideBottom', style({
+  //   opacity: 0,
+  //   transform: "translateY(200%)"
+  // })),
+  // transition('hideBottom <=> show, hideTop <=> show', animate(`${350}ms ease-in-out`)),
+  // //
   state('hideTopRight', style({
     opacity: 0,
     transform: "translateY(-100%) translateX(100%) scale(0.5)"
@@ -50,5 +51,17 @@ export const scrollAnimation = trigger('scrollAnimation', [
     opacity: 0,
     transform: "translateY(100%) translateX(-100%) scale(0.5)"
   })),
-  transition('hideBottomLeft <=> show, hideTopRight <=> show', animate(`${350}ms ease-in-out`)),
+  // transition('hideBottomLeft <=> show', animate(`${350}ms ease-in-out`)),
+  // transition('hideTopRight <=> show', animate(`${350}ms ease-in-out`)),
+
+  transition('hideBottomLeft => show', animate(`${350}ms ease-in-out`, keyframes([
+    style({ opacity: 0, transform: "translateY(100%) translateX(-100%) scale(0.5)", offset: 0 }),
+    style({ opacity: 1, transform: "translateY(-0%) translateX(7%)", offset: 0.9 }),
+    style({ opacity: 1, transform: "translateX(0)", offset: 1 }),
+  ]))),
+  transition('hideTopRight => show', animate(`${350}ms ease-in-out`, keyframes([
+    style({ opacity: 0, transform: "translateY(-100%) translateX(100%) scale(0.5)", offset: 0 }),
+    style({ opacity: 1, transform: "translateY(0%) translateX(-7%)", offset: 0.9 }),
+    style({ opacity: 1, transform: "translateX(0)", offset: 1 }),
+  ]))),
 ]);

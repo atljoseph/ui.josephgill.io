@@ -16,12 +16,12 @@
         @extend .text-xxl;
     }
     &-description {
-        @extend .text-lg;
+        @extend .text-md;
     }
 }
 
 .about-blurb-group:first-of-type {
-    padding-top: 0;
+    padding-top: 20px;
 }
 .about-blurb-group:last-of-type {
     padding-bottom: 100px;
@@ -35,7 +35,7 @@
         @extend .text-lg;
     }
 
-    &-title {
+    &-description {
         @extend .text-md;
     }
 

@@ -20,8 +20,10 @@ export class ScrollFlyInComponent implements OnInit, AfterViewInit, AfterContent
 
   animationStates = {
     'default': {
-      scrollup: 'hide',
-      scrolldown: 'hide'
+      // scrollup: 'hide',
+      // scrolldown: 'hide'
+      scrollup: 'hideBottomLeft',
+      scrolldown: 'hideTopRight'
     },
     'vertical': {
       scrollup: 'hideBottom',
