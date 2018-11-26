@@ -48,7 +48,7 @@ export class PhotosComponent implements OnInit, OnDestroy {
         { src: 'sam-shortline-candler-fist-pump.jpg' },
         { src: 'sam-shortline-candler-grandy-1.jpg' },
         { src: 'sam-shortline-candler-grandy-2.jpg' },
-        { src: 'sam-shortline-candler-grandy-daddy-1.jpg' },
+        { src: 'sam-shortline-candler-grandy-daddy-1-cropped.jpg' },
         { src: 'sam-shortline-candler-grandy-papa-daddy-with-train-1.jpg' },
         { src: 'sam-shortline-candler-grandy-papa-railroad-crossing.jpg' },
         { src: 'sam-shortline-candler-grandy-papa-with-train-1.jpg' },
