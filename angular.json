@@ -64,7 +64,7 @@
           "builder": "@angular-devkit/build-angular:dev-server",
           "options": {
             "browserTarget": "ui.josephgill.io:build",
-            "host": "192.168.1.8",
+            "host": "0.0.0.0",
             "port": 4200
           },
           "configurations": {

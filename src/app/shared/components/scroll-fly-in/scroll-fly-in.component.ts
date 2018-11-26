@@ -1,27 +1,22 @@
 
-import { Component, OnInit, AfterViewInit, AfterContentInit, Input, ElementRef, EventEmitter, Output, TemplateRef, ContentChild } from '@angular/core';
+import { Component, OnDestroy, OnInit, AfterViewInit, AfterContentInit, Input, ElementRef, ViewChild, TemplateRef, ContentChild, ChangeDetectionStrategy, ChangeDetectorRef } from '@angular/core';
 import { Observable, fromEvent } from 'rxjs';
 
 import { LogService } from '../../../core/services/log.service';
+import { UuidService } from '../../../core/services/uuid.service';
 import { ContentService, IContentScrollContext } from '../../../core/services/content.service';
+
+import { ScrollFlyInService } from './scroll-fly-in.service';
 import { scrollAnimation } from './scroll-fly-in.animation';
 
 @Component({
   selector: 'app-shared-scroll-fly-in',
   templateUrl: './scroll-fly-in.component.html',
   styleUrls: ['./scroll-fly-in.component.scss'],
-  animations: [scrollAnimation]
+  animations: [scrollAnimation],
+  changeDetection: ChangeDetectionStrategy.OnPush
 })
-export class ScrollFlyInComponent implements OnInit, AfterViewInit, AfterContentInit {
-
-  @Input() src: string;
-  // @Input() isInitiallyVisible: boolean = false;
-  @Input() scrollHideType: string = 'vertical-horizontal-scaled'; // default, vertical, horizontal, vertical-horizontal-scaled
-  @Input() loadHeightThresholdFactor: number = 40; // about 10 pixels per image initial load
-
-  animationState = 'show';
-  // animationState = 'hideLeft';
-  private scrollEvent: any;
+export class ScrollFlyInComponent implements OnInit, AfterViewInit, AfterContentInit, OnDestroy {
 
   animationStates = {
     'default': {
@@ -42,91 +37,100 @@ export class ScrollFlyInComponent implements OnInit, AfterViewInit, AfterContent
     }
   };
 
+  @Input() src: string;
+  // @Input() isInitiallyVisible: boolean = false;
+  @Input() scrollHideType: string = 'vertical-horizontal-scaled'; // default, vertical, horizontal, vertical-horizontal-scaled
+  @Input() loadHeightThresholdFactor: number = 40; // about 10 pixels per image initial load
+  @Input() showPlaceholder: boolean = true;
+
   @ContentChild(TemplateRef) contentTemplate;
+  @ViewChild('placeholder') placeholder: ElementRef;
+
   shouldLoad: boolean = false;
-  placeholderHeight: number = 300;
+  placeholderSize: number = 300;
   isLoaded: boolean = false;
+  flyInHandleId: string;
+  animationStatePlaceholder = 'showPlaceholder';
+  animationState = 'show';
 
   constructor(
     public el: ElementRef,
+    private cdr: ChangeDetectorRef,
     private logger: LogService,
-    private content: ContentService
+    private uuid: UuidService,
+    public service: ScrollFlyInService
   ) {
+    this.flyInHandleId = this.uuid.uuidv4();
   }
 
-  setScrollAnimationShowState(): void {
+  markForChangeDetection() {
+    this.cdr.markForCheck();
+  }
+
+  setScrollAnimationShowState(ignoreChanges?: boolean): void {
+    // this.logger.log(`SHOW`, 'ScrollFlyInComponent', { contentTemplate: this.contentTemplate.elementRef.nativeElement });
     this.animationState = 'show';
+    // this.animationStatePlaceholder = this.animationStates[this.scrollHideType].scrolldown;
+    if (!ignoreChanges) this.markForChangeDetection();
   }
 
-  setScrollAnimationHideState(direction: string): void {
+  setScrollAnimationHideState(direction: string, ignoreChanges?: boolean): void {
+    // this.logger.log(`HIDE ${direction}`, 'ScrollFlyInComponent', { contentTemplate: this.contentTemplate.elementRef.nativeElement });
     this.animationState = this.animationStates[this.scrollHideType][direction.toLowerCase()];
+    if (!ignoreChanges) this.markForChangeDetection(); 
+  }
+
+  setContentShouldLoad(ignoreChanges?: boolean): void {
+    // this.logger.log(`SHOULD LOAD`, 'ScrollFlyInComponent', { contentTemplate: this.contentTemplate.elementRef.nativeElement });
+    this.shouldLoad = true;
+    if (!ignoreChanges) this.markForChangeDetection();
+  }
+
+  // setShowPlaceholder(): void {
+  //   this.logger.log(`SHOW PLACEHOLDER`, 'ScrollFlyInComponent', { contentTemplate: this.contentTemplate.elementRef.nativeElement });
+  //   this.isPlaceholderVisible = true;
+  //   this.cdr.markForCheck();
+  // }
+
+  get shouldContentLoad(): boolean {
+    return this.shouldLoad;
+  }
+
+  get height() {
+    return this.el.nativeElement.offsetHeight;
+  }
+
+  get top() {
+    return this.el.nativeElement.offsetTop;
+  }
+
+  get bottom() {
+    return this.top + this.height;
+  }
+
+  onAnimationDone(animationEvent: any) {
+    if (animationEvent.toState == 'show') {
+      // this.placeholder.nativeElement.style.transition = 'all .3s ease-in-out';
+      this.placeholder.nativeElement.style.display = 'none';
+      this.cdr.markForCheck();
+    }
   }
 
   ngAfterViewInit() {
-    this.logger.log('ngAfterViewInit', 'ScrollFlyInComponent', this.src);
-    // this.isLoaded = true;
-  }
-
-  ngAfterContentInit() {
-    this.logger.log('ngAfterContentInit', 'ScrollFlyInComponent', this.src);
-    this.isLoaded = true;
+    // this.logger.log('ngAfterViewInit', 'ScrollFlyInComponent', this.src);
   }
 
   ngOnInit() {
-    // this.content.scrollTick();
-    // this.logger.log('ngOnInit()', 'ScrollFlyInComponent', { scroll: this.scroll });
-    // if (this.isInitiallyVisible) this.setScrollAnimationShowState();
+    this.service.register(this);
+    // this.logger.log('ngOnInit', 'ScrollFlyInComponent', this.src);
+  }
 
-    this.content.scrollContextObservable.subscribe((scrollContext: IContentScrollContext) => {
-      const componentHeight = this.el.nativeElement.offsetHeight;
-      const componentTop = this.el.nativeElement.offsetTop;
-      const componentBottom = componentTop + componentHeight;
-      const contentTopBorder = scrollContext.scrollTop;
-      const contentBottomBorder = scrollContext.scrollTop + scrollContext.clientHeight;
-      const varianceHideTop = 50;
-      const varianceHideBottom = 50;
-      // const varianceShow = 50;
-      // const varianceHide = scrollContext.clientHeight * 0.15;
-      // const varianceShow = scrollContext.clientHeight * 0.075;
-      this.logger.log(`scrollContextObservable changed`, 'ScrollFlyInComponent', JSON.stringify(scrollContext, null, 4));
+  ngOnDestroy() {
+    this.service.unregister(this.flyInHandleId);
+    // this.content.scrollContextObservable.unsubscribe();
+  }
 
-      if (scrollContext.scrollTop === 0
-        && componentBottom >= contentTopBorder
-        && componentTop <= contentBottomBorder
-      ) {
-        // this.logger.log(`scrollContextObservable.subscribe() init show items in contentWindow`, 'ScrollFlyInComponent', { });
-        this.setScrollAnimationShowState();
-      }
-      else if (componentTop > contentBottomBorder - varianceHideBottom) {
-        // this.logger.log(`scrollContextObservable.subscribe() hide scrollup`, 'ScrollFlyInComponent', { });
-        this.setScrollAnimationHideState('scrollup');
-        // this.animationState = 'hideBottom';
-        // this.animationState = 'hideLeft';
-      }
-      else if (componentBottom < contentTopBorder + varianceHideTop) {
-        // this.logger.log(`scrollContextObservable.subscribe() hide scrolldown`, 'ScrollFlyInComponent', { });
-        this.setScrollAnimationHideState('scrolldown');
-        // this.animationState = 'hideTop';
-        // this.animationState = 'hideRight';
-      }
-      else {
-        // this.logger.log(`scrollContextObservable.subscribe() show`, 'ScrollFlyInComponent', { });
-        this.setScrollAnimationShowState();
-        // this.animationState = 'show';
-      }
-      // if (this.isLoaded) {
-
-        // const initialHeightLoadThreshold = this.placeholderHeight / 3;
-        // const initialHeightLoadThreshold = 51;
-        const initialHeightLoadThreshold = this.content.artificialContentScrollUnderHeaderOffset + this.loadHeightThresholdFactor;
-        if ((scrollContext.scrollTop === 0 && componentTop < initialHeightLoadThreshold) || scrollContext.scrollTop !== 0) {
-          const viewportFactor = 2;
-          if (componentTop < contentBottomBorder + scrollContext.clientHeight * viewportFactor) {
-            // console.log({ componentBottom, componentTop, contentTopBorder, contentBottomBorder });
-            this.shouldLoad = true;
-          }
-        }
-      // }
-    });
+  ngAfterContentInit() {
+    // this.logger.log('ngAfterContentInit', 'ScrollFlyInComponent', this.src);
   }
 }

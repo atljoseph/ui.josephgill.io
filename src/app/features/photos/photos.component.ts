@@ -1,4 +1,4 @@
-import { Component, OnInit, OnDestroy } from '@angular/core';
+import { Component, OnInit, OnDestroy, ElementRef, QueryList, ViewChildren, ViewChild, ContentChild } from '@angular/core';
 
 import { HeaderService } from '../../core/services/header.service';
 import { ContentService } from '../../core/services/content.service';
@@ -20,9 +20,13 @@ interface IPhotoGroup {
 })
 export class PhotosComponent implements OnInit, OnDestroy {
 
+  // // @ViewChildren('imgResponsive') images: QueryList<ElementRef>;
+  // @ViewChild('imgResponsive', {read: ElementRef}) image: ElementRef;
+  // @ViewChildren('imgResponsive', {read: ElementRef}) images: QueryList<ElementRef>;
+
   assetBaseDir: string = '../../../assets/images/resized';
   // https://medium.com/hceverything/applying-srcset-choosing-the-right-sizes-for-responsive-images-at-different-breakpoints-a0433450a4a3
-  responsiveSizes: number[] = [640, 768, 1024]; //, 1366, 1600, 1920
+  responsiveSizes: number[] = [640, 768, 1024];//, 1366, 1600, 1920];
   responsiveSizeFallback: number = 640;
   responsiveTestSrcs: string[] = [
     'candler-and-ngan.jpg', 
@@ -33,6 +37,44 @@ export class PhotosComponent implements OnInit, OnDestroy {
     'candler-glasses-laughing.jpg', 
   ];
   photoGroups: IPhotoGroup[] = [
+    {
+      title: 'SAM Shortline:',
+      photos: [
+        { src: 'sam-shortline-candler-aisle.jpg' },
+        { src: 'sam-shortline-candler-conductor.jpg' },
+        { src: 'sam-shortline-candler-daddy-looking-out-window.jpg' },
+        { src: 'sam-shortline-candler-desk-1.jpg' },
+        { src: 'sam-shortline-candler-desk-2.jpg' },
+        { src: 'sam-shortline-candler-fist-pump.jpg' },
+        { src: 'sam-shortline-candler-grandy-1.jpg' },
+        { src: 'sam-shortline-candler-grandy-2.jpg' },
+        { src: 'sam-shortline-candler-grandy-daddy-1.jpg' },
+        { src: 'sam-shortline-candler-grandy-papa-daddy-with-train-1.jpg' },
+        { src: 'sam-shortline-candler-grandy-papa-railroad-crossing.jpg' },
+        { src: 'sam-shortline-candler-grandy-papa-with-train-1.jpg' },
+        { src: 'sam-shortline-candler-grandy-papa-with-train-2.jpg' },
+        { src: 'sam-shortline-candler-map-up.jpg' },
+        { src: 'sam-shortline-candler-map-down.jpg' },
+        { src: 'sam-shortline-candler-papa-1.jpg' },
+        { src: 'sam-shortline-candler-papa-candy-cane-bump.jpg' },
+        { src: 'sam-shortline-candler-papa-grandy-jimmy-carter-peanut.jpg' },
+        { src: 'sam-shortline-candler-papa-grandy-walking.jpg' },
+        { src: 'sam-shortline-candler-pointing.jpg' },
+        { src: 'sam-shortline-candler-ruler-1.jpg' },
+        { src: 'sam-shortline-candler-ruler-2.jpg' },
+        { src: 'sam-shortline-candler-ruler-3.jpg' },
+        { src: 'sam-shortline-candler-ruler-4.jpg' },
+        { src: 'sam-shortline-candler-sticker-on-grandy-mouth.jpg' },
+        { src: 'sam-shortline-candler-sticker-on-mouth.jpg' },
+        { src: 'sam-shortline-candler-window-staring-away.jpg' },
+        { src: 'sam-shortline-candler-window-funny-face.jpg' },
+        { src: 'sam-shortline-engine-in-plains.jpg' },
+        { src: 'sam-shortline-freight-cars-1.jpg' },
+        { src: 'sam-shortline-freight-cars-2.jpg' },
+        { src: 'sam-shortline-freight-train-broken.jpg' },
+       
+      ]
+    },
     {
       title: 'Candler:',
       photos: [
@@ -106,6 +148,8 @@ export class PhotosComponent implements OnInit, OnDestroy {
   }
 
   ngOnInit() {
+    // console.log(this.images);
+    // console.log(this.image);
     // setTimeout(() => {
     //   this.content.triggerResize();
     // }, 50);

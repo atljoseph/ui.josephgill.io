@@ -1,23 +1,24 @@
-
 <div class="photo-group" *ngFor="let group of photoGroups; trackBy: groupTrackBy">
-  <app-shared-scroll-fly-in>
+  <app-shared-scroll-fly-in *ngIf="group.title">
     <ng-template>
       <span class="photo-group-title">
-      {{ group.title }}
-    </span>
-  </ng-template>
-  </app-shared-scroll-fly-in>
-  <app-shared-scroll-fly-in *ngFor="let photo of group.photos; trackBy: photoTrackBy">
-    <!-- (imageShouldLoad)="loadImage(photo, $event)" -->
-    <ng-template>
-      <div class="photo">
-        <span class="photo-title">
-          {{ photo.description }}
-        </span>
-        <!-- *ngIf="photo.shouldLoad"  -->
-        <img [attr.src]="imgSrc(photo.src)" [attr.srcset]="imgSrcSet(photo.src)" sizes="100vw" />
-        <!-- <img [attr.src]="imgSrcTest()" [attr.srcset]="imgSrcSetTest()" sizes="100vw" /> -->
-      </div>
+        {{ group.title }}
+      </span>
     </ng-template>
   </app-shared-scroll-fly-in>
+  <div class="photo">
+    <app-shared-scroll-fly-in *ngFor="let photo of group.photos; trackBy: photoTrackBy">
+      <!-- (imageShouldLoad)="loadImage(photo, $event)" -->
+      <ng-template>
+        <div class="photo-fly-in">
+          <span class="photo-title">
+            {{ photo.description }}
+          </span>
+          <!-- *ngIf="photo.shouldLoad"  -->
+          <img #imgResponsive [attr.src]="imgSrc(photo.src)" [attr.srcset]="imgSrcSet(photo.src)" sizes="100vw" />
+          <!-- <img [attr.src]="imgSrcTest()" [attr.srcset]="imgSrcSetTest()" sizes="100vw" /> -->
+        </div>
+      </ng-template>
+    </app-shared-scroll-fly-in>
+  </div>
 </div>

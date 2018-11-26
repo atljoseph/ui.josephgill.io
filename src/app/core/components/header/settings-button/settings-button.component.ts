@@ -46,6 +46,19 @@ export class SettingsButtonComponent implements OnInit {
     this.content.scrollSmoothToBottom();
   }
 
+  scrollTick() {
+    this.showDropdownMenu = false;
+    this.sound.play('punch-whack.mp3', 0.2);
+    this.content.scrollTick(1);
+  }
+
+  triggerResize() {
+    this.showDropdownMenu = false;
+    this.sound.play('punch-whack.mp3', 0.2);
+    this.content.triggerResize();
+  }
+
+
   toggleTheme() {
     this.showDropdownMenu = false;
     this.sound.play('punch-whack.mp3', 0.2);

@@ -52,18 +52,4 @@
             margin-right: -65px;
         }
     }
-
-    @include screenSize(phone) {
-        img, app-scroll-photo {
-            width: 100%;
-            padding-top: 10px;
-        }
-
-    }
-    @include screenSizeUp(tablet) {
-        img, app-scroll-photo {
-            width: 50%;
-            padding-top: 10px;
-        }
-    }
 }

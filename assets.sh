@@ -19,7 +19,7 @@ pwd
 if ! [[ -d $ASSETSREPONAME ]]
 then
     echo "Cloning assets repo"
-    git clone $ASSETSREPOURL
+    git clone --depth=1 $ASSETSREPOURL
 else 
     echo "Assets repo already installed"
 fi

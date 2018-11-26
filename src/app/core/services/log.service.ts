@@ -21,8 +21,8 @@ export class LogService implements IAppInitService {
   //   if (environment.enableLogging) console.info(obj);
   // }
 
-  log(message: string, trace?:string, data?: any) {
-    const obj = { trace, message, data };
+  log(message: string, trace?:string, data?: any, stringify?: boolean) {
+    const obj = { trace, message, data: !stringify ? data : JSON.stringify(data, null, 4) };
     if (environment.enableLogging) console.log(obj);
   }
 

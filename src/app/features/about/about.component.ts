@@ -10,7 +10,8 @@ interface IAbout {
 
 interface IAboutGroup {
   title: string;
-  photos: IAbout[];
+  photos?: IAbout[];
+  description?: string;
 }
 
 @Component({
@@ -22,7 +23,7 @@ export class AboutComponent implements OnInit, OnDestroy {
 
   assetBaseDir: string = '../../../assets/images/resized';
   // https://medium.com/hceverything/applying-srcset-choosing-the-right-sizes-for-responsive-images-at-different-breakpoints-a0433450a4a3
-  responsiveSizes: number[] = [640, 768, 1024, 1366, 1600, 1920];
+  responsiveSizes: number[] = [640, 768, 1024];//, 1366, 1600, 1920];
   responsiveSizeFallback: number = 640;
   responsiveTestSrcs: string[] = [
     'candler-and-ngan.jpg', 
@@ -32,32 +33,37 @@ export class AboutComponent implements OnInit, OnDestroy {
     'candler-cracker-barrel.jpg', 
     'candler-glasses-laughing.jpg', 
   ];
-  // aboutGroups: IAboutGroup[] = [
-  //   {
-  //     title: 'Candler:',
-  //     photos: [
-  //       { src: 'candler-bridge-pose-1.jpg' },
-  //     ]
-  //   },
-  //   {
-  //     title: 'Grandy & Papa:',
-  //     photos: [
-  //       { src: 'candler-grandy-papas-house.jpg' },
-  //     ]
-  //   },
-  //   {
-  //     title: 'Amy:',
-  //     photos: [
-  //       { src: 'amy-xinh-dep.jpg' },
-  //     ]
-  //   },
-  //   {
-  //     title: 'Daddy:',
-  //     photos: [
-  //       { src: 'daddy-looking-at-phone.jpg' },
-  //     ]
-  //   }
-  // ];
+  aboutGroups: IAboutGroup[] = [
+    {
+      title: 'Family:',
+      description: 'Family is one of the most important things in life! Meet mine!',
+      
+    },
+    {
+      title: 'Candler:',
+      photos: [
+        { src: 'candler-bridge-pose-1.jpg' },
+      ]
+    },
+    {
+      title: 'Grandy & Papa:',
+      photos: [
+        { src: 'candler-grandy-papas-house.jpg' },
+      ]
+    },
+    {
+      title: 'Amy:',
+      photos: [
+        { src: 'amy-xinh-dep.jpg' },
+      ]
+    },
+    {
+      title: 'Daddy:',
+      photos: [
+        { src: 'daddy-looking-at-phone.jpg' },
+      ]
+    }
+  ];
 
   constructor(
     private header: HeaderService,

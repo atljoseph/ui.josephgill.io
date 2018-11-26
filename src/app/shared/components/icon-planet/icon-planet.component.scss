@@ -10,7 +10,7 @@
 }
 
 
-@keyframes fullCircle {
+@keyframes fullCircleMoon {
     from {
       transform: rotate(0deg);
     }
@@ -28,7 +28,7 @@
 #moon.animating {
     animation-timing-function: linear;
     animation-duration: 1.5s;
-    animation-name: fullCircle;
+    animation-name: fullCircleMoon;
     animation-iteration-count: infinite;
     // animation-direction: alternate;
 }

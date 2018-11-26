@@ -23,16 +23,27 @@ export class ContentService implements IAppInitService {
   private resizeEventObservable: Observable<IContentScrollContext>;
   private scrollEventObservable: Observable<IContentScrollContext>;
   scrollContextObservable: BehaviorSubject<IContentScrollContext>;
+  private isScrollDetectionDisabled: boolean = false;
 
   constructor(
     private logger: LogService,
   ) {
-
     this.scrollContextObservable = new BehaviorSubject({
       scrollTop: 0,
       clientHeight: window.innerHeight
     });
    }
+
+   disableScrollDetection(): void {
+    this.isScrollDetectionDisabled = true;
+   }
+
+   enableScrollDetection(): void {
+    this.isScrollDetectionDisabled = false;
+    // setTimeout(() => {
+    //   this.scrollTick();
+    // }, 500);
+  }
 
    get artificialContentScrollUnderHeaderOffset(): number {
      return headerHeight;
@@ -77,10 +88,10 @@ export class ContentService implements IAppInitService {
     });
    }
 
-   scrollTick() {
+   scrollTick(amountY?: number) {
     this.logger.log('scrollTick()', this.handleId, { });
     const val = this.scrollContextObservable.value;
-    val.scrollTop = val.clientHeight + 1;
+    val.scrollTop = val.scrollTop + amountY ? amountY : 0;
     this.scrollContextObservable.next(val);
    }
 
@@ -94,7 +105,7 @@ export class ContentService implements IAppInitService {
     setTimeout(() => {
        // scroll event
        this.scrollEventObservable = fromEvent(this.scrollableHTMLElement, 'scroll')
-       .pipe(debounceTime(0.1))
+      //  .pipe(debounceTime(0.1))
        .pipe(map((event: any): IContentScrollContext => {
         return {
           scrollTop: event.target.scrollTop,
@@ -102,14 +113,14 @@ export class ContentService implements IAppInitService {
         };
        }));
        this.scrollEventObservable.subscribe((val: IContentScrollContext) => {
-        // this.logger.log('scroll', this.handleId, { val });
-        this.scrollContextObservable.next(val);
+        // this.logger.log('SCROLL.next()', this.handleId, { val });
+        if (!this.isScrollDetectionDisabled) this.scrollContextObservable.next(val);
        });
 
        // resize event
        // change context?
        this.resizeEventObservable = fromEvent(window, 'resize')
-        .pipe(debounceTime(0.1))
+        .pipe(debounceTime(10))
         .pipe(map((event: any): IContentScrollContext => {
         return {
           scrollTop: event.target.scrollTop,
@@ -117,8 +128,8 @@ export class ContentService implements IAppInitService {
         };
        }));
        this.resizeEventObservable.subscribe((val: IContentScrollContext) => {
-        // this.logger.log('resize', this.handleId, { val });
-        this.scrollContextObservable.next(val);
+        this.logger.log('RESIZE.next()', this.handleId, { val });
+        if (!this.isScrollDetectionDisabled) this.scrollContextObservable.next(val);
        });
 
      }, 500);

@@ -1,111 +1,28 @@
-<div class="about-blurb-group">
-  <app-shared-scroll-fly-in>
-    <ng-template>
-      <span class="about-blurb-group-title">
-        Family
-      </span>
-    </ng-template>
-  </app-shared-scroll-fly-in>
-  <app-shared-scroll-fly-in>
-    <ng-template>
-      <div class="about-blurb">
-        <span class="about-blurb-description">
-          Family is one of the most important things in life! Meet mine!
-        </span>
-      </div>
-    </ng-template>
-  </app-shared-scroll-fly-in>
-</div>
-
-<!-- <div class="about-blurb-group" *ngFor="let group of aboutGroups; trackBy: groupTrackBy">
-  <app-shared-scroll-fly-in>
+<div class="about-blurb-group" *ngFor="let group of aboutGroups; trackBy: groupTrackBy">
+  <app-shared-scroll-fly-in *ngIf="group.title">
     <ng-template>
       <span class="about-blurb-group-title">
         {{ group.title }}
       </span>
     </ng-template>
   </app-shared-scroll-fly-in>
-  <app-shared-scroll-fly-in *ngFor="let photo of group.photos; trackBy: photoTrackBy">
+  <app-shared-scroll-fly-in *ngIf="group.description">
     <ng-template>
-      <div class="about-blurb">
-        <span class="about-blurb-title">
-          {{ photo.description }}
-        </span>
-        <img [attr.src]="imgSrc(photo.src)" [attr.srcset]="imgSrcSet(photo.src)" sizes="100vw" />
-      </div>
-    </ng-template>
-  </app-shared-scroll-fly-in>
-</div> -->
-
-<div class="about-blurb-group">
-  <app-shared-scroll-fly-in>
-    <ng-template>
-      <span class="about-blurb-group-title">
-        Candler:
+      <span class="about-blurb-group-description">
+        {{ group.description }}
       </span>
     </ng-template>
   </app-shared-scroll-fly-in>
-  <app-shared-scroll-fly-in>
-    <ng-template>
-      <div class="about-blurb">
-        <span class="about-blurb-title">
-        </span>
-        <img [attr.src]="imgSrc('candler-bridge-pose-1.jpg')" [attr.srcset]="imgSrcSet('candler-bridge-pose-1.jpg')"
-          sizes="100vw" />
-      </div>
-    </ng-template>
-  </app-shared-scroll-fly-in>
-</div>
-
-<div class="about-blurb-group">
-  <app-shared-scroll-fly-in>
-    <ng-template>
-      <span class="about-blurb-group-title">
-        Grandy & Papa:
-      </span>
-    </ng-template>
-  </app-shared-scroll-fly-in>
-  <app-shared-scroll-fly-in>
-    <ng-template>
-      <div class="about-blurb">
-        <img [attr.src]="imgSrc('candler-grandy-papas-house.jpg')" [attr.srcset]="imgSrcSet('candler-grandy-papas-house.jpg')"
-          sizes="100vw" />
-      </div>
-    </ng-template>
-  </app-shared-scroll-fly-in>
-</div>
-
-<div class="about-blurb-group">
-  <app-shared-scroll-fly-in>
-    <ng-template>
-      <span class="about-blurb-group-title">
-        Amy:
-      </span>
-    </ng-template>
-  </app-shared-scroll-fly-in>
-  <app-shared-scroll-fly-in>
-    <ng-template>
-      <div class="about-blurb">
-        <img [attr.src]="imgSrc('amy-xinh-dep.jpg')" [attr.srcset]="imgSrcSet('amy-xinh-dep.jpg')" sizes="100vw" />
-      </div>
-    </ng-template>
-  </app-shared-scroll-fly-in>
-</div>
-
-<div class="about-blurb-group">
-  <app-shared-scroll-fly-in>
-    <ng-template>
-      <span class="about-blurb-group-title">
-        Daddy:
-      </span>
-    </ng-template>
-  </app-shared-scroll-fly-in>
-  <app-shared-scroll-fly-in>
-    <ng-template>
-      <div class="about-blurb">
-        <img [attr.src]="imgSrc('daddy-looking-at-phone.jpg')" [attr.srcset]="imgSrcSet('daddy-looking-at-phone.jpg')"
-          sizes="100vw" />
-      </div>
-    </ng-template>
-  </app-shared-scroll-fly-in>
+  <div class="about-blurb">
+    <app-shared-scroll-fly-in *ngFor="let photo of group.photos; trackBy: photoTrackBy">
+      <ng-template>
+        <div class="about-blurb-fly-in">
+          <span class="about-blurb-title">
+            {{ photo.description }}
+          </span>
+          <img [attr.src]="imgSrc(photo.src)" [attr.srcset]="imgSrcSet(photo.src)" sizes="100vw" />
+        </div>
+      </ng-template>
+    </app-shared-scroll-fly-in>
+  </div>
 </div>

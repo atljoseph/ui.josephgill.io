@@ -1,6 +1,6 @@
 import { filter, debounceTime } from 'rxjs/operators';
 import { Injectable } from '@angular/core';
-import { Router, NavigationStart, RouterOutlet } from '@angular/router';
+import { Router, NavigationStart, NavigationEnd, RouterOutlet } from '@angular/router';
 
 import { environment } from '../../../environments/environment';
 
@@ -34,9 +34,29 @@ export class NavService implements IAppInitService {
       debounceTime(1)
     ).subscribe(
       (navStartEvent: NavigationStart) => {
-        this.logger.log('Reporting a Navigation Event', this.logHandle, { navStartEvent, url: navStartEvent.url });
+        this.logger.log('NavigationStart', this.logHandle, { navStartEvent, url: navStartEvent.url });
         this.url = navStartEvent.url;
+
+        this.content.disableScrollDetection();
+        this.content.scrollToTop();
+
+        this.menu.hide();
       });
+      this.router.events.pipe(
+        filter((event) => event instanceof NavigationEnd),
+        debounceTime(1)
+      ).subscribe(
+        (navStartEvent: NavigationEnd) => {
+          this.logger.log('NavigationEnd', this.logHandle, { navStartEvent, url: navStartEvent.url });
+  
+          this.content.enableScrollDetection();
+          // this.content.triggerResize();
+          this.content.scrollTick(1);
+          // setTimeout(() => {
+          //   this.content.scrollTick(1);
+          // }, 500);
+  
+        });
   }
 
   appOnInit() {
@@ -49,11 +69,8 @@ export class NavService implements IAppInitService {
     this.sound.play('cowboy-spurs.mp3', 0.1);
     // this.content.scrollSmoothToTop(() => { console.log('hey')});
     // this.content.scrollToTop(() => { console.log('hey')});
-    this.content.scrollToTop(() => { 
-      //idk if the scrollTo method is actually syncronous
-    });
+
     setTimeout(() => {
-      this.menu.hide();
       this.router.navigate([route]);
     }, delayOverride || this.animationDelayDefault);
   }

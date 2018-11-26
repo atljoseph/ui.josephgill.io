@@ -36,12 +36,23 @@
             width: 100%;
             padding-top: 10px;
         }
-
     }
-    @include screenSizeUp(tablet) {
+    @include screenSize(tablet) {
         img, app-scroll-photo {
-            width: 50%;
+            width: 60%;
             padding-top: 10px;
         }
     }
+    @include screenSizeUp(desktop) {
+        img, app-scroll-photo {
+            width: 45%;
+            padding-top: 10px;
+        }
+    }
+
+}
+
+.photo-fly-in {
+    display: flex;
+    flex-direction: column;
 }

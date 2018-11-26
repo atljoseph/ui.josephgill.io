@@ -12,6 +12,10 @@ export const scrollAnimation = trigger('scrollAnimation', [
     opacity: 1,
     transform: "translateX(0)"
   })),
+  state('showPlaceholder', style({
+    opacity: 0.7,
+    transform: "translateX(0)"
+  })),
   //
   state('hide', style({
     opacity: 0,

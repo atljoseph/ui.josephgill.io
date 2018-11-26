@@ -6,6 +6,7 @@ import { AboutComponent } from './about/about.component';
 import { SoundsComponent } from './sounds/sounds.component';
 import { MusicComponent } from './music/music.component';
 import { PhotosComponent } from './photos/photos.component';
+// import { Photos2Component } from './photos-2/photos.component';
 import { ExamplesComponent } from './examples/examples.component';
 
 const routes: Routes = [
@@ -21,6 +22,9 @@ const routes: Routes = [
   {
     path: 'music', component: MusicComponent//, canActivate: [true]
   },
+  // {
+  //   path: 'photos2', component: Photos2Component//, canActivate: [true]
+  // },
   {
     path: 'photos', component: PhotosComponent//, canActivate: [true]
   },

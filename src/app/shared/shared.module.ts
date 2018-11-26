@@ -8,7 +8,9 @@ import { HoverButtonComponent } from './components/hover-button/hover-button.com
 import { IconPlanetComponent } from './components/icon-planet/icon-planet.component';
 import { IconSunComponent } from './components/icon-sun/icon-sun.component';
 import { AnimatedFlipCardComponent } from './components/animated-flip-card/animated-flip-card.component';
+
 import { ScrollFlyInComponent } from './components/scroll-fly-in/scroll-fly-in.component';
+import { ScrollFlyInService } from './components/scroll-fly-in/scroll-fly-in.service';
 
 @NgModule({
   imports: [
@@ -22,7 +24,10 @@ import { ScrollFlyInComponent } from './components/scroll-fly-in/scroll-fly-in.c
     IconPlanetComponent,
     IconSunComponent,
     AnimatedFlipCardComponent,
-    ScrollFlyInComponent
+    ScrollFlyInComponent,
+  ],
+  providers: [
+    ScrollFlyInService
   ],
   exports: [
     HoverDirective,
@@ -32,7 +37,9 @@ import { ScrollFlyInComponent } from './components/scroll-fly-in/scroll-fly-in.c
     IconPlanetComponent,
     IconSunComponent,
     AnimatedFlipCardComponent,
-    ScrollFlyInComponent
+
+    ScrollFlyInComponent, 
+
   ]
 })
 export class SharedModule { }
