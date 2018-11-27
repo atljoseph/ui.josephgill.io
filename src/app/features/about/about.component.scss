@@ -18,6 +18,9 @@
     &-description {
         @extend .text-md;
     }
+    &-link {
+        @extend .text-sm;
+    }
 }
 
 .about-blurb-group:first-of-type {
@@ -34,9 +37,11 @@
     &-title {
         @extend .text-lg;
     }
-
     &-description {
         @extend .text-md;
+    }
+    &-link {
+        @extend .text-sm;
     }
 
     @include screenSize(phone) {

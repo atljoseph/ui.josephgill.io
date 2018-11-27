@@ -13,14 +13,35 @@
       </span>
     </ng-template>
   </app-shared-scroll-fly-in>
+  <ng-container *ngIf="group.links">
+    <app-shared-scroll-fly-in *ngFor="let link of group.links;">
+      <ng-template>
+        <a *ngIf="!link.isRouterLink" class="about-blurb-group-link" [attr.href]="link.href">
+          {{ link.label }}
+        </a>
+        <a *ngIf="link.isRouterLink" class="about-blurb-group-link" (click)="nav.go(link.href)">
+          {{ link.label }}
+        </a>
+      </ng-template>
+    </app-shared-scroll-fly-in>
+  </ng-container>
   <div class="about-blurb">
     <app-shared-scroll-fly-in *ngFor="let photo of group.photos; trackBy: photoTrackBy">
       <ng-template>
         <div class="about-blurb-fly-in">
-          <span class="about-blurb-title">
+          <span *ngIf="photo.description" class="about-blurb-description">
             {{ photo.description }}
           </span>
-          <img [attr.src]="imgSrc(photo.src)" [attr.srcset]="imgSrcSet(photo.src)" sizes="100vw" />
+          <!-- <ng-container *ngIf="photo.link">
+            <a *ngIf="" class="about-blurb-link" [attr.href]="photo.link.href">
+              {{ photo.link.label }}
+            </a>
+            <a *ngIf="photo.link" class="about-blurb-link" [attr.href]="photo.link.href">
+              {{ photo.link.label }}
+            </a>
+          </ng-container>
+           -->
+          <img *ngIf="photo.src" [attr.src]="imgSrc(photo.src)" [attr.srcset]="imgSrcSet(photo.src)" sizes="100vw" />
         </div>
       </ng-template>
     </app-shared-scroll-fly-in>

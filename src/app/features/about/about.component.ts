@@ -2,6 +2,7 @@ import { Component, OnInit, OnDestroy } from '@angular/core';
 
 import { HeaderService } from '../../core/services/header.service';
 import { SoundService } from '../../core/services/sound.service';
+import { NavService } from '../../core/services/navigation.service';
 
 import { IAbout, IAboutGroup } from './about.types';
 import { aboutGroups } from './about.data';
@@ -29,7 +30,8 @@ export class AboutComponent implements OnInit, OnDestroy {
 
   constructor(
     private header: HeaderService,
-    private sound: SoundService
+    private sound: SoundService,
+    public nav: NavService
   ) { 
     // this.header.setTitle('About');
   }

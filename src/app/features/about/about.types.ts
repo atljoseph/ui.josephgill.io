@@ -1,11 +1,19 @@
 
+export interface IAboutLink {
+    label?: string;
+    href: string;
+    isRouterLink?: boolean;
+}
+
 export interface IAbout {
+    src?: string;
     description?: string;
-    src: string;
+    link?: IAboutLink;
 }
 
 export interface IAboutGroup {
-    title: string;
-    photos?: IAbout[];
+    title?: string;
     description?: string;
+    photos?: IAbout[];
+    links?: IAboutLink[];
 }

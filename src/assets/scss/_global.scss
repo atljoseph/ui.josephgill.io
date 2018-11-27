@@ -4,3 +4,8 @@ body {
 }
 
 $headerZIndex: 1000;
+
+a {
+    @extend .cursor-pointer;
+    @extend .text-team;
+}

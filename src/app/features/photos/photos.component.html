@@ -11,11 +11,11 @@
       <!-- (imageShouldLoad)="loadImage(photo, $event)" -->
       <ng-template>
         <div class="photo-fly-in">
-          <span class="photo-title">
+          <span *ngIf="photo.description" class="photo-title">
             {{ photo.description }}
           </span>
           <!-- *ngIf="photo.shouldLoad"  -->
-          <img #imgResponsive [attr.src]="imgSrc(photo.src)" [attr.srcset]="imgSrcSet(photo.src)" sizes="100vw" />
+          <img #imgResponsive *ngIf="photo.src" [attr.src]="imgSrc(photo.src)" [attr.srcset]="imgSrcSet(photo.src)" sizes="100vw" />
           <!-- <img [attr.src]="imgSrcTest()" [attr.srcset]="imgSrcSetTest()" sizes="100vw" /> -->
         </div>
       </ng-template>
