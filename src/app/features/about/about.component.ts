@@ -3,16 +3,8 @@ import { Component, OnInit, OnDestroy } from '@angular/core';
 import { HeaderService } from '../../core/services/header.service';
 import { SoundService } from '../../core/services/sound.service';
 
-interface IAbout {
-  description?: string;
-  src: string;
-}
-
-interface IAboutGroup {
-  title: string;
-  photos?: IAbout[];
-  description?: string;
-}
+import { IAbout, IAboutGroup } from './about.types';
+import { aboutGroups } from './about.data';
 
 @Component({
   selector: 'app-about',
@@ -33,37 +25,7 @@ export class AboutComponent implements OnInit, OnDestroy {
     'candler-cracker-barrel.jpg', 
     'candler-glasses-laughing.jpg', 
   ];
-  aboutGroups: IAboutGroup[] = [
-    {
-      title: 'Family:',
-      description: 'Family is one of the most important things in life! Meet mine!',
-      
-    },
-    {
-      title: 'Candler:',
-      photos: [
-        { src: 'candler-bridge-pose-1.jpg' },
-      ]
-    },
-    {
-      title: 'Grandy & Papa:',
-      photos: [
-        { src: 'candler-grandy-papas-house.jpg' },
-      ]
-    },
-    {
-      title: 'Amy:',
-      photos: [
-        { src: 'amy-xinh-dep.jpg' },
-      ]
-    },
-    {
-      title: 'Daddy:',
-      photos: [
-        { src: 'daddy-looking-at-phone.jpg' },
-      ]
-    }
-  ];
+  aboutGroups = aboutGroups;
 
   constructor(
     private header: HeaderService,

@@ -3,15 +3,8 @@ import { Component, OnInit, OnDestroy, ElementRef, QueryList, ViewChildren, View
 import { HeaderService } from '../../core/services/header.service';
 import { ContentService } from '../../core/services/content.service';
 
-interface IPhoto {
-  description?: string;
-  src: string;
-}
-
-interface IPhotoGroup {
-  title: string;
-  photos: IPhoto[];
-}
+import { IPhoto, IPhotoGroup } from './photos.types';
+import { photoGroups } from './photos.data';
 
 @Component({
   selector: 'app-photos',
@@ -36,109 +29,8 @@ export class PhotosComponent implements OnInit, OnDestroy {
     'candler-cracker-barrel.jpg', 
     'candler-glasses-laughing.jpg', 
   ];
-  photoGroups: IPhotoGroup[] = [
-    {
-      title: 'SAM Shortline:',
-      photos: [
-        { src: 'sam-shortline-candler-aisle.jpg' },
-        { src: 'sam-shortline-candler-conductor.jpg' },
-        { src: 'sam-shortline-candler-daddy-looking-out-window.jpg' },
-        { src: 'sam-shortline-candler-desk-1.jpg' },
-        { src: 'sam-shortline-candler-desk-2.jpg' },
-        { src: 'sam-shortline-candler-fist-pump.jpg' },
-        { src: 'sam-shortline-candler-grandy-1.jpg' },
-        { src: 'sam-shortline-candler-grandy-2.jpg' },
-        { src: 'sam-shortline-candler-grandy-daddy-1-cropped.jpg' },
-        { src: 'sam-shortline-candler-grandy-papa-daddy-with-train-1.jpg' },
-        { src: 'sam-shortline-candler-grandy-papa-railroad-crossing.jpg' },
-        { src: 'sam-shortline-candler-grandy-papa-with-train-1.jpg' },
-        { src: 'sam-shortline-candler-grandy-papa-with-train-2.jpg' },
-        { src: 'sam-shortline-candler-map-up.jpg' },
-        { src: 'sam-shortline-candler-map-down.jpg' },
-        { src: 'sam-shortline-candler-papa-1.jpg' },
-        { src: 'sam-shortline-candler-papa-candy-cane-bump.jpg' },
-        { src: 'sam-shortline-candler-papa-grandy-jimmy-carter-peanut.jpg' },
-        { src: 'sam-shortline-candler-papa-grandy-walking.jpg' },
-        { src: 'sam-shortline-candler-pointing.jpg' },
-        { src: 'sam-shortline-candler-ruler-1.jpg' },
-        { src: 'sam-shortline-candler-ruler-2.jpg' },
-        { src: 'sam-shortline-candler-ruler-3.jpg' },
-        { src: 'sam-shortline-candler-ruler-4.jpg' },
-        { src: 'sam-shortline-candler-sticker-on-grandy-mouth.jpg' },
-        { src: 'sam-shortline-candler-sticker-on-mouth.jpg' },
-        { src: 'sam-shortline-candler-window-staring-away.jpg' },
-        { src: 'sam-shortline-candler-window-funny-face.jpg' },
-        { src: 'sam-shortline-engine-in-plains.jpg' },
-        { src: 'sam-shortline-freight-cars-1.jpg' },
-        { src: 'sam-shortline-freight-cars-2.jpg' },
-        { src: 'sam-shortline-freight-train-broken.jpg' },
-       
-      ]
-    },
-    {
-      title: 'Candler:',
-      photos: [
-        { src: 'candler-umbrella-deer.jpg' },
-        { src: 'candler-bridge-fist-up.jpg' },
-        { src: 'brownie-monster.jpg' },
-        { src: 'candler-bridge-pose-1.jpg' },
-        { src: 'candler-bridge-pose-2.jpg' },
-        { src: 'candler-bridge-pose-3.jpg' },
-        { src: 'candler-glasses-laughing.jpg' },
-        { src: 'candler-piano-alone.jpg' },
-        { src: 'candler-piano-snoopy.jpg' },
-        { src: 'candler-trains-on-floor.jpg' },
-        { src: 'candler-train-sylvester.jpg' },
-        { src: 'candler-cracker-barrel.jpg' },
-      ]
-    },
-    {
-      title: 'Grandy:',
-      photos: [
-        { src: 'candler-grandy-blowing-bubbles.jpg' },
-        { src: 'candler-grandy-train-marietta.jpg' },
-        { src: 'candler-grandy-cracker-barrel-1.jpg' },
-        { src: 'candler-grandy-cracker-barrel-2.jpg' },
-        { src: 'candler-grandy-swing.jpg' },
-      ]
-    },
-    {
-      title: 'Papa:',
-      photos: [
-        { src: 'candler-papa-train-agrirama.jpg' },
-        { src: 'candler-papa-train-marietta.jpg' },
-      ]
-    },
-    {
-      title: 'Grandy & Papa:',
-      photos: [
-        { src: 'grandy-and-papa.jpg' },
-        { src: 'candler-grandy-papas-house.jpg' },
-      ]
-    },
-    {
-      title: 'Amy & Family:',
-      photos: [
-        { src: 'amy-xinh-dep.jpg' },
-        { src: 'candler-and-ngan.jpg' },
-        { src: 'eva-ngan-amy-candler-uncle.jpg' },
-        { src: 'eva-and-uncle.jpg' },
-        { src: 'eva-and-grandfather.jpg' },
-      ]
-    },
-    {
-      title: 'Random:',
-      photos: [
-        { description: 'Eclipse 2017', src: 'eclipse-2017.jpg' },
-      ]
-    },
-    {
-      title: 'Daddy:',
-      photos: [
-        { src: 'daddy-looking-at-phone.jpg' },
-      ]
-    }
-  ];
+
+  photoGroups = photoGroups;
 
   constructor(
     private header: HeaderService,
