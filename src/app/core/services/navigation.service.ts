@@ -37,26 +37,27 @@ export class NavService implements IAppInitService {
         this.logger.log('NavigationStart', this.logHandle, { navStartEvent, url: navStartEvent.url });
         this.url = navStartEvent.url;
 
+        this.sound.play('cowboy-spurs.mp3', 0.1);
         this.content.disableScrollDetection();
         this.content.scrollToTop();
 
         this.menu.hide();
       });
-      this.router.events.pipe(
-        filter((event) => event instanceof NavigationEnd),
-        debounceTime(1)
-      ).subscribe(
-        (navStartEvent: NavigationEnd) => {
-          this.logger.log('NavigationEnd', this.logHandle, { navStartEvent, url: navStartEvent.url });
-  
-          this.content.enableScrollDetection();
-          // this.content.triggerResize();
-          this.content.scrollTick(1);
-          // setTimeout(() => {
-          //   this.content.scrollTick(1);
-          // }, 500);
-  
-        });
+    this.router.events.pipe(
+      filter((event) => event instanceof NavigationEnd),
+      debounceTime(1)
+    ).subscribe(
+      (navStartEvent: NavigationEnd) => {
+        this.logger.log('NavigationEnd', this.logHandle, { navStartEvent, url: navStartEvent.url });
+
+        this.content.enableScrollDetection();
+        // this.content.triggerResize();
+        this.content.scrollTick(1);
+        // setTimeout(() => {
+        //   this.content.scrollTick(1);
+        // }, 500);
+
+      });
   }
 
   appOnInit() {
@@ -66,13 +67,13 @@ export class NavService implements IAppInitService {
   go(route: string, delayOverride?: number): void {
     this.logger.log('Navigating to route.', this.logHandle, { route, delayOverride });
     // this.sound.play('pew.mp3', 0.5);
-    this.sound.play('cowboy-spurs.mp3', 0.1);
+    // this.sound.play('cowboy-spurs.mp3', 0.1);
     // this.content.scrollSmoothToTop(() => { console.log('hey')});
     // this.content.scrollToTop(() => { console.log('hey')});
 
-    setTimeout(() => {
+    // setTimeout(() => {
       this.router.navigate([route]);
-    }, delayOverride || this.animationDelayDefault);
+    // }, delayOverride || this.animationDelayDefault);
   }
 
   isRouteSelected(routeFragment: string, matchType: string): boolean {
