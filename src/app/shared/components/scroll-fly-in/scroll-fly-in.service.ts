@@ -41,15 +41,18 @@ export class ScrollFlyInService {
     const varianceHideTop = this.content.artificialContentScrollUnderHeaderOffset;
     const varianceHideBottom = 50;
 
+    const contentTopBorder = scrollContext.scrollTop;
+    const contentBottomBorder = scrollContext.scrollTop + scrollContext.clientHeight;
+
+    const viewportFactor = 1;
+    const loadables = this.children.filter((val, idx) => {
+      return val.top < contentBottomBorder + scrollContext.clientHeight * viewportFactor
+    });
+    this.logger.log('loadables', this.traceId, { loadables });
+
     this.children.forEach((val, idx) => {
-      const contentTopBorder = scrollContext.scrollTop;
-      const contentBottomBorder = scrollContext.scrollTop + scrollContext.clientHeight;
-
-      // other info later
+      // don't mess with this, as it was fine tuned...
       if (!val.shouldContentLoad) {
-
-        const viewportFactor = 1;
-
         if (scrollContext.scrollTop !== 0) {
           if (val.top < contentBottomBorder + scrollContext.clientHeight * viewportFactor) {
             // console.log({ componentBottom, componentTop, contentTopBorder, contentBottomBorder });
@@ -59,10 +62,6 @@ export class ScrollFlyInService {
           }
         }
         else {
-          const loadables = this.children.filter((val, idx) => {
-            return val.top < contentBottomBorder + scrollContext.clientHeight * viewportFactor
-          });
-          this.logger.log('loadables', this.traceId, { loadables });
           loadables.forEach((val, idx) => {
             // setTimeout(() => {
               val.setContentShouldLoad(true);

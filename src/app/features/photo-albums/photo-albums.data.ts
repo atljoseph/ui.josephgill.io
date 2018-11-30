@@ -1,5 +1,5 @@
 
-import { IPhotoGroup } from './photos.types';
+import { IPhotoGroup } from './photo-albums.types';
 
 export const photoGroups: IPhotoGroup[] = [
     {

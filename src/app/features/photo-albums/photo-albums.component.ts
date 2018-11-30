@@ -3,15 +3,15 @@ import { Component, OnInit, OnDestroy, ElementRef, QueryList, ViewChildren, View
 import { HeaderService } from '../../core/services/header.service';
 import { ContentService } from '../../core/services/content.service';
 
-import { IPhoto, IPhotoGroup } from './photos.types';
-import { photoGroups } from './photos.data';
+import { IPhoto, IPhotoGroup } from './photo-albums.types';
+import { photoGroups } from './photo-albums.data';
 
 @Component({
-  selector: 'app-photos',
-  templateUrl: './photos.component.html',
-  styleUrls: ['./photos.component.scss']
+  selector: 'app-photo-albums',
+  templateUrl: './photo-albums.component.html',
+  styleUrls: ['./photo-albums.component.scss']
 })
-export class PhotosComponent implements OnInit, OnDestroy {
+export class PhotoAlbumsComponent implements OnInit, OnDestroy {
 
   // // @ViewChildren('imgResponsive') images: QueryList<ElementRef>;
   // @ViewChild('imgResponsive', {read: ElementRef}) image: ElementRef;
