@@ -1,23 +1,30 @@
 import { Component, OnInit, OnDestroy, ElementRef, QueryList, ViewChildren, ViewChild, ContentChild } from '@angular/core';
+import { ActivatedRoute } from '@angular/router';
 
-import { HeaderService } from '../../core/services/header.service';
-import { ContentService } from '../../core/services/content.service';
+import { HeaderService } from '../../../core/services/header.service';
+import { ContentService } from '../../../core/services/content.service';
+import { LogService } from 'src/app/core/services/log.service';
+import { NavService } from 'src/app/core/services/navigation.service';
 
-import { IPhoto, IPhotoGroup } from './photo-albums.types';
-import { PhotoAlbum } from './photo-album.model';
-import { photoAlbums } from './photo-albums.data';
+import { IPhoto, IPhotoGroup } from '../photo-albums.types';
+import { PhotoAlbum } from '../photo-album.model';
+import { photoAlbums, photoAlbumByKey } from '../photo-albums.data';
+
+interface IPhotoAlbumParams {
+  photoAlbumKey: string;
+}
 
 @Component({
-  selector: 'app-photo-albums',
-  templateUrl: './photo-albums.component.html',
-  styleUrls: ['./photo-albums.component.scss']
+  // selector: 'app-photo-album',
+  templateUrl: './photo-album.component.html',
+  styleUrls: ['./photo-album.component.scss']
 })
-export class PhotoAlbumsComponent implements OnInit, OnDestroy {
+export class PhotoAlbumComponent implements OnInit, OnDestroy {
 
   // // @ViewChildren('imgResponsive') images: QueryList<ElementRef>;
   // @ViewChild('imgResponsive', {read: ElementRef}) image: ElementRef;
   // @ViewChildren('imgResponsive', {read: ElementRef}) images: QueryList<ElementRef>;
-
+  handleId: string = 'PhotoAlbumComponent';
   assetBaseDir: string = '../../../assets/images/resized';
   // https://medium.com/hceverything/applying-srcset-choosing-the-right-sizes-for-responsive-images-at-different-breakpoints-a0433450a4a3
   responsiveSizes: number[] = [640, 768, 1024, 1366];//, 1600, 1920];
@@ -31,35 +38,27 @@ export class PhotoAlbumsComponent implements OnInit, OnDestroy {
     'candler-glasses-laughing.jpg', 
   ];
 
-  photoAlbums: PhotoAlbum[];
-  photoAlbumSelected: PhotoAlbum;
+  photoAlbum: PhotoAlbum;
 
   constructor(
     private header: HeaderService,
-    private content: ContentService
+    private content: ContentService,
+    private logger: LogService,
+    private route: ActivatedRoute,
+    private nav: NavService
+
   ) { 
-    this.photoAlbums = photoAlbums.map((albumData): PhotoAlbum => {
-      return new PhotoAlbum(albumData);
+    this.route.params.subscribe((params: IPhotoAlbumParams) => {
+      const photoAlbumKey = params.photoAlbumKey;
+      const data = photoAlbumByKey(params.photoAlbumKey);
+      this.logger.log('route.params.subscribe()', this.handleId, { params, data });
+      if (!data) return this.nav.go('photo-albums');
+      else this.photoAlbum = new PhotoAlbum(data);
     });
-    this.photoAlbumSelected = this.photoAlbums.length > 0 ? this.photoAlbums[0] : null;
-     console.log(this);
   }
 
   ngOnInit() {
-    // console.log(this.images);
-    // console.log(this.image);
-    // setTimeout(() => {
-    //   this.content.triggerResize();
-    // }, 50);
-    // this.content.scrollTick();
-     // this.header.setTitle('Photos');
-    //  console.log(PhotoAlbum);
-    //  const test = new PhotoAlbum({ title: 'yes', photoGroups: [] });
-    // this.photoAlbums = photoAlbums.map((albumData): PhotoAlbum => {
-    //   return new PhotoAlbum(albumData);
-    // });
-    // this.photoAlbumSelected = this.photoAlbums.length > 0 ? this.photoAlbums[0] : null;
-    //  console.log(this);
+  
   }
 
   ngOnDestroy() {

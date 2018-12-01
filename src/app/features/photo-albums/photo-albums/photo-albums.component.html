@@ -1,0 +1,40 @@
+<div class="photo-albums">
+  <app-shared-scroll-fly-in>
+    <ng-template>
+      <div class="photo-fly-in">
+        <span class="photo-albums-title">
+          Photo Albums
+        </span>
+      </div>
+    </ng-template>
+  </app-shared-scroll-fly-in>
+  <div class="photo-album" *ngFor="let album of photoAlbums; trackBy: albumTrackBy">
+    <app-shared-scroll-fly-in *ngIf="album.title">
+      <ng-template>
+        <div class="photo-fly-in">
+          <span class="photo-album-title">
+            <a class="link-muted" [class.hovered]="album.isHovered" (click)="openAlbum(album)">
+              {{ album.title }}
+            </a>
+          </span>
+        </div>
+      </ng-template>
+    </app-shared-scroll-fly-in>
+    <div class="photo">
+      <ng-container>
+        <app-shared-scroll-fly-in *ngIf="album.coverPhotoSrc">
+          <ng-template>
+            <div class="photo-fly-in" 
+              (mouseenter)="album.isHovered = true" (mouseleave)="album.isHovered = false">
+              <a (click)="openAlbum(album)">
+                <img #imgResponsive [attr.src]="imgSrc(album.coverPhotoSrc)" [attr.srcset]="imgSrcSet(album.coverPhotoSrc)"
+                  sizes="100vw" />
+                <!-- <img [attr.src]="imgSrcTest()" [attr.srcset]="imgSrcSetTest()" sizes="100vw" /> -->
+              </a>
+            </div>
+          </ng-template>
+        </app-shared-scroll-fly-in>
+      </ng-container>
+    </div>
+  </div>
+</div>

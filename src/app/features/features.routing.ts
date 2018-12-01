@@ -5,9 +5,9 @@ import { HomeComponent } from './home/home.component';
 import { AboutComponent } from './about/about.component';
 import { SoundsComponent } from './sounds/sounds.component';
 import { MusicComponent } from './music/music.component';
-import { PhotosComponent } from './photos/photos.component';
-import { PhotoAlbumsComponent } from './photo-albums/photo-albums.component';
-// import { Photos2Component } from './photos-2/photos.component';
+// import { PhotosComponent } from './photos/photos.component';
+import { PhotoAlbumsComponent } from './photo-albums/photo-albums/photo-albums.component';
+import { PhotoAlbumComponent } from './photo-albums/photo-album/photo-album.component';
 import { ExamplesComponent } from './examples/examples.component';
 
 const routes: Routes = [
@@ -26,11 +26,14 @@ const routes: Routes = [
   // {
   //   path: 'photos2', component: Photos2Component//, canActivate: [true]
   // },
-  {
-    path: 'photos', component: PhotosComponent//, canActivate: [true]
-  },
+  // {
+  //   path: 'photos', component: PhotosComponent//, canActivate: [true]
+  // },
   {
     path: 'photo-albums', component: PhotoAlbumsComponent//, canActivate: [true]
+  },
+  {
+    path: 'photo-albums/:photoAlbumKey', component: PhotoAlbumComponent//, canActivate: [true]
   },
   {
     path: 'examples', component: ExamplesComponent//, canActivate: [true]

@@ -29,6 +29,27 @@
 
     &-title {
         @extend .text-xl;
+        @include screenSize(phone) {
+            margin-bottom: -10px;
+        }
+        @include screenSize(tablet) {
+            margin-bottom: -40px;
+        }
+        @include screenSizeUp(desktop) {
+            margin-bottom: -90px;
+        }
+    }
+
+    &-links {
+        @include screenSize(phone) {
+            margin-top: -10px;
+        }
+        @include screenSize(tablet) {
+            margin-top: -40px;
+        }
+        @include screenSize(desktop) {
+            margin-top: -90px;
+        }
     }
 
     &-description {
@@ -40,16 +61,20 @@
         opacity: 0.7;
         // width: 250px;
         @include screenSize(phone) {
-            margin: -25px;
-            margin-bottom: -50px;
-            margin-top: -30px;
-            margin-right: -20px;
+            margin: -30px;
+            margin-bottom: -40px;
+            margin-right: -25px;
         }
-        @include screenSizeUp(tablet) {
-            margin: -75px;
-            margin-bottom: -120px;
-            margin-top: -90px;
-            margin-right: -65px;
+        @include screenSize(tablet) {
+            margin: -60px;
+            margin-top: -75px;
+            margin-bottom: -75px;
+            margin-right: -50px;
+        }
+        @include screenSize(desktop) {
+            margin: -90px;
+            margin-top: -105px;
+            margin-right: -75px;
         }
     }
 }

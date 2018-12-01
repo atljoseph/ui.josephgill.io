@@ -4,35 +4,3 @@ body {
 }
 
 $headerZIndex: 1000;
-
-a {
-    @extend .cursor-pointer;
-    @extend .text-primary;
-    text-decoration: underline !important;
-
-}
-
-// a:hover {
-//     // transition: all .3s ease-in-out;
-//     // transform: scale(1.1);
-//     // transform-origin: center center;
-    
-// }
-
-a:hover {
-    @extend .text-danger;
-    // text-decoration: none;
-    transition: all .1s ease-in-out;
-    transform: scale(1.1);
-    transform-origin: top left;
-}
-
-a:visited {
-    @extend .text-light;
-    // text-decoration: none;
-}
-
-a:active {
-    @extend .text-warning;
-    // text-decoration: none;
-}

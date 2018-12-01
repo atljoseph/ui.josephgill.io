@@ -2,9 +2,17 @@
 import { IPhotoGroup, IPhotoAlbum } from './photo-albums.types';
 import { PhotoAlbum } from './photo-album.model';
 
+export const photoAlbumByKey = (key: string): IPhotoAlbum => {
+  return photoAlbums.find((album) => {
+    return album.key.trim().toLowerCase() === key.trim().toLowerCase();
+  });
+}
+
 export const photoAlbums: IPhotoAlbum[] = [
   {
     title: 'Riding the SAM Shortline Train',
+    key: 'sam-shortline',
+    coverPhotoSrc: 'sam-shortline-candler-grandy-papa-daddy-with-train-1.jpg',
     photoGroups: [
       {
         title: 'Cordele to Plains, GA',
@@ -54,6 +62,8 @@ export const photoAlbums: IPhotoAlbum[] = [
   },
   {
     title: 'Thanksgiving at Grandy\'s Hosue',
+    key: 'thanksgiving-2018',
+    coverPhotoSrc: 'thanksgiving-2018-frank-papa-bev-1.jpg',
     photoGroups: [
       {
         title: 'Thanksgiving 2018:',
@@ -97,6 +107,8 @@ export const photoAlbums: IPhotoAlbum[] = [
   },
   {
     title: 'Candler Playing Around',
+    key: 'candler',
+    coverPhotoSrc: 'candler-bathtub-trains.jpg',
     photoGroups: [
       {
         title: 'Candler:',
@@ -128,6 +140,8 @@ export const photoAlbums: IPhotoAlbum[] = [
   }, 
   {
     title: 'Grandy and Papa!',
+    key: 'grandy-papa',
+    coverPhotoSrc: 'grandy-and-papa.jpg',
     photoGroups: [
       {
         title: 'Grandy and Papa:',
@@ -149,6 +163,8 @@ export const photoAlbums: IPhotoAlbum[] = [
   },
   {
     title: 'With Amy & Family',
+    key: 'amy-and-family',
+    coverPhotoSrc: 'eva-tina-ngan-thanh.jpg',
     photoGroups: [
       {
         title: 'Amy & Family:',
@@ -169,6 +185,8 @@ export const photoAlbums: IPhotoAlbum[] = [
   },
   {
     title: 'Random Pictures',
+    key: 'random',
+    coverPhotoSrc: 'eclipse-2017-2.jpg',
     photoGroups: [
       {
         title: 'Random:',

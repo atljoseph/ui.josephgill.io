@@ -1,14 +1,14 @@
 <div class="photo-album">
-  <app-shared-scroll-fly-in *ngIf="photoAlbumSelected.title">
+  <app-shared-scroll-fly-in *ngIf="photoAlbum.title">
     <ng-template>
       <div class="photo-fly-in">
         <span class="photo-album-title">
-          {{ photoAlbumSelected.title }}
+          {{ photoAlbum.title }}
         </span>
       </div>
     </ng-template>
   </app-shared-scroll-fly-in>
-  <div class="photo-group" *ngFor="let group of photoAlbumSelected.photoGroups; trackBy: groupTrackBy">
+  <div class="photo-group" *ngFor="let group of photoAlbum.photoGroups; trackBy: groupTrackBy">
     <app-shared-scroll-fly-in *ngIf="group.title">
       <ng-template>
         <div class="photo-fly-in">

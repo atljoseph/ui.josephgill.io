@@ -11,5 +11,7 @@ export interface IPhotoGroup {
 
 export interface IPhotoAlbum {
     title: string;
+    key: string;
     photoGroups: IPhotoGroup[];
+    coverPhotoSrc: string;
 }

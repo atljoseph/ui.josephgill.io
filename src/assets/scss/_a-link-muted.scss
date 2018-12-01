@@ -1,0 +1,39 @@
+
+
+a.link-muted {
+    // text-decoration: underline !important;
+    @extend .cursor-pointer;
+    // @extend .text-primary;
+    // @extend .text-team;
+    transition: all .1s ease-in-out;
+}
+
+// a:hover {
+//     // transition: all .3s ease-in-out;
+//     // transform: scale(1.1);
+//     // transform-origin: center center;
+    
+// }
+
+a.link-muted:hover, a.link-muted.hovered {
+    text-decoration: underline !important;
+    @extend .text-team;
+    // text-decoration: none;
+    // transition: all .1s ease-in-out;
+    // transform: scale(1.1);
+    // transform-origin: top left;
+}
+
+// a:visited {
+//     @extend .text-light;
+//     // text-decoration: none;
+// }
+
+a.link-muted:active {
+    text-decoration: underline !important;
+    @extend .text-warning;
+    // text-decoration: none;
+    // transition: all .1s ease-in-out;
+    // transform: scale(1.1);
+    // transform-origin: top left;
+}

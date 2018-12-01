@@ -3,21 +3,23 @@ import { IPhoto, IPhotoGroup, IPhotoAlbum } from './photo-albums.types';
 
 export class PhotoAlbum {
     private album: IPhotoAlbum;
+    isHovered: boolean = false;
 
     constructor(album: IPhotoAlbum) {
         this.album = album;
     }
 
-    get coverPhoto(): IPhoto {
-        const groups = this.album.photoGroups;
-        let photo = null;
-        if (groups && groups.length) {
-            const photos = groups[0].photos;
-            if (photos && photos.length) {
-                photo = photos[0];
-            }
-        }
-        return photo;
+    get coverPhotoSrc(): string {
+        // const groups = this.album.photoGroups;
+        // let photo = null;
+        // if (groups && groups.length) {
+        //     const photos = groups[0].photos;
+        //     if (photos && photos.length) {
+        //         photo = photos[0];
+        //     }
+        // }
+        // return photo;
+        return this.album.coverPhotoSrc;
     }
 
     get title(): string {
@@ -26,5 +28,9 @@ export class PhotoAlbum {
 
     get photoGroups(): IPhotoGroup[] {
         return this.album.photoGroups;
+    }
+
+    get key(): string {
+        return this.album.key;
     }
 }

@@ -5,8 +5,9 @@ import { SharedModule } from '../shared/shared.module';
 import { FeaturesRoutingModule } from './features.routing';
 
 import { HomeComponent } from './home/home.component';
-import { PhotosComponent } from './photos/photos.component';
-import { PhotoAlbumsComponent } from './photo-albums/photo-albums.component';
+// import { PhotosComponent } from './photos/photos.component';
+import { PhotoAlbumComponent } from './photo-albums/photo-album/photo-album.component';
+import { PhotoAlbumsComponent } from './photo-albums/photo-albums/photo-albums.component';
 import { MusicComponent } from './music/music.component';
 import { SoundsComponent } from './sounds/sounds.component';
 import { AboutComponent } from './about/about.component';
@@ -25,7 +26,7 @@ import { Soundboard2Component } from './sounds/soundboard2/soundboard2.component
   ],
   declarations: [
     HomeComponent,
-    PhotosComponent,
+    // PhotosComponent,
     PhotoAlbumsComponent,
     MusicComponent,
     SoundsComponent,
@@ -36,6 +37,7 @@ import { Soundboard2Component } from './sounds/soundboard2/soundboard2.component
     ExamplesComponent,
     AnimationFlipCardComponent,
     Soundboard2Component,
+    PhotoAlbumComponent,
   ]
 })
 export class FeaturesModule { }

@@ -1,5 +1,12 @@
 
-@import '../../../assets/scss/_';
+@import '../../../../assets/scss/_';
+
+.photo-albums {
+    padding-top: 10px;
+    &-title {
+        @extend .text-xxl;
+    }
+}
 
 .photo-album {
     @include screenSize(phone) {
@@ -8,13 +15,6 @@
     @include screenSizeUp(tablet) {
         padding-top: 30px;
     }
-    &-title {
-        @extend .text-xxl;
-    }
-}
-
-.photo-group {
-    
     display: flex;
     flex-direction: column;
 
@@ -23,10 +23,10 @@
     }
 }
 
-.photo-group:first-of-type {
-    // padding-top: 20px;
-}
-.photo-group:last-of-type {
+// .photo-album:first-of-type {
+//     padding-top: 20px;
+// }
+.photo-album:last-of-type {
     padding-bottom: 100px;
 }
 
