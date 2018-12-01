@@ -19,17 +19,17 @@ a {
     
 // }
 
-a:visited {
-    @extend .text-light;
-    // text-decoration: none;
-}
-
 a:hover {
     @extend .text-danger;
     // text-decoration: none;
     transition: all .1s ease-in-out;
     transform: scale(1.1);
     transform-origin: top left;
+}
+
+a:visited {
+    @extend .text-light;
+    // text-decoration: none;
 }
 
 a:active {

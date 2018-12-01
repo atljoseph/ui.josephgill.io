@@ -28,7 +28,7 @@ export const aboutGroups: IAboutGroup[] = [
         title: 'Amy:',
         photos: [
             { 
-                src: 'amy-xinh-dep.jpg',
+                src: 'amy-xinh-dep-1.jpg',
                 description: 'My sweet Taro Root :)'
             },
         ]

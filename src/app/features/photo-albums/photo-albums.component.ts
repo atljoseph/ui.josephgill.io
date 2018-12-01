@@ -4,7 +4,8 @@ import { HeaderService } from '../../core/services/header.service';
 import { ContentService } from '../../core/services/content.service';
 
 import { IPhoto, IPhotoGroup } from './photo-albums.types';
-import { photoGroups } from './photo-albums.data';
+import { PhotoAlbum } from './photo-album.model';
+import { photoAlbums } from './photo-albums.data';
 
 @Component({
   selector: 'app-photo-albums',
@@ -30,13 +31,18 @@ export class PhotoAlbumsComponent implements OnInit, OnDestroy {
     'candler-glasses-laughing.jpg', 
   ];
 
-  photoGroups = photoGroups;
+  photoAlbums: PhotoAlbum[];
+  photoAlbumSelected: PhotoAlbum;
 
   constructor(
     private header: HeaderService,
     private content: ContentService
   ) { 
-    // this.header.setTitle('Photos');
+    this.photoAlbums = photoAlbums.map((albumData): PhotoAlbum => {
+      return new PhotoAlbum(albumData);
+    });
+    this.photoAlbumSelected = this.photoAlbums.length > 0 ? this.photoAlbums[0] : null;
+     console.log(this);
   }
 
   ngOnInit() {
@@ -46,6 +52,14 @@ export class PhotoAlbumsComponent implements OnInit, OnDestroy {
     //   this.content.triggerResize();
     // }, 50);
     // this.content.scrollTick();
+     // this.header.setTitle('Photos');
+    //  console.log(PhotoAlbum);
+    //  const test = new PhotoAlbum({ title: 'yes', photoGroups: [] });
+    // this.photoAlbums = photoAlbums.map((albumData): PhotoAlbum => {
+    //   return new PhotoAlbum(albumData);
+    // });
+    // this.photoAlbumSelected = this.photoAlbums.length > 0 ? this.photoAlbums[0] : null;
+    //  console.log(this);
   }
 
   ngOnDestroy() {

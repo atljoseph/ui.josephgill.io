@@ -1,23 +1,30 @@
 
 @import '../../../assets/scss/_';
 
-.photo-group {
+.photo-album {
     @include screenSize(phone) {
         padding-top: 20px;
     }
     @include screenSizeUp(tablet) {
         padding-top: 30px;
     }
-    display: flex;
-    flex-direction: column;
-
     &-title {
         @extend .text-xxl;
     }
 }
 
+.photo-group {
+    
+    display: flex;
+    flex-direction: column;
+
+    &-title {
+        @extend .text-xl;
+    }
+}
+
 .photo-group:first-of-type {
-    padding-top: 20px;
+    // padding-top: 20px;
 }
 .photo-group:last-of-type {
     padding-bottom: 100px;

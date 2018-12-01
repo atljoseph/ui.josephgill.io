@@ -32,6 +32,9 @@ export class SettingsButtonComponent implements OnInit {
 
 
   ngOnInit() {
+    this.content.clickContextObservable.subscribe((val) => {
+      this.showDropdownMenu = false;
+    });
   }
 
   scrollToTop() {

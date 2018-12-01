@@ -48,7 +48,7 @@ export class ScrollFlyInService {
     const loadables = this.children.filter((val, idx) => {
       return val.top < contentBottomBorder + scrollContext.clientHeight * viewportFactor
     });
-    this.logger.log('loadables', this.traceId, { loadables });
+    this.logger.log('loadables', this.traceId, { loadables, contentBottomBorder, scrollContext, viewportFactor, bottomThreshold: contentBottomBorder + scrollContext.clientHeight * viewportFactor });
 
     this.children.forEach((val, idx) => {
       // don't mess with this, as it was fine tuned...

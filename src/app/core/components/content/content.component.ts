@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, ViewChild, ElementRef } from '@angular/core';
 import { environment } from '../../../../environments/environment';
 
 import { NavService } from '../../services/navigation.service';
@@ -22,6 +22,8 @@ import {
 })
 export class ContentComponent implements OnInit {
 
+  @ViewChild('content') contentRef: ElementRef;
+
   constructor(
     public nav: NavService,
     public menu: MenuService,
@@ -31,6 +33,7 @@ export class ContentComponent implements OnInit {
   ) { }
 
   ngOnInit() {
+    this.content.setContentElementRef(this.contentRef);
   }
 
   get appVersion() {
