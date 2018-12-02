@@ -5,7 +5,8 @@ export interface IPhoto {
 }
 
 export interface IPhotoGroup {
-    title: string;
+    title?: string;
+    description?: string;
     photos: IPhoto[];
 }
 

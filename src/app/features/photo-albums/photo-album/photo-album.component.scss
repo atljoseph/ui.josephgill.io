@@ -9,18 +9,20 @@
 }
 
 .photo-group {
-    
     display: flex;
     flex-direction: column;
 
     &-title {
+        padding-top: 10px;
         @extend .text-xl;
+    }
+
+    &-description {
+        padding-top: 10px;
+        @extend .text-md;
     }
 }
 
-.photo-group:first-of-type {
-    // padding-top: 20px;
-}
 .photo-group:last-of-type {
     padding-bottom: 100px;
 }
@@ -28,9 +30,11 @@
 .photo {
     display: flex;
     flex-direction: column;
+    padding-bottom: 10px;
 
-    &-title {
-        @extend .text-lg;
+    &-description {
+        padding-top: 10px;
+        @extend .text-md;
     }
 
     @include screenSize(phone) {

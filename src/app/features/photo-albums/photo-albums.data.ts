@@ -54,14 +54,14 @@ export const photoAlbums: IPhotoAlbum[] = [
           { src: 'sam-shortline-candler-daddy-looking-out-window.jpg' },
           { src: 'sam-shortline-candler-window-staring-away.jpg' },
           { src: 'sam-shortline-candler-window-funny-face.jpg' },
-          { src: 'sam-shortline-freight-train-broken.jpg' },
+          { description: 'The freight train broke up ahead!', src: 'sam-shortline-freight-train-broken.jpg' },
           { src: 'sam-shortline-candler-fist-pump.jpg' },
         ]
       },
     ]
   },
   {
-    title: 'Thanksgiving at Grandy\'s Hosue',
+    title: 'Thanksgiving at Grandy\'s House',
     key: 'thanksgiving-2018',
     coverPhotoSrc: 'thanksgiving-2018-frank-papa-bev-1.jpg',
     photoGroups: [
@@ -167,7 +167,6 @@ export const photoAlbums: IPhotoAlbum[] = [
     coverPhotoSrc: 'eva-tina-ngan-thanh.jpg',
     photoGroups: [
       {
-        title: 'Amy & Family:',
         photos: [
           { src: 'amy-xinh-dep-1.jpg' },
           { src: 'amy-xinh-dep-2.jpg' },
@@ -189,12 +188,23 @@ export const photoAlbums: IPhotoAlbum[] = [
     coverPhotoSrc: 'eclipse-2017-2.jpg',
     photoGroups: [
       {
-        title: 'Random:',
+        // title: 'Random Family:',
         photos: [
-          { src: 'papa-ted-eds-truck-stop.jpg' },
-          { src: 'train-marietta.jpg' },
-          { description: 'Eclipse 2017', src: 'eclipse-2017-2.jpg' },
-          { description: 'Eclipse 2017', src: 'eclipse-2017-1.jpg' },
+          { description: 'Papa Ted @ Ed\'s Truckstop', src: 'papa-ted-eds-truck-stop.jpg' },
+        ]
+      },
+      {
+        // title: 'Trains:',
+        photos: [
+          { description: 'Near Marietta Square', src: 'train-marietta.jpg' },
+        ]
+      },
+      {
+        // title: 'Eclipse 2017:',
+        description: 'Eclipse 2017:',
+        photos: [
+          { src: 'eclipse-2017-1.jpg' },
+          { src: 'eclipse-2017-2.jpg' },
         ]
       },
     ] 
