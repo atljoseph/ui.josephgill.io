@@ -48,7 +48,7 @@
             <a *ngIf="!photo.link.isRouterLink" class="about-blurb-group-link" [attr.href]="link.href">
               {{ photo.link.label }}
             </a>
-            <a *ngIf="photo.link.isRouterLink" class="about-blurb-group-link" [routerLink]="[link.href]" >
+            <a *ngIf="photo.link.isRouterLink" class="about-blurb-group-link" (click)="nav.go('photo-albums')" >
                 <!-- (click)="nav.go(link.href)" -->
               {{ photo.link.label }}
             </a>

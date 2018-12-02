@@ -5,10 +5,11 @@ import { HomeComponent } from './home/home.component';
 import { AboutComponent } from './about/about.component';
 import { SoundsComponent } from './sounds/sounds.component';
 import { MusicComponent } from './music/music.component';
-// import { PhotosComponent } from './photos/photos.component';
 import { PhotoAlbumsComponent } from './photo-albums/photo-albums/photo-albums.component';
 import { PhotoAlbumComponent } from './photo-albums/photo-album/photo-album.component';
 import { ExamplesComponent } from './examples/examples.component';
+import { TipsComponent } from './tips/tips/tips.component';
+import { TipComponent } from './tips/tip/tip.component';
 
 const routes: Routes = [
   {
@@ -23,12 +24,6 @@ const routes: Routes = [
   {
     path: 'music', component: MusicComponent//, canActivate: [true]
   },
-  // {
-  //   path: 'photos2', component: Photos2Component//, canActivate: [true]
-  // },
-  // {
-  //   path: 'photos', component: PhotosComponent//, canActivate: [true]
-  // },
   {
     path: 'photo-albums', component: PhotoAlbumsComponent//, canActivate: [true]
   },
@@ -37,7 +32,13 @@ const routes: Routes = [
   },
   {
     path: 'examples', component: ExamplesComponent//, canActivate: [true]
-  }
+  },
+  {
+    path: 'tips', component: TipsComponent//, canActivate: [true]
+  },
+  {
+    path: 'tips/:tipKey', component: TipComponent//, canActivate: [true]
+  },
 ];
 
 @NgModule({

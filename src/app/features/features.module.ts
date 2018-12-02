@@ -5,7 +5,6 @@ import { SharedModule } from '../shared/shared.module';
 import { FeaturesRoutingModule } from './features.routing';
 
 import { HomeComponent } from './home/home.component';
-import { PhotosComponent } from './photos/photos.component';
 import { PhotoAlbumComponent } from './photo-albums/photo-album/photo-album.component';
 import { PhotoAlbumsComponent } from './photo-albums/photo-albums/photo-albums.component';
 import { MusicComponent } from './music/music.component';
@@ -17,6 +16,8 @@ import { AnimationHoverClickComponent } from './examples/animation-hover-click/a
 import { ExamplesComponent } from './examples/examples.component';
 import { AnimationFlipCardComponent } from './examples/animation-flip-card/animation-flip-card.component';
 import { Soundboard2Component } from './sounds/soundboard2/soundboard2.component';
+import { TipsComponent } from './tips/tips/tips.component';
+import { TipComponent } from './tips/tip/tip.component';
 
 @NgModule({
   imports: [
@@ -26,7 +27,6 @@ import { Soundboard2Component } from './sounds/soundboard2/soundboard2.component
   ],
   declarations: [
     HomeComponent,
-    PhotosComponent,
     PhotoAlbumsComponent,
     MusicComponent,
     SoundsComponent,
@@ -38,6 +38,8 @@ import { Soundboard2Component } from './sounds/soundboard2/soundboard2.component
     AnimationFlipCardComponent,
     Soundboard2Component,
     PhotoAlbumComponent,
+    TipsComponent,
+    TipComponent,
   ]
 })
 export class FeaturesModule { }

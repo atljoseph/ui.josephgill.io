@@ -51,7 +51,7 @@ export const aboutGroups: IAboutGroup[] = [
             },
             {
                 label: 'photo gallery',
-                href: '/photos',
+                href: '/photo-albums',
                 isRouterLink: true
             }
         ]
