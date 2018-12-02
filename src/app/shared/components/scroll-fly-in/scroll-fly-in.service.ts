@@ -12,6 +12,8 @@ export class ScrollFlyInService {
 
   children: ScrollFlyInComponent[] = [];
   traceId: string = 'ScrollFlyInService';
+  viewportFactor: number = 1.75;
+  scrollContext: IContentScrollContext;
 
   constructor(
     private logger: LogService,
@@ -35,62 +37,79 @@ export class ScrollFlyInService {
     }
   }
 
-  onScroll(scrollContext: IContentScrollContext) {
-    // this.logger.log('onScroll()', this.traceId, { scrollContext });
+  async onScrollChild(child: ScrollFlyInComponent) {
+    // don't mess with this, as it is fine tuned...
 
-    const varianceHideTop = this.content.artificialContentScrollUnderHeaderOffset;
-    const varianceHideBottom = 50;
-
-    const contentTopBorder = scrollContext.scrollTop;
-    const contentBottomBorder = scrollContext.scrollTop + scrollContext.clientHeight;
-
-    const viewportFactor = 1;
-    const loadables = this.children.filter((val, idx) => {
-      return val.top < contentBottomBorder + scrollContext.clientHeight * viewportFactor
-    });
-    this.logger.log('loadables', this.traceId, { loadables, contentBottomBorder, scrollContext, viewportFactor, bottomThreshold: contentBottomBorder + scrollContext.clientHeight * viewportFactor });
-
-    this.children.forEach((val, idx) => {
-      // don't mess with this, as it was fine tuned...
-      if (!val.shouldContentLoad) {
-        if (scrollContext.scrollTop !== 0) {
-          if (val.top < contentBottomBorder + scrollContext.clientHeight * viewportFactor) {
-            // console.log({ componentBottom, componentTop, contentTopBorder, contentBottomBorder });
-            val.setContentShouldLoad();
-            // setTimeout(() => {
-            // }, 500);
-          }
+    // #####################
+    // if the scroll-fly-in omponent has NOT YET LOADED
+    // this means the content might be further than a page or two below the currently viewed page
+    // #####################
+    if (!child.hasLoaded) {
+      if (this.contentTopBorder !== 0) {
+        if (this.isLoadable(child)) {
+          child.setContentShouldLoad();
+          // setTimeout(() => {
+          // }, 500);
         }
-        else {
-          loadables.forEach((val, idx) => {
-            // setTimeout(() => {
-              val.setContentShouldLoad(true);
-              val.setScrollAnimationShowState(true);
-              val.markForChangeDetection(); 
-            // }, 500);
-            
-          });
+      }
+      else { // scrollTop === 0
+        if (this.isLoadable(child)) {
+          // setTimeout(() => {
+          child.setContentShouldLoad(true);
+          child.setScrollAnimationShowState(true);
+          child.markForChangeDetection();
+          // }, 500);
         }
+      }
+    }
+    // #####################
+    // if the scroll-fly-in omponent has ALEADY LOADED
+    // this means the content might be less than page or two below the currently viewed page OR above current page
+    // #####################
+    else {
+      if (
+        this.contentTopBorder === 0
+        // && val.bottom >= contentTopBorder
+        // && val.top <= contentBottomBorder
+      ) {
+        child.setScrollAnimationShowState();
+      }
+      else if (child.top > this.contentBottomBorder) {//} - varianceHideBottom) {
+        child.setScrollAnimationHideState('scrollup');
+      }
+      else if (child.bottom < this.contentTopBorder) {// + varianceHideTop) {
+        child.setScrollAnimationHideState('scrolldown');
       }
       else {
-        if (
-          scrollContext.scrollTop === 0
-          // && val.bottom >= contentTopBorder
-          // && val.top <= contentBottomBorder
-        ) {
-          val.setScrollAnimationShowState();
-        }
-        else if (val.top > contentBottomBorder - varianceHideBottom) {
-          val.setScrollAnimationHideState('scrollup');
-        }
-        else if (val.bottom < contentTopBorder + varianceHideTop) {
-          val.setScrollAnimationHideState('scrolldown');
-        }
-        else {
-          val.setScrollAnimationShowState();
-        }
+        child.setScrollAnimationShowState();
       }
+    }
+  }
 
-    });
+  get contentBottomBorder(): number {
+    return this.scrollContext.scrollTop + this.scrollContext.clientHeight;
+  }
+
+  get contentTopBorder(): number {
+    return this.scrollContext.scrollTop;
+  }
+
+  get contentViewHeight(): number {
+    return this.scrollContext.clientHeight;
+  }
+
+  isLoadable(child: ScrollFlyInComponent): boolean {
+    return child.top < this.contentBottomBorder + this.contentViewHeight * this.viewportFactor;
+  }
+
+  onScroll(scrollContext: IContentScrollContext) {
+    this.scrollContext = scrollContext;
+    // this.logger.log('onScroll()', this.traceId, { scrollContext });
+
+    // better performance than .forEach() or .map()
+    for (let child of this.children) {
+      // this method is async: DO NOT await :)
+      this.onScrollChild(child);
+    }
   }
 }

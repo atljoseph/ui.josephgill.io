@@ -94,7 +94,7 @@ export class ScrollFlyInComponent implements OnInit, AfterViewInit, AfterContent
   //   this.cdr.markForCheck();
   // }
 
-  get shouldContentLoad(): boolean {
+  get hasLoaded(): boolean {
     return this.shouldLoad;
   }
 
