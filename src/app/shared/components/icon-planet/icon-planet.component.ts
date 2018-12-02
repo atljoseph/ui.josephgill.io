@@ -1,4 +1,4 @@
-import { Component, OnInit, Input } from '@angular/core';
+import { Component, OnInit, Input, ChangeDetectionStrategy } from '@angular/core';
 
 // this animation broke the build when it wasn't used but imported
 // import { IconPlanetRotateAnimation } from './icon-planet-rotate.animation';
@@ -8,6 +8,7 @@ import { Component, OnInit, Input } from '@angular/core';
   templateUrl: './icon-planet.component.html',
   styleUrls: ['./icon-planet.component.scss'],
   // animations: [IconPlanetRotateAnimation]
+  changeDetection: ChangeDetectionStrategy.OnPush
 })
 export class IconPlanetComponent implements OnInit {
 

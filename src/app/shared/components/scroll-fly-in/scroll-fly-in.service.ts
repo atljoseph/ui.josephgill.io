@@ -10,25 +10,27 @@ import { ScrollFlyInComponent } from './scroll-fly-in.component';
 })
 export class ScrollFlyInService {
 
-  children: ScrollFlyInComponent[] = [];
-  traceId: string = 'ScrollFlyInService';
-  viewportFactor: number = 1.75;
-  scrollContext: IContentScrollContext;
+  private children: ScrollFlyInComponent[] = [];
+  private traceId: string = 'ScrollFlyInService';
+  private viewportFactor: number = 1.75;
+  private scrollContext: IContentScrollContext;
 
   constructor(
     private logger: LogService,
     private content: ContentService,
   ) {
     this.content.scrollContextObservable.subscribe((scrollContext) => {
-      this.onScroll(scrollContext);
+      // this method is async: DO NOT await :)
+      this.scrollContext = scrollContext;
+      this.onScroll();
     });
   }
 
-  register(child: ScrollFlyInComponent) {
+  async register(child: ScrollFlyInComponent) {
     this.children.push(child);
   }
 
-  unregister(flyInHandleId: string) {
+  async unregister(flyInHandleId: string) {
     const index = this.children.findIndex((val, idx) => {
       return val.flyInHandleId === flyInHandleId;
     });
@@ -46,6 +48,7 @@ export class ScrollFlyInService {
     // #####################
     if (!child.hasLoaded) {
       if (this.contentTopBorder !== 0) {
+        console.log('yo');
         if (this.isLoadable(child)) {
           child.setContentShouldLoad();
           // setTimeout(() => {
@@ -53,11 +56,13 @@ export class ScrollFlyInService {
         }
       }
       else { // scrollTop === 0
+        console.log('hey');
         if (this.isLoadable(child)) {
+          console.log('you');
           // setTimeout(() => {
           child.setContentShouldLoad(true);
-          child.setScrollAnimationShowState(true);
-          child.markForChangeDetection();
+          child.setScrollAnimationShowState();
+          // child.markForChangeDetection();
           // }, 500);
         }
       }
@@ -99,13 +104,12 @@ export class ScrollFlyInService {
   }
 
   isLoadable(child: ScrollFlyInComponent): boolean {
+    console.log(child, this.contentBottomBorder, this.contentViewHeight, this.contentBottomBorder + this.contentViewHeight * this.viewportFactor);
     return child.top < this.contentBottomBorder + this.contentViewHeight * this.viewportFactor;
   }
 
-  onScroll(scrollContext: IContentScrollContext) {
-    this.scrollContext = scrollContext;
-    // this.logger.log('onScroll()', this.traceId, { scrollContext });
-
+  async onScroll() {
+    this.logger.log('onScroll()', this.traceId, {});
     // better performance than .forEach() or .map()
     for (let child of this.children) {
       // this method is async: DO NOT await :)

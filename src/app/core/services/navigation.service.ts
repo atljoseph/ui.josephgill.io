@@ -52,9 +52,9 @@ export class NavService implements IAppInitService {
 
         this.content.enableScrollDetection();
         // this.content.triggerResize();
-        this.content.scrollTick(1);
+        this.content.scrollTick(0);
         setTimeout(() => {
-          this.content.scrollTick(1);
+          this.content.scrollTick(0);
         },250);
 
       });

@@ -112,9 +112,9 @@ export class ContentService implements IAppInitService {
     this.logger.log('initEventListeners()', this.handleId, {});
 
     // scroll event
-    // this.scrollEventObservable = fromEvent(this.scrollableHTMLElement, 'scroll')
+    // bumps BehaviorSubject "this.scrollContextObservable.next(val)"
     this.scrollEventObservable = fromEvent(this.contentElementRef.nativeElement, 'scroll')
-      // .pipe(debounceTime(0.01))
+      // .pipe(debounceTime(0.005))
       .pipe(map((event: any): IContentScrollContext => {
         return {
           scrollTop: event.target.scrollTop,
@@ -127,14 +127,11 @@ export class ContentService implements IAppInitService {
     });
 
     // resize event
-    // change context?
+    // bumps BehaviorSubject "this.scrollContextObservable.next(val)"
     this.resizeEventObservable = fromEvent(window, 'resize')
       .pipe(debounceTime(3))
       .pipe(map((event: any): IContentScrollContext => {
-        return {
-          scrollTop: event.target.scrollTop,
-          clientHeight: event.target.clientHeight
-        };
+        return this.scrollContextObservable.getValue();
       }));
     this.resizeEventObservable.subscribe((val: IContentScrollContext) => {
       this.logger.log('RESIZE.next()', this.handleId, { val });
@@ -142,6 +139,7 @@ export class ContentService implements IAppInitService {
     });
 
     // click
+    // bumps BehaviorSubject "this.clickContextObservable.next(val)"
     this.clickEventObservable = fromEvent(this.contentElementRef.nativeElement, 'click')
       .pipe(debounceTime(0.5))
       .pipe(map((event: any): IContentClickContext => {

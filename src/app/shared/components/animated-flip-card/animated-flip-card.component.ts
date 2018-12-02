@@ -2,7 +2,7 @@ import {
   Component, OnInit,
   Input, Output, EventEmitter,
   OnChanges, SimpleChanges,
-  // ChangeDetectionStrategy, ChangeDetectorRef,
+  ChangeDetectionStrategy, ChangeDetectorRef,
   TemplateRef, ElementRef, 
   ContentChild, 
   HostListener, 
@@ -25,7 +25,8 @@ import {
   animations: [
     FlipYAnimation,
     FadeOuterAnimation
-  ]
+  ],
+  changeDetection: ChangeDetectionStrategy.OnPush
 })
 export class AnimatedFlipCardComponent implements OnInit, OnChanges {
 
@@ -67,11 +68,13 @@ export class AnimatedFlipCardComponent implements OnInit, OnChanges {
   constructor(
     private elementRef: ElementRef,
     private logger: LogService,
+    private cdr: ChangeDetectorRef
   ) { }
 
-  reset() {
+  async reset() {
     setTimeout(() => {
       this.resizeWindow();
+      this.cdr.markForCheck();
     }, 50);
   }
 
@@ -92,28 +95,30 @@ export class AnimatedFlipCardComponent implements OnInit, OnChanges {
     return this.flipState.includes('front');
   }
 
-  flipFront(): void {
+  async flipFront() {
     this.flipState = `front`;
     // this.flipState = `front-${this.animationSpeed}`;
+    this.cdr.markForCheck();
   }
 
-  flipBack(): void {
+  async flipBack() {
     this.flipState = `back`;
     // this.flipState = `back-${this.animationSpeed}`;
+    this.cdr.markForCheck();
   }
 
-  toggle() : void {
+  async toggle() {
     this.isFrontShowing ? this.flipBack() : this.flipFront();
   }
 
-  onFlipDone() {
+  async onFlipDone() {
     if (this.isLoaded) {
       this.isFlipping = false;
       this.flipDone.emit(this.isFrontShowing);
     }
   }
 
-  onFlipStart() {
+  async onFlipStart() {
     if (this.isLoaded) {
       this.isFlipping = true;
       this.flipStart.emit(this.isFrontShowing);
