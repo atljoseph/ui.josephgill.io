@@ -16,8 +16,8 @@ import { AnimationHoverClickComponent } from './examples/animation-hover-click/a
 import { ExamplesComponent } from './examples/examples.component';
 import { AnimationFlipCardComponent } from './examples/animation-flip-card/animation-flip-card.component';
 import { Soundboard2Component } from './sounds/soundboard2/soundboard2.component';
-import { TipsComponent } from './tips/tips/tips.component';
-import { TipComponent } from './tips/tip/tip.component';
+import { ProgrammingTipsComponent } from './programming-tips/tips/tips.component';
+import { ProgrammingTipComponent } from './programming-tips/tip/tip.component';
 
 @NgModule({
   imports: [
@@ -38,8 +38,8 @@ import { TipComponent } from './tips/tip/tip.component';
     AnimationFlipCardComponent,
     Soundboard2Component,
     PhotoAlbumComponent,
-    TipsComponent,
-    TipComponent,
+    ProgrammingTipsComponent,
+    ProgrammingTipComponent,
   ]
 })
 export class FeaturesModule { }

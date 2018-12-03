@@ -5,7 +5,7 @@ import { Component, OnInit } from '@angular/core';
   templateUrl: './tip.component.html',
   styleUrls: ['./tip.component.scss']
 })
-export class TipComponent implements OnInit {
+export class ProgrammingTipComponent implements OnInit {
 
   constructor() { }
 

@@ -49,7 +49,7 @@ export class ScrollFlyInComponent implements OnInit, AfterViewInit, AfterContent
   @ViewChild('placeholder') placeholder: ElementRef;
 
   shouldLoad: boolean = false;
-  placeholderSize: number = 300;
+  placeholderSize: number = 250;
   isLoaded: boolean = false;
   flyInHandleId: string;
   animationStatePlaceholder = 'showPlaceholder';
@@ -67,6 +67,10 @@ export class ScrollFlyInComponent implements OnInit, AfterViewInit, AfterContent
 
   markForChangeDetection() {
     this.cdr.markForCheck();
+  }
+
+  get isVisible() {
+    return this.animationState === 'show';
   }
 
   setScrollAnimationShowState(ignoreChanges?: boolean): void {

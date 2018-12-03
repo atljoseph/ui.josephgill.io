@@ -12,8 +12,9 @@ export class ScrollFlyInService {
 
   private children: ScrollFlyInComponent[] = [];
   private traceId: string = 'ScrollFlyInService';
-  private viewportFactor: number = 1.75;
+  private viewportFactor: number = 2;
   private scrollContext: IContentScrollContext;
+  private scrollVariance: number = -50;
 
   constructor(
     private logger: LogService,
@@ -40,56 +41,49 @@ export class ScrollFlyInService {
   }
 
   async onScrollChild(child: ScrollFlyInComponent) {
-    // don't mess with this, as it is fine tuned...
+    // don't mess with this, as it is fine tuned and getting finer ...
 
     // #####################
     // if the scroll-fly-in omponent has NOT YET LOADED
     // this means the content might be further than a page or two below the currently viewed page
     // #####################
     if (!child.hasLoaded) {
-      if (this.contentTopBorder !== 0) {
-        console.log('yo');
+      if (this.contentTopBorder === 0) {
         if (this.isLoadable(child)) {
-          child.setContentShouldLoad();
-          // setTimeout(() => {
-          // }, 500);
-        }
-      }
-      else { // scrollTop === 0
-        console.log('hey');
-        if (this.isLoadable(child)) {
-          console.log('you');
-          // setTimeout(() => {
+          // load and make visible
           child.setContentShouldLoad(true);
           child.setScrollAnimationShowState();
-          // child.markForChangeDetection();
-          // }, 500);
         }
+      }
+      else { // scrollTop > 0
+        // load
+        if (this.isLoadable(child)) {
+          child.setContentShouldLoad();
+        }
+        
       }
     }
     // #####################
     // if the scroll-fly-in omponent has ALEADY LOADED
     // this means the content might be less than page or two below the currently viewed page OR above current page
     // #####################
+    // if (child.hasLoaded) { 
     else {
-      if (
-        this.contentTopBorder === 0
-        // && val.bottom >= contentTopBorder
-        // && val.top <= contentBottomBorder
-      ) {
-        child.setScrollAnimationShowState();
-      }
-      else if (child.top > this.contentBottomBorder) {//} - varianceHideBottom) {
-        child.setScrollAnimationHideState('scrollup');
-      }
-      else if (child.bottom < this.contentTopBorder) {// + varianceHideTop) {
-        child.setScrollAnimationHideState('scrolldown');
+      if (this.isShowable(child)) {
+        // it was important to check this condition first (logic worked better)
+        if (!child.isVisible) child.setScrollAnimationShowState();
       }
       else {
-        child.setScrollAnimationShowState();
+        if (child.top > this.contentBottomBorder) {//} - varianceHideBottom) {
+          if (child.isVisible) child.setScrollAnimationHideState('scrollup');
+        }
+        else if (child.bottom < this.contentTopBorder) {// + varianceHideTop) {
+          if (child.isVisible) child.setScrollAnimationHideState('scrolldown');
+        }
       }
     }
   }
+  
 
   get contentBottomBorder(): number {
     return this.scrollContext.scrollTop + this.scrollContext.clientHeight;
@@ -104,8 +98,12 @@ export class ScrollFlyInService {
   }
 
   isLoadable(child: ScrollFlyInComponent): boolean {
-    console.log(child, this.contentBottomBorder, this.contentViewHeight, this.contentBottomBorder + this.contentViewHeight * this.viewportFactor);
+    // console.log(child, this.contentBottomBorder, this.contentViewHeight, this.contentBottomBorder + this.contentViewHeight * this.viewportFactor);
     return child.top < this.contentBottomBorder + this.contentViewHeight * this.viewportFactor;
+  }
+
+  isShowable(child: ScrollFlyInComponent): boolean {
+    return child.top <= this.contentBottomBorder && child.bottom >= this.contentTopBorder;
   }
 
   async onScroll() {

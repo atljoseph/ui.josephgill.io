@@ -114,7 +114,7 @@ export class ContentService implements IAppInitService {
     // scroll event
     // bumps BehaviorSubject "this.scrollContextObservable.next(val)"
     this.scrollEventObservable = fromEvent(this.contentElementRef.nativeElement, 'scroll')
-      // .pipe(debounceTime(0.005))
+      // .pipe(debounceTime(0.001))
       .pipe(map((event: any): IContentScrollContext => {
         return {
           scrollTop: event.target.scrollTop,
