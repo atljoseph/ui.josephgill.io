@@ -4,7 +4,7 @@ a.link {
     // text-decoration: underline !important;
     text-decoration: none;
     @extend .cursor-pointer;
-    @extend .text-danger;
+    @extend .text-pink;
     // @extend .text-team;
     transition: all .1s ease-in-out;
 }

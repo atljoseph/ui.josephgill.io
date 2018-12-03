@@ -55,7 +55,7 @@ export class NavService implements IAppInitService {
         this.content.scrollTick(0);
         setTimeout(() => {
           this.content.scrollTick(0);
-        },250);
+        },75);
 
       });
   }

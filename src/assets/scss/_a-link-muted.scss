@@ -2,8 +2,9 @@
 
 a.link-muted {
     // text-decoration: underline !important;
+    text-decoration: none;
     @extend .cursor-pointer;
-    // @extend .text-primary;
+    @extend .text-dark;
     // @extend .text-team;
     transition: all .1s ease-in-out;
 }

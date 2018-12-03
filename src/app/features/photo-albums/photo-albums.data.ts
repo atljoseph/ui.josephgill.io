@@ -1,14 +1,7 @@
 
-import { IPhotoGroup, IPhotoAlbum } from './photo-albums.types';
-import { PhotoAlbum } from './photo-album.model';
+import { IPhoto, IPhotoGroup, IPhotoAlbum } from './photo-albums.types';
 
-export const photoAlbumByKey = (key: string): IPhotoAlbum => {
-  return photoAlbums.find((album) => {
-    return album.key.trim().toLowerCase() === key.trim().toLowerCase();
-  });
-}
-
-export const photoAlbums: IPhotoAlbum[] = [
+export const photoAlbumsData: IPhotoAlbum[] = [
   {
     title: 'Riding the SAM Shortline Train',
     key: 'sam-shortline',
@@ -102,7 +95,7 @@ export const photoAlbums: IPhotoAlbum[] = [
           { src: 'thanksgiving-2018-sam-jennifer.jpg' },
         ]
       },
-      
+
     ]
   },
   {
@@ -136,8 +129,8 @@ export const photoAlbums: IPhotoAlbum[] = [
           { src: 'candler-snoopy-breakfast-casserole.jpg' },
         ]
       },
-    ] 
-  }, 
+    ]
+  },
   {
     title: 'Grandy and Papa!',
     key: 'grandy-papa',
@@ -159,7 +152,7 @@ export const photoAlbums: IPhotoAlbum[] = [
           { src: 'christmas-2017-candler-grandly-papa.jpg' },
         ]
       },
-    ] 
+    ]
   },
   {
     title: 'With Amy & Family',
@@ -180,7 +173,7 @@ export const photoAlbums: IPhotoAlbum[] = [
           { src: 'eva-and-grandfather-2.jpg' },
         ]
       },
-    ] 
+    ]
   },
   {
     title: 'Random Pictures',
@@ -207,6 +200,44 @@ export const photoAlbums: IPhotoAlbum[] = [
           { src: 'eclipse-2017-2.jpg' },
         ]
       },
-    ] 
-  }
+    ]
+  },
+  {
+    title: 'Christmas 2016',
+    key: 'christmas-2016',
+    coverPhotoSrc: 'christmas-2016-75.jpg',
+    photoGroups: [
+      {
+        photos: ((): IPhoto[] => {
+          const photos: IPhoto[] = [];
+          for (var i = 2; i <= 130; i++) {
+            photos.push({ src: `christmas-2016-${i}.jpg` });
+          }
+          return photos;
+        })()
+      },
+    ]
+  },
+  {
+    title: 'Thanksgiving & Random 2016',
+    key: 'thanksgiving-2016',
+    coverPhotoSrc: 'thanksgiving-2016-55.jpg',
+    photoGroups: [
+      {
+        photos: ((): IPhoto[] => {
+          const numbers: number[] = [
+            2, 4, 5, 10, 13, 14, 15, 18, 19, 20, 
+            22, 23, 25, 26, 30, 31, 33, 35, 37, 
+            43, 44, 49, 50, 55
+          ];
+          const photos: IPhoto[] = [];
+          for (let n in numbers) {
+            photos.push({ src: `thanksgiving-2016-${numbers[n]}.jpg` });
+          }
+          return photos;
+        })()
+      },
+    ]
+  },
 ];
+

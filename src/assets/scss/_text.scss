@@ -28,6 +28,16 @@ html {
     }
 }
 
+
+// styling
+.text-bold {
+    font-weight: bold;
+}
+
+.text-lighter {
+    font-weight: lighter;
+}
+
 // .text-XX
 
 @include media-breakpoint-down(sm) {
@@ -124,12 +134,4 @@ html {
     .text-xxl {
         font-size: 1.8rem;
     }
-}
-
-.text-bold {
-    font-weight: bold;
-}
-
-.text-lighter {
-    font-weight: lighter;
 }

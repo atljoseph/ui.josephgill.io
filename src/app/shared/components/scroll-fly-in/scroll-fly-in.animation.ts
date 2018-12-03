@@ -45,11 +45,11 @@ export const scrollAnimation = trigger('scrollAnimation', [
   // //
   state('hideTopRight', style({
     opacity: 0,
-    transform: "translateY(-100%) translateX(100%) scale(0.5)"
+    transform: "translateY(-50%) translateX(50%)"
   })),
   state('hideBottomLeft', style({
     opacity: 0,
-    transform: "translateY(100%) translateX(-100%) scale(0.5)"
+    transform: "translateY(50%) translateX(-50%)"
   })),
   // transition('hideBottomLeft <=> show', animate(`${350}ms ease-in-out`)),
   // transition('hideTopRight <=> show', animate(`${350}ms ease-in-out`)),

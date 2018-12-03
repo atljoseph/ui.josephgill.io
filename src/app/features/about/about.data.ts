@@ -1,7 +1,7 @@
 
 import { IAboutGroup } from './about.types';
 
-export const aboutGroups: IAboutGroup[] = [
+export const aboutGroupsData: IAboutGroup[] = [
     {
         title: 'Family:',
         description: 'Family is one of the most important things in life! Meet mine!',
