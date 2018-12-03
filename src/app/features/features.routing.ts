@@ -8,8 +8,8 @@ import { MusicComponent } from './music/music.component';
 import { PhotoAlbumsComponent } from './photo-albums/photo-albums/photo-albums.component';
 import { PhotoAlbumComponent } from './photo-albums/photo-album/photo-album.component';
 import { ExamplesComponent } from './examples/examples.component';
-import { TipsComponent } from './tips/tips/tips.component';
-import { TipComponent } from './tips/tip/tip.component';
+// import { TipsComponent } from './tips/tips/tips.component';
+// import { TipComponent } from './tips/tip/tip.component';
 
 const routes: Routes = [
   {
@@ -33,12 +33,12 @@ const routes: Routes = [
   {
     path: 'examples', component: ExamplesComponent//, canActivate: [true]
   },
-  {
-    path: 'tips', component: TipsComponent//, canActivate: [true]
-  },
-  {
-    path: 'tips/:tipKey', component: TipComponent//, canActivate: [true]
-  },
+  // {
+  //   path: 'tips', component: TipsComponent//, canActivate: [true]
+  // },
+  // {
+  //   path: 'tips/:tipKey', component: TipComponent//, canActivate: [true]
+  // },
 ];
 
 @NgModule({
