@@ -1,33 +1,33 @@
 
 // base text
-html {
+html, body {
     font-size: 1rem;
+    font-family: 'Courier', Courier, monospace;
 }
 
 @include media-breakpoint-up(sm) {
-    html {
+    html, body  {
         font-size: 1.1rem;
     }
 }
 
 @include media-breakpoint-up(md) {
-    html {
+    html, body  {
         font-size: 1.2rem;
     }
 }
 
 @include media-breakpoint-up(lg) {
-    html {
+    html, body  {
         font-size: 1.3rem;
     }
 }
 
 @include media-breakpoint-up(xl) {
-    html {
+    html, body  {
         font-size: 1.3rem;
     }
 }
-
 
 // styling
 .text-bold {

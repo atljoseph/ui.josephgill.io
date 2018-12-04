@@ -1,0 +1,47 @@
+<div class="articles">
+  <app-shared-scroll-fly-in>
+    <ng-template>
+      <div class="fly-in">
+        <span class="articles-title">Code</span>
+      </div>
+    </ng-template>
+  </app-shared-scroll-fly-in>
+  <div class="article" *ngFor="let article of codeArticles; trackBy: articleTrackBy" (mouseenter)="article.isHovered = true"
+    (mouseleave)="article.isHovered = false">
+    <app-shared-scroll-fly-in *ngIf="article.title">
+      <ng-template>
+        <div class="fly-in">
+          <span class="article-title">
+            <a class="link" [class.hovered]="article.isHovered" (click)="openArticle(article)">{{ article.title }}</a>
+          </span>
+        </div>
+      </ng-template>
+    </app-shared-scroll-fly-in>
+    <app-shared-scroll-fly-in *ngIf="article.tags && article.tags.length > 0">
+      <ng-template>
+        <div class="fly-in">
+          <a class="link" [class.hovered]="article.isHovered" (click)="openArticle(article)">
+            <span class="article-tags">
+              <span class="fa fa-fw fa-code"></span>{{ article.tags.join(' / ') }}
+            </span>
+          </a>
+        </div>
+      </ng-template>
+    </app-shared-scroll-fly-in>
+    <div class="article-image">
+      <ng-container>
+        <app-shared-scroll-fly-in *ngIf="article.coverPhotoSrc">
+          <ng-template>
+            <div class="fly-in">
+              <a (click)="openArticle(article)">
+                <img #imgResponsive [attr.src]="responsiveimage.imgSrc(article.coverPhotoSrc)" [attr.srcset]="responsiveimage.imgSrcSet(article.coverPhotoSrc)"
+                  sizes="100vw" />
+                <!-- <img [attr.src]="imgSrcTest()" [attr.srcset]="imgSrcSetTest()" sizes="100vw" /> -->
+              </a>
+            </div>
+          </ng-template>
+        </app-shared-scroll-fly-in>
+      </ng-container>
+    </div>
+  </div>
+</div>

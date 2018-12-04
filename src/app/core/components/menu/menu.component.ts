@@ -52,7 +52,7 @@ export class MenuComponent implements OnInit {
   }
 
   get titleMarginRight(): string {
-    return `${menuButtonDiameter * 1 - menuButtonMargin}px`;
+    return `${menuButtonDiameter * 1.1 - menuButtonMargin}px`;
     // return `${menuButtonDiameter * 1.2 - menuButtonMargin}px`;
     // return `${menuButtonDiameter - menuButtonMarginHorizontal}px`;
   }

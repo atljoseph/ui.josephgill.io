@@ -27,7 +27,7 @@
           <ng-template>
             <div class="photo-fly-in" >
               <a (click)="openAlbum(album)">
-                <img #imgResponsive [attr.src]="imgSrc(album.coverPhotoSrc)" [attr.srcset]="imgSrcSet(album.coverPhotoSrc)"
+                <img #imgResponsive [attr.src]="responsiveimage.imgSrc(album.coverPhotoSrc)" [attr.srcset]="responsiveimage.imgSrcSet(album.coverPhotoSrc)"
                   sizes="100vw"/>
                 <!-- <img [attr.src]="imgSrcTest()" [attr.srcset]="imgSrcSetTest()" sizes="100vw" /> -->
               </a>

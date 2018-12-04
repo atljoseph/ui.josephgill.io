@@ -45,25 +45,24 @@ export const scrollAnimation = trigger('scrollAnimation', [
   // //
   state('hideTopRight', style({
     opacity: 0,
-    transform: "translateY(-50%) translateX(50%)"
+    transform: "translateY(-25%) translateX(25%)"
   })),
   state('hideBottomLeft', style({
     opacity: 0,
-    transform: "translateY(50%) translateX(-50%)"
+    transform: "translateY(25%) translateX(-25%)"
   })),
-  // transition('hideBottomLeft <=> show', animate(`${350}ms ease-in-out`)),
-  // transition('hideTopRight <=> show', animate(`${350}ms ease-in-out`)),
-
-  transition('hideBottomLeft => show', animate(`${350}ms ease-in-out`, keyframes([
-    style({ opacity: 0, transform: "translateY(50%) translateX(-50%)", offset: 0 }),
-    // style({ opacity: 0, transform: "translateY(100%) translateX(-100%) scale(0.5)", offset: 0 }),
-    style({ opacity: 1, transform: "translateY(-0%) translateX(7%)", offset: 0.9 }),
-    style({ opacity: 1, transform: "translateX(0)", offset: 1 }),
-  ]))),
-  transition('hideTopRight => show', animate(`${350}ms ease-in-out`, keyframes([
-    style({ opacity: 0, transform: "translateY(-50%) translateX(50%)", offset: 0 }),
-    // style({ opacity: 0, transform: "translateY(-100%) translateX(100%) scale(0.5)", offset: 0 }),
-    style({ opacity: 1, transform: "translateY(0%) translateX(-7%)", offset: 0.9 }),
-    style({ opacity: 1, transform: "translateX(0)", offset: 1 }),
-  ]))),
+  transition('hideBottomLeft => show', animate(`${250}ms ease-in-out`)),
+  transition('hideTopRight => show', animate(`${250}ms ease-in-out`)),
+  // transition('hideBottomLeft => show', animate(`${350}ms ease-in-out`, keyframes([
+  //   style({ opacity: 0, transform: "translateY(50%) translateX(-50%)", offset: 0 }),
+  //   // style({ opacity: 0, transform: "translateY(100%) translateX(-100%) scale(0.5)", offset: 0 }),
+  //   style({ opacity: 1, transform: "translateY(-0%) translateX(7%)", offset: 0.9 }),
+  //   style({ opacity: 1, transform: "translateX(0)", offset: 1 }),
+  // ]))),
+  // transition('hideTopRight => show', animate(`${350}ms ease-in-out`, keyframes([
+  //   style({ opacity: 0, transform: "translateY(-50%) translateX(50%)", offset: 0 }),
+  //   // style({ opacity: 0, transform: "translateY(-100%) translateX(100%) scale(0.5)", offset: 0 }),
+  //   style({ opacity: 1, transform: "translateY(0%) translateX(-7%)", offset: 0.9 }),
+  //   style({ opacity: 1, transform: "translateX(0)", offset: 1 }),
+  // ]))),
 ]);

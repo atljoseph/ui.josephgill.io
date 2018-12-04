@@ -30,7 +30,7 @@ export class PhotoAlbum {
         return this.album.photoGroups;
     }
 
-    get key(): string {
-        return this.album.key;
+    get routeKey(): string {
+        return this.album.routeKey;
     }
 }

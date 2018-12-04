@@ -1,18 +1,15 @@
-import { Component, OnInit, OnDestroy, ElementRef, QueryList, ViewChildren, ViewChild, ContentChild } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
 
-import { HeaderService } from '../../../core/services/header.service';
-import { ContentService } from '../../../core/services/content.service';
 import { LogService } from 'src/app/core/services/log.service';
 import { NavService } from 'src/app/core/services/navigation.service';
+import { ResponsiveImageService } from 'src/app/core/services/responsive-image.service';
 
 import { IPhoto, IPhotoGroup } from '../photo-albums.types';
 import { PhotoAlbum } from '../photo-album.model';
 
 import { 
   photoAlbumByKey, 
-  imgSrc, imgSrcTest,
-  imgSrcSet, imgSrcSetTest 
 } from '../photo-albums.utils';
 
 interface IPhotoAlbumParams {
@@ -33,11 +30,10 @@ export class PhotoAlbumComponent implements OnInit {
   photoAlbum: PhotoAlbum;
 
   constructor(
-    private header: HeaderService,
-    private content: ContentService,
     private logger: LogService,
     private route: ActivatedRoute,
-    private nav: NavService
+    private nav: NavService,
+    public responsiveimage: ResponsiveImageService,
 
   ) { 
     this.route.params.subscribe((params: IPhotoAlbumParams) => {
@@ -53,13 +49,5 @@ export class PhotoAlbumComponent implements OnInit {
   groupTrackBy(index, group: IPhotoGroup) { return index + group.title; }
 
   photoTrackBy(index, photo: IPhoto) { return index + photo.src; }
-
-  imgSrcSet(src: string): string { return imgSrcSet(src); }
-
-  imgSrcSetTest(src: string): string { return imgSrcSetTest(src); }
-
-  imgSrc(src: string): string { return imgSrc(src); }
-
-  imgSrcTest(src: string): string { return imgSrcTest(src); }
 
 }

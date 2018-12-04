@@ -1,0 +1,70 @@
+
+@import '../../../../assets/scss/_';
+
+.articles {
+    // white-space: pre; // NOT pre-line
+    padding-top: 10px;
+    &-title {
+        @extend .text-xxl;
+    }
+}
+
+.article {
+    padding-top: 15px;
+    display: flex;
+    flex-direction: column;
+    transition: all .2s ease-in-out;
+
+    &-title {
+        @extend .text-xl;
+    }
+    &-tags {
+        @extend .text-md;
+        @extend .text-bold;
+        display: flex;
+        flex-direction: row;
+        align-items: center;
+        span.fa {
+            margin-right: 10px;
+        }
+    }
+    &-image {
+        img {
+            padding-top: 10px;
+            padding-bottom: 10px;
+    
+        }
+        @include screenSize(phone) {
+            img, app-scroll-photo {
+                width: 100%;
+            }
+        }
+        @include screenSize(tablet) {
+            img, app-scroll-photo {
+                width: 60%;
+            }
+        }
+        @include screenSizeUp(desktop) {
+            img, app-scroll-photo {
+                width: 45%;
+            }
+        }
+    }
+}
+
+.article:hover {
+    margin-left: 30px;
+    transition: all .2s ease-in-out;
+}
+
+// .article:first-of-type {
+//     padding-top: 20px;
+// }
+.article:last-of-type {
+    padding-bottom: 100px;
+}
+
+.fly-in {
+    display: flex;
+    flex-direction: column;
+}

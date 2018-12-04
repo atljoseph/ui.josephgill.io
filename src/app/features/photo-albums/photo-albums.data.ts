@@ -4,7 +4,7 @@ import { IPhoto, IPhotoGroup, IPhotoAlbum } from './photo-albums.types';
 export const photoAlbumsData: IPhotoAlbum[] = [
   {
     title: 'Riding the SAM Shortline Train',
-    key: 'sam-shortline',
+    routeKey: 'sam-shortline',
     coverPhotoSrc: 'sam-shortline-candler-grandy-papa-daddy-with-train-1.jpg',
     photoGroups: [
       {
@@ -55,7 +55,7 @@ export const photoAlbumsData: IPhotoAlbum[] = [
   },
   {
     title: 'Thanksgiving at Grandy\'s House',
-    key: 'thanksgiving-2018',
+    routeKey: 'thanksgiving-2018',
     coverPhotoSrc: 'thanksgiving-2018-frank-papa-bev-1.jpg',
     photoGroups: [
       {
@@ -100,7 +100,7 @@ export const photoAlbumsData: IPhotoAlbum[] = [
   },
   {
     title: 'Candler Playing Around',
-    key: 'candler',
+    routeKey: 'candler',
     coverPhotoSrc: 'candler-bathtub-trains.jpg',
     photoGroups: [
       {
@@ -133,7 +133,7 @@ export const photoAlbumsData: IPhotoAlbum[] = [
   },
   {
     title: 'Grandy and Papa!',
-    key: 'grandy-papa',
+    routeKey: 'grandy-papa',
     coverPhotoSrc: 'grandy-and-papa.jpg',
     photoGroups: [
       {
@@ -156,7 +156,7 @@ export const photoAlbumsData: IPhotoAlbum[] = [
   },
   {
     title: 'With Amy & Family',
-    key: 'amy-and-family',
+    routeKey: 'amy-and-family',
     coverPhotoSrc: 'eva-tina-ngan-thanh.jpg',
     photoGroups: [
       {
@@ -177,7 +177,7 @@ export const photoAlbumsData: IPhotoAlbum[] = [
   },
   {
     title: 'Random Pictures',
-    key: 'random',
+    routeKey: 'random',
     coverPhotoSrc: 'eclipse-2017-2.jpg',
     photoGroups: [
       {
@@ -204,7 +204,7 @@ export const photoAlbumsData: IPhotoAlbum[] = [
   },
   {
     title: 'Christmas 2016',
-    key: 'christmas-2016',
+    routeKey: 'christmas-2016',
     coverPhotoSrc: 'christmas-2016-75.jpg',
     photoGroups: [
       {
@@ -220,7 +220,7 @@ export const photoAlbumsData: IPhotoAlbum[] = [
   },
   {
     title: 'Thanksgiving & Random 2016',
-    key: 'thanksgiving-2016',
+    routeKey: 'thanksgiving-2016',
     coverPhotoSrc: 'thanksgiving-2016-55.jpg',
     photoGroups: [
       {

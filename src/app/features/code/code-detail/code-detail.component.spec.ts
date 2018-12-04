@@ -1,20 +1,20 @@
 import { async, ComponentFixture, TestBed } from '@angular/core/testing';
 
-import { SoundboardComponent } from './soundboard.component';
+import { CodeDetailComponent } from './code-detail.component';
 
-describe('SoundboardComponent', () => {
-  let component: SoundboardComponent;
-  let fixture: ComponentFixture<SoundboardComponent>;
+describe('TipComponent', () => {
+  let component: CodeDetailComponent;
+  let fixture: ComponentFixture<CodeDetailComponent>;
 
   beforeEach(async(() => {
     TestBed.configureTestingModule({
-      declarations: [ SoundboardComponent ]
+      declarations: [ CodeDetailComponent ]
     })
     .compileComponents();
   }));
 
   beforeEach(() => {
-    fixture = TestBed.createComponent(SoundboardComponent);
+    fixture = TestBed.createComponent(CodeDetailComponent);
     component = fixture.componentInstance;
     fixture.detectChanges();
   });

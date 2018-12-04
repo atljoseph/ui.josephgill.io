@@ -7,9 +7,8 @@ import { SoundsComponent } from './sounds/sounds.component';
 import { MusicComponent } from './music/music.component';
 import { PhotoAlbumsComponent } from './photo-albums/photo-albums/photo-albums.component';
 import { PhotoAlbumComponent } from './photo-albums/photo-album/photo-album.component';
-import { ExamplesComponent } from './examples/examples.component';
-// import { TipsComponent } from './tips/tips/tips.component';
-// import { TipComponent } from './tips/tip/tip.component';
+import { CodeLandingComponent } from './code/code-landing/code-landing.component';
+import { CodeDetailComponent } from './code/code-detail/code-detail.component';
 
 const routes: Routes = [
   {
@@ -24,6 +23,8 @@ const routes: Routes = [
   {
     path: 'music', component: MusicComponent//, canActivate: [true]
   },
+
+  // TODO: Convert these to have child routes instead of separate routes
   {
     path: 'photo-albums', component: PhotoAlbumsComponent//, canActivate: [true]
   },
@@ -31,14 +32,12 @@ const routes: Routes = [
     path: 'photo-albums/:photoAlbumKey', component: PhotoAlbumComponent//, canActivate: [true]
   },
   {
-    path: 'examples', component: ExamplesComponent//, canActivate: [true]
+    path: 'code', component: CodeLandingComponent//, canActivate: [true]
   },
-  // {
-  //   path: 'tips', component: TipsComponent//, canActivate: [true]
-  // },
-  // {
-  //   path: 'tips/:tipKey', component: TipComponent//, canActivate: [true]
-  // },
+  {
+    path: 'code/:articleKey', component: CodeDetailComponent//, canActivate: [true]
+  },
+  //
 ];
 
 @NgModule({

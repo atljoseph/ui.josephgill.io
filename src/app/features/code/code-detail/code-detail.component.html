@@ -1,0 +1,119 @@
+<div class="article">
+  <app-shared-scroll-fly-in *ngIf="codeArticle.title">
+    <ng-template>
+      <div class="fly-in">
+        <span class="article-title">{{ codeArticle.title }}</span>
+      </div>
+    </ng-template>
+  </app-shared-scroll-fly-in>
+  <div class="article-content" *ngFor="let contentGroup of codeArticle.contentGroups; trackBy: groupTrackBy">
+    <app-shared-scroll-fly-in *ngIf="contentGroup.title">
+      <ng-template>
+        <div class="fly-in">
+          <span class="article-content-title">{{ contentGroup.title }}</span>
+        </div>
+      </ng-template>
+    </app-shared-scroll-fly-in>
+    <app-shared-scroll-fly-in *ngIf="contentGroup.description">
+      <ng-template>
+        <div class="fly-in">
+          <div class="article-content-description">{{ contentGroup.description }}</div>
+        </div>
+      </ng-template>
+    </app-shared-scroll-fly-in>
+    <app-shared-scroll-fly-in *ngIf="contentGroup.notes && contentGroup.notes.length >= 1">
+      <ng-template>
+        <div class="fly-in">
+          <span class="article-content-note-heading">{{ contentGroup.notes.length === 1 ? 'Note: ' : 'Notes: ' }}</span>
+        </div>
+      </ng-template>
+    </app-shared-scroll-fly-in>
+    <app-shared-scroll-fly-in *ngFor="let note of contentGroup.notes; trackBy: noteTrackBy">
+      <ng-template>
+        <div class="fly-in">
+          <span class="article-content-note">- {{ note }}</span>
+        </div>
+      </ng-template>
+    </app-shared-scroll-fly-in>
+    <ng-container *ngFor="let block of contentGroup.codeBlocks; trackBy: blockTrackBy">
+      <div class="article-block">
+        <app-shared-scroll-fly-in *ngIf="block.title">
+          <ng-template>
+            <div class="fly-in">
+              <span class="block-title">{{ block.title }}</span>
+            </div>
+          </ng-template>
+        </app-shared-scroll-fly-in>
+        <app-shared-scroll-fly-in *ngIf="block.description">
+          <ng-template>
+            <div class="fly-in">
+              <div class="article-block-description">{{ block.description }}</div>
+            </div>
+          </ng-template>
+        </app-shared-scroll-fly-in>
+        <app-shared-scroll-fly-in *ngIf="block.code">
+          <ng-template>
+            <div class="fly-in">
+              <div class="article-block-code">{{ block.code }}</div>
+            </div>
+          </ng-template>
+        </app-shared-scroll-fly-in>
+        <app-shared-scroll-fly-in *ngIf="block.notes && block.notes.length >= 1">
+          <ng-template>
+            <div class="fly-in">
+              <span class="article-block-note-heading">{{ block.notes.length === 1 ? 'Note: ' : 'Notes: ' }}</span>
+            </div>
+          </ng-template>
+        </app-shared-scroll-fly-in>
+        <app-shared-scroll-fly-in *ngFor="let note of block.notes; trackBy: noteTrackBy">
+          <ng-template>
+            <div class="fly-in">
+              <span class="article-block-note">- {{ note }}</span>
+            </div>
+          </ng-template>
+        </app-shared-scroll-fly-in>
+      </div>
+    </ng-container>
+    <ng-container *ngFor="let photo of contentGroup.photos; trackBy: photoTrackBy">
+      <div class="article-photo">
+        <app-shared-scroll-fly-in *ngIf="photo.title">
+          <ng-template>
+            <div class="fly-in">
+              <span class="article-photo-title">{{ photo.title }}</span>
+            </div>
+          </ng-template>
+        </app-shared-scroll-fly-in>
+        <app-shared-scroll-fly-in *ngIf="photo.description">
+          <ng-template>
+            <div class="fly-in">
+              <div class="article-photo-description">{{ photo.description }}</div>
+            </div>
+          </ng-template>
+        </app-shared-scroll-fly-in>
+        <app-shared-scroll-fly-in *ngIf="photo.src">
+          <ng-template>
+            <div class="fly-in">
+              <img #imgResponsive [attr.src]="responsiveimage.imgSrc(photo.src)" [attr.srcset]="responsiveimage.imgSrcSet(photo.src)"
+                sizes="100vw" />
+              <!-- <img [attr.src]="imgSrcTest()" [attr.srcset]="imgSrcSetTest()" sizes="100vw" /> -->
+            </div>
+          </ng-template>
+        </app-shared-scroll-fly-in>
+        <app-shared-scroll-fly-in *ngIf="photo.notes && photo.notes.length >= 1">
+          <ng-template>
+            <div class="fly-in">
+              <span class="article-photo-note-heading">{{ photo.notes.length === 1 ? 'Note: ' : 'Notes: ' }}</span>
+            </div>
+          </ng-template>
+        </app-shared-scroll-fly-in>
+        <app-shared-scroll-fly-in *ngFor="let note of photo.notes; trackBy: noteTrackBy">
+          <ng-template>
+            <div class="fly-in">
+              <span class="article-photo-note">- {{ note }}</span>
+            </div>
+          </ng-template>
+        </app-shared-scroll-fly-in>
+      </div>
+    </ng-container>
+  </div>
+</div>

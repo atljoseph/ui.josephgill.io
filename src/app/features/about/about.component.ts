@@ -1,14 +1,12 @@
-import { Component, OnInit, OnDestroy } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 
-import { HeaderService } from '../../core/services/header.service';
-import { SoundService } from '../../core/services/sound.service';
-import { NavService } from '../../core/services/navigation.service';
+import { SoundService } from 'src/app/core/services/sound.service';
+import { NavService } from 'src/app/core/services/navigation.service';
+import { ResponsiveImageService } from 'src/app/core/services/responsive-image.service';
 
 import { IAbout, IAboutGroup } from './about.types';
 import {
   aboutData,
-  imgSrc, imgSrcTest,
-  imgSrcSet, imgSrcSetTest
  } from './about.utils';
 
 @Component({
@@ -21,9 +19,9 @@ export class AboutComponent implements OnInit {
   aboutGroups = aboutData;
 
   constructor(
-    private header: HeaderService,
     private sound: SoundService,
-    public nav: NavService
+    public nav: NavService,
+    public responsiveImage: ResponsiveImageService,
   ) { 
   }
 
@@ -37,13 +35,5 @@ export class AboutComponent implements OnInit {
   groupTrackBy(index, group: IAboutGroup) { return index + group.title; }
 
   photoTrackBy(index, photo: IAbout) { return index + photo.src; }
-
-  imgSrcSet(src: string): string { return imgSrcSet(src); }
-
-  imgSrcSetTest(src:string): string { return imgSrcSetTest(src); }
-
-  imgSrc(src: string): string { return imgSrc(src);}
-
-  imgSrcTest(src: string): string { return imgSrcTest(src); }
 
 }

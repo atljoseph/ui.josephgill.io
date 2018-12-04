@@ -1,5 +1,5 @@
 
-@import '../../../../assets/scss/_variables';
+@import '../../../../assets/scss/_';
 
 .content {
     position: absolute;
@@ -13,6 +13,8 @@
 
     overflow-y: scroll;
     overflow-x: hidden;
+
+    @extend .bg-lightest;
 }
 
 .content-wrapper {

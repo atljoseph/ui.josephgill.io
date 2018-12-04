@@ -40,8 +40,6 @@ export class NavService implements IAppInitService {
         this.sound.play('cowboy-spurs.mp3', 0.1);
         this.content.disableScrollDetection();
         this.content.scrollToTop();
-
-        this.menu.hide();
       });
     this.router.events.pipe(
       filter((event) => event instanceof NavigationEnd),
@@ -55,7 +53,7 @@ export class NavService implements IAppInitService {
         this.content.scrollTick(0);
         setTimeout(() => {
           this.content.scrollTick(0);
-        },75);
+        }, 75);
 
       });
   }
@@ -72,7 +70,8 @@ export class NavService implements IAppInitService {
     // this.content.scrollToTop(() => { console.log('hey')});
 
     // setTimeout(() => {
-      this.router.navigate([route]);
+    this.menu.hide();
+    this.router.navigate([route]);
     // }, delayOverride || this.animationDelayDefault);
   }
 

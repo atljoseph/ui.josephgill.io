@@ -42,7 +42,7 @@
         <app-shared-scroll-fly-in *ngIf="photo.src">
           <ng-template>
             <div class="photo-fly-in">
-              <img #imgResponsive [attr.src]="imgSrc(photo.src)" [attr.srcset]="imgSrcSet(photo.src)" sizes="100vw" />
+              <img #imgResponsive [attr.src]="responsiveimage.imgSrc(photo.src)" [attr.srcset]="responsiveimage.imgSrcSet(photo.src)" sizes="100vw" />
               <!-- <img [attr.src]="imgSrcTest()" [attr.srcset]="imgSrcSetTest()" sizes="100vw" /> -->
             </div>
           </ng-template>

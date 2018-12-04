@@ -1,4 +1,7 @@
 
+// TODO: import global scss here and @extend bs styles for transitions 
+//          instead of using strictly html angular binding
+
 :host {
     height: 100%;
     // width: 100%;
@@ -35,8 +38,8 @@
 
 .selected {
     transition: all .2s ease-in-out;
-    margin-top: 8px;
-    margin-bottom: 2px;
+    // margin-top: 8px;
+    // margin-bottom: 2px;
 }
 
 .header-link:active {

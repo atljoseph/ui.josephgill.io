@@ -12,7 +12,7 @@ export interface IPhotoGroup {
 
 export interface IPhotoAlbum {
     title: string;
-    key: string;
+    routeKey: string;
     photoGroups: IPhotoGroup[];
     coverPhotoSrc: string;
 }

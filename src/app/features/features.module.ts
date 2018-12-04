@@ -10,14 +10,9 @@ import { PhotoAlbumsComponent } from './photo-albums/photo-albums/photo-albums.c
 import { MusicComponent } from './music/music.component';
 import { SoundsComponent } from './sounds/sounds.component';
 import { AboutComponent } from './about/about.component';
-import { SoundboardComponent } from './examples/soundboard/soundboard.component';
-import { SoundboardCellComponent } from './examples/soundboard/soundboard-cell/soundboard-cell.component';
-import { AnimationHoverClickComponent } from './examples/animation-hover-click/animation-hover-click.component';
-import { ExamplesComponent } from './examples/examples.component';
-import { AnimationFlipCardComponent } from './examples/animation-flip-card/animation-flip-card.component';
 import { Soundboard2Component } from './sounds/soundboard2/soundboard2.component';
-import { ProgrammingTipsComponent } from './programming-tips/tips/tips.component';
-import { ProgrammingTipComponent } from './programming-tips/tip/tip.component';
+import { CodeLandingComponent } from './code/code-landing/code-landing.component';
+import { CodeDetailComponent } from './code/code-detail/code-detail.component';
 
 @NgModule({
   imports: [
@@ -31,15 +26,10 @@ import { ProgrammingTipComponent } from './programming-tips/tip/tip.component';
     MusicComponent,
     SoundsComponent,
     AboutComponent,
-    SoundboardComponent,
-    SoundboardCellComponent,
-    AnimationHoverClickComponent,
-    ExamplesComponent,
-    AnimationFlipCardComponent,
     Soundboard2Component,
     PhotoAlbumComponent,
-    ProgrammingTipsComponent,
-    ProgrammingTipComponent,
+    CodeLandingComponent,
+    CodeDetailComponent,
   ]
 })
 export class FeaturesModule { }

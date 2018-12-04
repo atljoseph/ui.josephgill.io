@@ -58,7 +58,7 @@
       <app-shared-scroll-fly-in *ngIf="photo.description">
         <ng-template>
           <div class="about-blurb-fly-in">
-            <img *ngIf="photo.src" [attr.src]="imgSrc(photo.src)" [attr.srcset]="imgSrcSet(photo.src)" sizes="100vw" />
+            <img *ngIf="photo.src" [attr.src]="responsiveImage.imgSrc(photo.src)" [attr.srcset]="responsiveImage.imgSrcSet(photo.src)" sizes="100vw" />
             <!-- <img [attr.src]="imgSrcTest()" [attr.srcset]="imgSrcSetTest()" sizes="100vw" /> -->
           </div>
         </ng-template>

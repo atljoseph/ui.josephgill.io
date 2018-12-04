@@ -9,7 +9,7 @@ export const environment = {
   production: false,
   envCode: 'DEV',
   enableLogging: true,
-  hiddenRoutes: ['examples', 'music']
+  hiddenRoutes: ['music']
 };
 
 /*
