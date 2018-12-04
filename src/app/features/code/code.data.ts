@@ -4,7 +4,7 @@ import { ICodeArticle } from './code.types';
 export const codeArticlesData: ICodeArticle[] = [
     {
         title: 'Directory of a script file',
-        routeKey: 'get-shell-script-file-directory-inside-script-file',
+        routeKey: 'directory-of-a-script-file',
         tags: ['shell', 'bash'],
         coverCodeBlock: 'THIS_DIR="$(dirname ${BASH_SOURCE[0]})"',
         coverPhotoSrc: 'dirname-bashsource-0.jpg',
@@ -22,7 +22,7 @@ export const codeArticlesData: ICodeArticle[] = [
                     {
                         code: 'vi ~/test-script.sh',
                         notes: [
-                            'Hit "i" to enter edit (insert) mode.',
+                            'Hit "i" to ENTER edit mode.',
                             'Use the arrows to navigate.',
                         ]
                     },
@@ -32,7 +32,7 @@ export const codeArticlesData: ICodeArticle[] = [
                 title: '2. Copy this code into the file:',
                 codeBlocks: [
                     {
-                        code: 'THIS_DIR="\$(dirname \${BASH_SOURCE[0]}) \ncd "$THISDIR" \npwd'
+                        code: 'THIS_DIR="\$(dirname \${BASH_SOURCE[0]}) \ncd "$THIS_DIR" \npwd'
                     }
                 ]
             },
@@ -41,7 +41,7 @@ export const codeArticlesData: ICodeArticle[] = [
                 codeBlocks: [
                     {
                         notes: [
-                            'Hit "esc" to exit edit (insert) mode.',
+                            'Hit "esc" to EXIT edit mode.',
                             'Type ":wq" to save and close ("write quit").',
                             'Type ":q" to close without saving ("quit").'
                         ]
