@@ -5,5 +5,5 @@ export const environment = {
   production: true,
   envCode: '',
   enableLogging: false,
-  hiddenRoutes: ['code', 'music']
+  hiddenRoutes: ['music']
 };
