@@ -6,6 +6,13 @@
       </div>
     </ng-template>
   </app-shared-scroll-fly-in>
+  <app-shared-scroll-fly-in *ngIf="codeArticle.description">
+    <ng-template>
+      <div class="fly-in">
+        <span class="article-description">{{ codeArticle.description }}</span>
+      </div>
+    </ng-template>
+  </app-shared-scroll-fly-in>
   <div class="article-content" *ngFor="let contentGroup of codeArticle.contentGroups; trackBy: groupTrackBy">
     <app-shared-scroll-fly-in *ngIf="contentGroup.title">
       <ng-template>
@@ -115,5 +122,23 @@
         </app-shared-scroll-fly-in>
       </div>
     </ng-container>
+  </div>
+  <div class="article-footer">
+    <app-shared-scroll-fly-in>
+      <ng-template>
+        <div class="fly-in-right">
+          <span class="text-md text-bold">Questions?</span>
+        </div>
+      </ng-template>
+    </app-shared-scroll-fly-in>
+    <app-shared-scroll-fly-in>
+      <ng-template>
+        <div class="fly-in-right">
+          <a class="link text-sm" href="mailto:joseph.gill.atlanta@gmail.com">
+            email me
+          </a>
+        </div>
+      </ng-template>
+    </app-shared-scroll-fly-in>
   </div>
 </div>

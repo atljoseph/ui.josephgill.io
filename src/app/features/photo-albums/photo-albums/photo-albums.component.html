@@ -8,8 +8,8 @@
       </div>
     </ng-template>
   </app-shared-scroll-fly-in>
-  <div class="photo-album" *ngFor="let album of photoAlbums; trackBy: albumTrackBy" 
-    (mouseenter)="album.isHovered = true" (mouseleave)="album.isHovered = false">
+  <div class="photo-album" *ngFor="let album of photoAlbums; trackBy: albumTrackBy" (mouseenter)="album.isHovered = true"
+    (mouseleave)="album.isHovered = false" (click)="openAlbum(album)">
     <app-shared-scroll-fly-in *ngIf="album.title">
       <ng-template>
         <div class="photo-fly-in">
@@ -25,12 +25,10 @@
       <ng-container>
         <app-shared-scroll-fly-in *ngIf="album.coverPhotoSrc">
           <ng-template>
-            <div class="photo-fly-in" >
-              <a (click)="openAlbum(album)">
-                <img #imgResponsive [attr.src]="responsiveimage.imgSrc(album.coverPhotoSrc)" [attr.srcset]="responsiveimage.imgSrcSet(album.coverPhotoSrc)"
-                  sizes="100vw"/>
-                <!-- <img [attr.src]="imgSrcTest()" [attr.srcset]="imgSrcSetTest()" sizes="100vw" /> -->
-              </a>
+            <div class="photo-fly-in">
+              <img #imgResponsive [attr.src]="responsiveimage.imgSrc(album.coverPhotoSrc)" [attr.srcset]="responsiveimage.imgSrcSet(album.coverPhotoSrc)"
+                sizes="100vw" />
+              <!-- <img [attr.src]="imgSrcTest()" [attr.srcset]="imgSrcSetTest()" sizes="100vw" /> -->
             </div>
           </ng-template>
         </app-shared-scroll-fly-in>

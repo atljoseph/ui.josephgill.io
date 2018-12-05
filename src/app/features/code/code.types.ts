@@ -2,8 +2,8 @@
 export interface ICodePhoto { // TODO details
     title?: string;
     description?: string;
-    notes?: string[];
     src: string;
+    notes?: string[];
 }
 
 export interface ICodeBlock { // TODO details
@@ -23,6 +23,7 @@ export interface ICodeContent {
 
 export interface ICodeArticle {
     title: string;
+    description?: string;
     routeKey: string;
     tags: string[]; //TODO landing
     coverPhotoSrc?: string; //TODO details

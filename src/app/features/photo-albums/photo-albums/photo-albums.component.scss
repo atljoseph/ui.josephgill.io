@@ -39,22 +39,23 @@
         @extend .text-lg;
     }
 
+    img {
+        margin-top: 10px;
+        box-shadow: 0 2px 5px 0 rgba(0,0,0,0.3);
+    }
     @include screenSize(phone) {
         img, app-scroll-photo {
             width: 100%;
-            padding-top: 10px;
         }
     }
     @include screenSize(tablet) {
         img, app-scroll-photo {
             width: 60%;
-            padding-top: 10px;
         }
     }
     @include screenSizeUp(desktop) {
         img, app-scroll-photo {
             width: 45%;
-            padding-top: 10px;
         }
     }
 }

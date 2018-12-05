@@ -6,8 +6,8 @@
       </div>
     </ng-template>
   </app-shared-scroll-fly-in>
-  <div class="article" *ngFor="let article of codeArticles; trackBy: articleTrackBy" (mouseenter)="article.isHovered = true"
-    (mouseleave)="article.isHovered = false">
+  <span class="article" *ngFor="let article of codeArticles; trackBy: articleTrackBy" (mouseenter)="article.isHovered = true"
+    (mouseleave)="article.isHovered = false" (click)="openArticle(article)">
     <app-shared-scroll-fly-in *ngIf="article.title">
       <ng-template>
         <div class="fly-in">
@@ -28,20 +28,41 @@
         </div>
       </ng-template>
     </app-shared-scroll-fly-in>
-    <div class="article-image">
-      <ng-container>
-        <app-shared-scroll-fly-in *ngIf="article.coverPhotoSrc">
-          <ng-template>
-            <div class="fly-in">
-              <a (click)="openArticle(article)">
-                <img #imgResponsive [attr.src]="responsiveimage.imgSrc(article.coverPhotoSrc)" [attr.srcset]="responsiveimage.imgSrcSet(article.coverPhotoSrc)"
-                  sizes="100vw" />
-                <!-- <img [attr.src]="imgSrcTest()" [attr.srcset]="imgSrcSetTest()" sizes="100vw" /> -->
-              </a>
-            </div>
-          </ng-template>
-        </app-shared-scroll-fly-in>
-      </ng-container>
+    <app-shared-scroll-fly-in *ngIf="article.coverCodeBlock">
+      <ng-template>
+        <div class="fly-in">
+          <div class="article-code">{{ article.coverCodeBlock }}</div>
+        </div>
+      </ng-template>
+    </app-shared-scroll-fly-in>
+    <div class="article-image" *ngIf="article.coverPhotoSrc">
+      <app-shared-scroll-fly-in>
+        <ng-template>
+          <div class="fly-in">
+            <img #imgResponsive [attr.src]="responsiveimage.imgSrc(article.coverPhotoSrc)" [attr.srcset]="responsiveimage.imgSrcSet(article.coverPhotoSrc)"
+              sizes="100vw" />
+            <!-- <img [attr.src]="imgSrcTest()" [attr.srcset]="imgSrcSetTest()" sizes="100vw" /> -->
+          </div>
+        </ng-template>
+      </app-shared-scroll-fly-in>
     </div>
-  </div>
+  </span>
+  <!-- <div class="articles-footer">
+    <app-shared-scroll-fly-in>
+      <ng-template>
+        <div class="fly-in-right">
+          <span class="text-md text-bold">Questions?</span>
+        </div>
+      </ng-template>
+    </app-shared-scroll-fly-in>
+    <app-shared-scroll-fly-in>
+      <ng-template>
+        <div class="fly-in-right">
+          <a class="link text-sm" href="mailto:joseph.gill.atlanta@gmail.com">
+            email me
+          </a>
+        </div>
+      </ng-template>
+    </app-shared-scroll-fly-in>
+  </div> -->
 </div>

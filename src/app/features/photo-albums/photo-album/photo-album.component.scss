@@ -24,7 +24,7 @@
 }
 
 .photo-group:last-of-type {
-    padding-bottom: 100px;
+    margin-bottom: 100px;
 }
 
 .photo {
@@ -37,22 +37,23 @@
         @extend .text-md;
     }
 
+    img {
+        margin-top: 10px;
+        box-shadow: 0 2px 5px 0 rgba(0,0,0,0.3);
+    }
     @include screenSize(phone) {
         img, app-scroll-photo {
             width: 100%;
-            padding-top: 10px;
         }
     }
     @include screenSize(tablet) {
         img, app-scroll-photo {
             width: 60%;
-            padding-top: 10px;
         }
     }
     @include screenSizeUp(desktop) {
         img, app-scroll-photo {
             width: 45%;
-            padding-top: 10px;
         }
     }
 

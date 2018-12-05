@@ -22,8 +22,16 @@ export class CodeArticle {
         return this.codeArticle.title;
     }
 
+    get description(): string {
+        return this.codeArticle.description;
+    }
+
     get coverPhotoSrc(): string {
         return this.codeArticle.coverPhotoSrc;
+    }
+
+    get coverCodeBlock(): string {
+        return this.codeArticle.coverCodeBlock;
     }
 
     get contentGroups(): ICodeContent[] {
