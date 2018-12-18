@@ -25,6 +25,7 @@ export class CodeLandingComponent implements OnInit {
   }
 
   openArticle(articleSelected: CodeArticle) {
+    articleSelected.isHovered = false;
     this.nav.go(`/code/${articleSelected.routeKey.trim().toLowerCase()}`);
   }
 

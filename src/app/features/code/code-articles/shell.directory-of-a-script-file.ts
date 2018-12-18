@@ -75,4 +75,6 @@ export const shellDirectoryOfAScriptFileData: ICodeArticle[] = [
 
     // shell / bash functions
 
+    // npm install --unsafe-perms
+
 ];

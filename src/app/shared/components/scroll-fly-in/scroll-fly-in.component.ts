@@ -1,10 +1,8 @@
 
 import { Component, OnDestroy, OnInit, AfterViewInit, AfterContentInit, Input, ElementRef, ViewChild, TemplateRef, ContentChild, ChangeDetectionStrategy, ChangeDetectorRef } from '@angular/core';
-import { Observable, fromEvent } from 'rxjs';
 
 import { LogService } from '../../../core/services/log.service';
 import { UuidService } from '../../../core/services/uuid.service';
-import { ContentService, IContentScrollContext } from '../../../core/services/content.service';
 
 import { ScrollFlyInService } from './scroll-fly-in.service';
 import { scrollAnimation } from './scroll-fly-in.animation';

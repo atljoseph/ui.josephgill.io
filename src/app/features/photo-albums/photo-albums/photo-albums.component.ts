@@ -24,6 +24,7 @@ export class PhotoAlbumsComponent implements OnInit {
   ngOnInit() {}
 
   openAlbum(albumSelected: PhotoAlbum) {
+    albumSelected.isHovered = false;
     this.nav.go(`/photo-albums/${albumSelected.routeKey.trim().toLowerCase()}`);
   }
 
