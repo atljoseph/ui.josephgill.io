@@ -2,45 +2,45 @@
 import { IPhoto, IPhotoGroup, IPhotoAlbum } from './photo-albums.types';
 
 export const photoAlbumsData: IPhotoAlbum[] = [
-  {
-    title: 'Hiking with Grandy & Papa',
-    routeKey: 'april-2019-hiking',
-    coverPhotoSrc: 'april-2019-15.jpg',
-    photoGroups: [
-      {
-        title: 'McDaniel Farm Park in Duluth, GA',
-        photos: [
-          { src: 'april-2019-1.jpg' },
-          { src: 'april-2019-2.jpg' },
-          { src: 'april-2019-3.jpg' },
-          { src: 'april-2019-6.jpg' },
-          { src: 'april-2019-7.jpg' },
-          { src: 'april-2019-9.jpg' },
-          { src: 'april-2019-10.jpg' },
-          { src: 'april-2019-14.jpg' },
-          { src: 'april-2019-15.jpg' },
-          { src: 'april-2019-17.jpg' },
-          { src: 'april-2019-19.jpg' },
-          { src: 'april-2019-20.jpg' },
-          { src: 'april-2019-21.jpg' },
-          { src: 'april-2019-22.jpg' },
-          { src: 'april-2019-23.jpg' },
-        ]
-      },
-    ]
-  },
+  // {
+  //   title: 'Hiking with Grandy & Papa',
+  //   routeKey: 'april-2019-hiking',
+  //   coverPhotoSrc: 'april-2019-15.jpg',
+  //   photoGroups: [
+  //     {
+  //       title: 'McDaniel Farm Park in Duluth, GA',
+  //       photos: [
+  //         { src: 'april-2019-1.jpg' }, // flipped upside down - go fix
+  //         { src: 'april-2019-2.jpg' },
+  //         { src: 'april-2019-3.jpg' },
+  //         { src: 'april-2019-6.jpg' },
+  //         { src: 'april-2019-7.jpg' },
+  //         { src: 'april-2019-9.jpg' },
+  //         { src: 'april-2019-10.jpg' },
+  //         { src: 'april-2019-14.jpg' },
+  //         { src: 'april-2019-15.jpg' },
+  //         { src: 'april-2019-17.jpg' },
+  //         { src: 'april-2019-19.jpg' },
+  //         { src: 'april-2019-20.jpg' },
+  //         { src: 'april-2019-21.jpg' },
+  //         { src: 'april-2019-22.jpg' },
+  //         { src: 'april-2019-23.jpg' },
+  //       ]
+  //     },
+  //   ]
+  // },
   {
     title: 'Hiking with Daddy',
     routeKey: 'feb-2019-hiking',
-    coverPhotoSrc: 'feb-2019 (55).jpg',
+    coverPhotoSrc: 'feb-2019 (55).JPG',
     photoGroups: [
       {
         title: 'Sweetwater Creek State Park',
         photos: ((): IPhoto[] => {
           const photos: IPhoto[] = [];
-            photos.push({ src: `feb-2019.jpg` });
+            photos.push({ src: `feb-2019.JPG` });
             for (var i = 1; i <= 63; i++) {
-            photos.push({ src: `feb-2019 (${i}).jpg` });
+            photos.push({ src: `feb-2019 (${i}).JPG` });
           }
           return photos;
         })()
