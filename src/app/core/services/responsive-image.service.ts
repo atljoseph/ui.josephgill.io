@@ -1,11 +1,10 @@
 import { Injectable } from '@angular/core';
+import { environment } from '../../../environments/environment';
 
 @Injectable({
   providedIn: 'root'
 })
 export class ResponsiveImageService {
-
-  assetBaseDir: string = '../../../assets/images/resized';
 
   // ##############################
 
@@ -21,13 +20,13 @@ export class ResponsiveImageService {
     // test responsive image
     const srcs: string[] = this.responsiveSizes.map((size, index) => {
       const imgSrc = this.responsiveTestSrcs[index];
-      return `${this.assetBaseDir}/${this.responsiveSizeFallback}/${imgSrc} ${size}w`;
+      return `${environment.assetBaseURL}/${this.responsiveSizeFallback}/${imgSrc} ${size}w`;
     });
     return srcs.join(',');
   }
   imgSrcTest(src: string): string {
     // test fallback image
-    return `${this.assetBaseDir}/${this.responsiveSizeFallback}/${this.responsiveTestSrcs[0]}`;
+    return `${environment.assetBaseURL}/${this.responsiveSizeFallback}/${this.responsiveTestSrcs[0]}`;
   }
 
   // ##############################
@@ -37,13 +36,13 @@ export class ResponsiveImageService {
   imgSrcSet = (src: string): string => {
     // responsive image
     const srcs: string[] = this.responsiveSizes.map(size => {
-      return `${this.assetBaseDir}/${size}/${src} ${size}w`;
+      return `${environment.assetBaseURL}/${size}/${src} ${size}w`;
     });
     return srcs.join(',');
   }
   imgSrc(src: string): string {
     // fallback image
-    return `${this.assetBaseDir}/${this.responsiveSizeFallback}/${src}`;
+    return `${environment.assetBaseURL}/${this.responsiveSizeFallback}/${src}`;
   }
 
   // ##############################
