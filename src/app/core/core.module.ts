@@ -34,12 +34,14 @@ import { SettingsButtonComponent } from './components/header/settings-button/set
 // use appOnInit() instead of the custructor for non-static code
 import { IAppInitService } from './core.types';
 import { HeaderLinkComponent } from './components/header/header-link/header-link.component';
+import { HttpClientModule } from '@angular/common/http';
 
 @NgModule({
   imports: [
     CommonModule,
     CoreRoutingModule,
-    SharedModule
+    SharedModule,
+    HttpClientModule
   ],
   declarations: [
     WindowComponent,

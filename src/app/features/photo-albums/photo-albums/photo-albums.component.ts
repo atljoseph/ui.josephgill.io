@@ -1,10 +1,12 @@
 import { Component, OnInit } from '@angular/core';
 
+import { LogService } from 'src/app/core/services/log.service';
 import { NavService } from 'src/app/core/services/navigation.service';
 import { ResponsiveImageService } from 'src/app/core/services/responsive-image.service';
 
-import { PhotoAlbum } from '../photo-album.model';
-import { photoAlbums } from '../photo-albums.utils';
+import { PhotoAlbum } from '../../../core/models/photo-album.model';
+import { ContentService } from 'src/app/core/services/content.service';
+// import { photoAlbums } from '../photo-albums.utils';
 
 @Component({
   // selector: 'app-photo-albums',
@@ -12,16 +14,22 @@ import { photoAlbums } from '../photo-albums.utils';
   styleUrls: ['./photo-albums.component.scss']
 })
 export class PhotoAlbumsComponent implements OnInit {
-
-  photoAlbums: PhotoAlbum[] = photoAlbums;
+  handleId: string = 'PhotoAlbumsComponent';
 
   constructor(
     private nav: NavService,
     public responsiveimage: ResponsiveImageService,
+    private logger: LogService,
+    private content: ContentService,
     ) { 
+      
   }
 
-  ngOnInit() {}
+  ngOnInit() {
+    
+  }
+
+  get photoAlbums$() { return this.content.photoAlbumsObservable; } 
 
   openAlbum(albumSelected: PhotoAlbum) {
     albumSelected.isHovered = false;

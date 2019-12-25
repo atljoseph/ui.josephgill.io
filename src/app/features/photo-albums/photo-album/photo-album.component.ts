@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, OnDestroy } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
 
 import { LogService } from 'src/app/core/services/log.service';
@@ -6,11 +6,11 @@ import { NavService } from 'src/app/core/services/navigation.service';
 import { ResponsiveImageService } from 'src/app/core/services/responsive-image.service';
 
 import { IPhoto, IPhotoGroup } from '../photo-albums.types';
-import { PhotoAlbum } from '../photo-album.model';
+import { PhotoAlbum } from '../../../core/models/photo-album.model';
+import { HttpClient } from '@angular/common/http';
 
-import { 
-  photoAlbumByKey, 
-} from '../photo-albums.utils';
+import { ContentService } from 'src/app/core/services/content.service';
+import { Subscription, combineLatest } from 'rxjs';
 
 interface IPhotoAlbumParams {
   photoAlbumKey: string;
@@ -21,30 +21,48 @@ interface IPhotoAlbumParams {
   templateUrl: './photo-album.component.html',
   styleUrls: ['./photo-album.component.scss']
 })
-export class PhotoAlbumComponent implements OnInit {
+export class PhotoAlbumComponent implements OnInit, OnDestroy {
 
   // // @ViewChildren('imgResponsive') images: QueryList<ElementRef>;
   // @ViewChild('imgResponsive', {read: ElementRef}) image: ElementRef;
   // @ViewChildren('imgResponsive', {read: ElementRef}) images: QueryList<ElementRef>;
   handleId: string = 'PhotoAlbumComponent';
   photoAlbum: PhotoAlbum;
+  subscriptions: Subscription =  new Subscription();
 
   constructor(
     private logger: LogService,
     private route: ActivatedRoute,
     private nav: NavService,
+    private httpClient: HttpClient, 
     public responsiveimage: ResponsiveImageService,
+    private content: ContentService,
 
   ) { 
-    this.route.params.subscribe((params: IPhotoAlbumParams) => {
-      const photoAlbum = photoAlbumByKey(params.photoAlbumKey);
-      this.logger.log('route.params.subscribe()', this.handleId, { params, photoAlbum });
-      if (!photoAlbum) return this.nav.go('photo-albums');
-      else this.photoAlbum = photoAlbum;
+    this.subscriptions.add(
+      combineLatest(this.route.params, this.content.photoAlbumsObservable)
+        .subscribe(([params, albums]) => {
+          const photoAlbum = this.photoAlbumByKey(albums, params.photoAlbumKey);
+          this.logger.log('combineLatest(this.route.params, this.content.photoAlbumsObservable).subscribe()', this.handleId, { params, photoAlbum });
+          if (!photoAlbum) return this.nav.go('photo-albums');
+          else this.photoAlbum = photoAlbum;
+
+        })
+    );
+  }
+
+  photoAlbumByKey(albums: PhotoAlbum[], routeKey: string): PhotoAlbum {
+    return albums.find((album) => {
+      return album.routeKey.trim().toLowerCase() === routeKey.trim().toLowerCase();
     });
   }
 
-  ngOnInit() { }
+  ngOnInit() {
+  }
+
+  ngOnDestroy() {
+    this.subscriptions.unsubscribe();
+  }
 
   groupTrackBy(index, group: IPhotoGroup) { return index + group.title; }
 

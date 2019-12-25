@@ -1,10 +1,13 @@
 import { Injectable, ElementRef } from '@angular/core';
 import { Observable, fromEvent, BehaviorSubject } from 'rxjs';
+import { HttpClient } from '@angular/common/http';
 import { debounceTime, map } from 'rxjs/operators';
 
 import { LogService } from './log.service';
 import { IAppInitService } from '../core.types';
 import { headerHeight } from '../components/style.constants';
+import {environment } from '../../../environments/environment';
+import { PhotoAlbum } from '../models/photo-album.model';
 
 export interface IContentScrollContext {
   scrollTop: number;
@@ -32,7 +35,10 @@ export class ContentService implements IAppInitService {
   clickContextObservable: BehaviorSubject<IContentClickContext>;
   private clickEventObservable: Observable<IContentClickContext>;
 
+  photoAlbumsObservable: BehaviorSubject<PhotoAlbum[]>;
+
   constructor(
+    private httpClient: HttpClient, 
     private logger: LogService,
   ) {
     this.scrollContextObservable = new BehaviorSubject({
@@ -44,6 +50,19 @@ export class ContentService implements IAppInitService {
       y: 0,
       event: null
     });
+    this.setupPhotoAlbums();
+  }
+
+  setupPhotoAlbums() {
+    this.photoAlbumsObservable = new BehaviorSubject([])
+    this.httpClient.get(`${environment.assetBaseURL}/photo-albums.json`)
+        .subscribe((data) => {
+          this.photoAlbumsObservable.next(<PhotoAlbum[]> data)
+          this.logger.log('ngOnInit()', this.handleId, { data });
+        }, (err) => {
+          this.photoAlbumsObservable.next([])
+          this.logger.error('ngOnInit()', this.handleId, err);
+      })
   }
 
   setContentElementRef(contentRef?: ElementRef) {

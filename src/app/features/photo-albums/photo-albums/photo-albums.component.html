@@ -8,7 +8,7 @@
       </div>
     </ng-template>
   </app-shared-scroll-fly-in>
-  <div class="photo-album" *ngFor="let album of photoAlbums; trackBy: albumTrackBy" (mouseenter)="album.isHovered = true"
+  <div class="photo-album" *ngFor="let album of (photoAlbums$ | async); trackBy: albumTrackBy" (mouseenter)="album.isHovered = true"
     (mouseleave)="album.isHovered = false" (click)="openAlbum(album)">
     <app-shared-scroll-fly-in *ngIf="album.title">
       <ng-template>

@@ -116,7 +116,7 @@ export class ScrollFlyInComponent implements OnInit, AfterViewInit, AfterContent
     if (animationEvent.toState == 'show') {
       // this.placeholder.nativeElement.style.transition = 'all .3s ease-in-out';
       this.placeholder.nativeElement.style.display = 'none';
-      this.cdr.markForCheck();
+      this.markForChangeDetection()
     }
   }
 

@@ -4,6 +4,7 @@ import { LogService } from '../../../core/services/log.service';
 import { ContentService, IContentScrollContext } from '../../../core/services/content.service';
 
 import { ScrollFlyInComponent } from './scroll-fly-in.component';
+import { interval } from 'rxjs';
 
 @Injectable({
   providedIn: 'root'
@@ -20,6 +21,9 @@ export class ScrollFlyInService {
     private logger: LogService,
     private content: ContentService,
   ) {
+    // initialize
+    this.onScroll();
+    // listen to content service observable for scrollage
     this.content.scrollContextObservable.subscribe((scrollContext) => {
       // this method is async: DO NOT await :)
       this.scrollContext = scrollContext;
@@ -27,10 +31,12 @@ export class ScrollFlyInService {
     });
   }
 
+  // this registers scroll fly in children
   async register(child: ScrollFlyInComponent) {
     this.children.push(child);
   }
 
+  // this unregisters scroll fly in children
   async unregister(flyInHandleId: string) {
     const index = this.children.findIndex((val, idx) => {
       return val.flyInHandleId === flyInHandleId;
@@ -40,6 +46,7 @@ export class ScrollFlyInService {
     }
   }
 
+  // push a scroll event down to the child
   async onScrollChild(child: ScrollFlyInComponent) {
     // don't mess with this, as it is fine tuned and getting finer ...
 
@@ -106,6 +113,7 @@ export class ScrollFlyInService {
     return child.top <= this.contentBottomBorder && child.bottom >= this.contentTopBorder;
   }
 
+  // this occurs when the page is scrolled
   async onScroll() {
     this.logger.log('onScroll()', this.traceId, {});
     // better performance than .forEach() or .map()
