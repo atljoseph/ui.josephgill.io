@@ -6,6 +6,15 @@ import { environment } from '../../../environments/environment';
 })
 export class ResponsiveImageService {
 
+  assetURL() {
+    let url = environment.assetBaseURL
+    const processingPath = environment.assetProcessedPath
+    if (url && url.length && processingPath && processingPath.length) {
+      url = `${url}/${processingPath}`
+    }
+    return url
+  }
+
   // ##############################
 
   responsiveTestSrcs: string[] = [
@@ -20,13 +29,13 @@ export class ResponsiveImageService {
     // test responsive image
     const srcs: string[] = this.responsiveSizes.map((size, index) => {
       const imgSrc = this.responsiveTestSrcs[index];
-      return `${environment.assetBaseURL}/${this.responsiveSizeFallback}/${imgSrc} ${size}w`;
+      return `${this.assetURL()}/${this.responsiveSizeFallback}/${imgSrc} ${size}w`;
     });
     return srcs.join(',');
   }
   imgSrcTest(src: string): string {
     // test fallback image
-    return `${environment.assetBaseURL}/${this.responsiveSizeFallback}/${this.responsiveTestSrcs[0]}`;
+    return `${this.assetURL()}/${this.responsiveSizeFallback}/${this.responsiveTestSrcs[0]}`;
   }
 
   // ##############################
@@ -36,13 +45,13 @@ export class ResponsiveImageService {
   imgSrcSet = (src: string): string => {
     // responsive image
     const srcs: string[] = this.responsiveSizes.map(size => {
-      return `${environment.assetBaseURL}/${size}/${src} ${size}w`;
+      return `${this.assetURL()}/${size}/${src} ${size}w`;
     });
     return srcs.join(',');
   }
   imgSrc(src: string): string {
     // fallback image
-    return `${environment.assetBaseURL}/${this.responsiveSizeFallback}/${src}`;
+    return `${this.assetURL()}/${this.responsiveSizeFallback}/${src}`;
   }
 
   // ##############################
