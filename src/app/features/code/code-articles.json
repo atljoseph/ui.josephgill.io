@@ -47,7 +47,7 @@
                 "title": "4. See the result:",
                 "description": "Close & Reopen your Terminal (or Restart if no GUI).",
                 "photos": [{
-                    "src": "custom-terminal-earthing.jpg"
+                    "src": "code/custom-terminal-earthing.jpg"
                 }]
             }
         ]
@@ -110,7 +110,7 @@
                 "title": "5. See the result:",
                 "description": "The directory name of the script file is printed in the terminal window!",
                 "photos": [{
-                    "src": "dirname-bashsource-0.jpg",
+                    "src": "code/dirname-bashsource-0.jpg",
                     "notes": [
                         "Normally 'pwd' would print the executing directory ('/' in our case)."
                     ]
