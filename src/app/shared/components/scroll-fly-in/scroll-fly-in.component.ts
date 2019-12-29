@@ -47,7 +47,7 @@ export class ScrollFlyInComponent implements OnInit, AfterViewInit, AfterContent
   @ViewChild('placeholder') placeholder: ElementRef;
 
   shouldLoad: boolean = false;
-  placeholderSize: number = 250;
+  placeholderSize: number = 150;
   isLoaded: boolean = false;
   flyInHandleId: string;
   animationStatePlaceholder = 'showPlaceholder';

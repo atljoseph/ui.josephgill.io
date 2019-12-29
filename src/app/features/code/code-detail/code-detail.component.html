@@ -1,4 +1,5 @@
 <div class="article">
+  <ng-container *ngIf="codeArticle">
   <app-shared-scroll-fly-in *ngIf="codeArticle.title">
     <ng-template>
       <div class="fly-in">
@@ -100,7 +101,7 @@
         <app-shared-scroll-fly-in *ngIf="photo.src">
           <ng-template>
             <div class="fly-in">
-              <img #imgResponsive [attr.src]="responsiveimage.imgSrc(photo.src)" [attr.srcset]="responsiveimage.imgSrcSet(photo.src)"
+              <img #imgResponsive [attr.src]="responsiveImage.imgSrc(photo.src)" [attr.srcset]="responsiveImage.imgSrcSet(photo.src)"
                 sizes="100vw" />
               <!-- <img [attr.src]="imgSrcTest()" [attr.srcset]="imgSrcSetTest()" sizes="100vw" /> -->
             </div>
@@ -141,4 +142,5 @@
       </ng-template>
     </app-shared-scroll-fly-in>
   </div>
+  </ng-container>
 </div>

@@ -7,7 +7,6 @@ import { LogService } from './log.service';
 import { IAppInitService } from '../core.types';
 import { headerHeight } from '../components/style.constants';
 import {environment } from '../../../environments/environment';
-import { PhotoAlbum } from '../models/photo-album.model';
 
 export interface IContentScrollContext {
   scrollTop: number;
@@ -27,27 +26,25 @@ export class ContentService implements IAppInitService {
   handleId = 'ContentService';
   private contentElementRef: ElementRef = null;
 
-  scrollContextObservable: BehaviorSubject<IContentScrollContext>;
+  scrollContextObservable = new BehaviorSubject({
+    scrollTop: 0,
+    clientHeight: window.innerHeight
+  });
   private resizeEventObservable: Observable<IContentScrollContext>;
   private scrollEventObservable: Observable<IContentScrollContext>;
   private isScrollDetectionDisabled: boolean = false;
 
-  clickContextObservable: BehaviorSubject<IContentClickContext>;
+  clickContextObservable = new BehaviorSubject({
+    x: 0,
+    y: 0,
+    event: null
+  });
   private clickEventObservable: Observable<IContentClickContext>;
 
   constructor(
     private httpClient: HttpClient, 
     private logger: LogService,
   ) {
-    this.scrollContextObservable = new BehaviorSubject({
-      scrollTop: 0,
-      clientHeight: window.innerHeight
-    });
-    this.clickContextObservable = new BehaviorSubject({
-      x: 0,
-      y: 0,
-      event: null
-    });
   }
 
   setContentElementRef(contentRef?: ElementRef) {
@@ -101,10 +98,19 @@ export class ContentService implements IAppInitService {
 
   scrollTick(amountY?: number) {
     // scroll by XYZ px to trigger a scroll event
-    this.logger.log('scrollTick()', this.handleId, {});
-    const val = this.scrollContextObservable.value;
-    val.scrollTop = val.scrollTop + amountY ? amountY : 0;
-    this.scrollContextObservable.next(val);
+    const current = this.scrollContextObservable ? this.scrollContextObservable.getValue() : {scrollTop: 0};
+    const scrollTop = current.scrollTop + amountY ? amountY : 0;
+    // val.scrollTop = val.scrollTop + amountY ? amountY : 0;
+    // this.scrollContextObservable.next(val);
+    this.logger.log('scrollTick()', this.handleId, {amountY, current, scrollTop});
+    if (this.contentElementRef) {
+      const contentWindow = this.contentElementRef.nativeElement;
+      contentWindow.scrollTo({
+        top: scrollTop,
+        left: 0,
+        behavior: 'smooth'
+      });
+    }
   }
 
   triggerResize() {

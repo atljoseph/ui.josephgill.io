@@ -10,6 +10,7 @@ import { PhotoAlbum } from '../../../core/models/photo-album.model';
 import { HttpClient } from '@angular/common/http';
 
 import { Subscription, combineLatest } from 'rxjs';
+import { ContentService } from 'src/app/core/services/content.service';
 
 interface IPhotoAlbumParams {
   photoAlbumKey: string;
@@ -34,18 +35,10 @@ export class PhotoAlbumComponent implements OnInit, OnDestroy {
     private route: ActivatedRoute,
     private nav: NavService,
     private httpClient: HttpClient, 
-    public responsiveimage: ResponsiveImageService,
-  ) { 
-    this.subscriptions.add(
-      combineLatest(this.route.params, this.responsiveimage.photoAlbumsObservable)
-        .subscribe(([params, albums]) => {
-          const photoAlbum = this.photoAlbumByKey(albums, params.photoAlbumKey);
-          this.logger.log('combineLatest(this.route.params, this.content.photoAlbumsObservable).subscribe()', this.handleId, { params, photoAlbum });
-          if (!photoAlbum) return this.nav.go('photo-albums');
-          else this.photoAlbum = photoAlbum;
-
-        })
-    );
+    public responsiveImage: ResponsiveImageService,
+    private content: ContentService,
+    ) { 
+      
   }
 
   photoAlbumByKey(albums: PhotoAlbum[], routeKey: string): PhotoAlbum {
@@ -55,6 +48,19 @@ export class PhotoAlbumComponent implements OnInit, OnDestroy {
   }
 
   ngOnInit() {
+    this.responsiveImage.getPhotoAlbums(() => {
+      setTimeout(() => this.content.scrollTick(1), 500)
+    })
+    this.subscriptions.add(
+      combineLatest(this.route.params, this.responsiveImage.photoAlbumsObservable)
+        .subscribe(([params, albums]) => {
+          const photoAlbum = this.photoAlbumByKey(albums, params.photoAlbumKey);
+          this.logger.log('combineLatest(this.route.params, this.content.photoAlbumsObservable).subscribe()', 
+            this.handleId, { params, photoAlbum, albums });
+          if (!photoAlbum && albums.length > 0) return this.nav.go('photo-albums');
+          else this.photoAlbum = photoAlbum;
+        })
+    );
   }
 
   ngOnDestroy() {

@@ -5,6 +5,8 @@ import { NavService } from 'src/app/core/services/navigation.service';
 import { ResponsiveImageService } from 'src/app/core/services/responsive-image.service';
 
 import { IAbout, IAboutGroup } from '../../core/models/about.types';
+import { ContentService } from 'src/app/core/services/content.service';
+import { map } from 'rxjs/operators';
 
 @Component({
   selector: 'app-about',
@@ -17,12 +19,18 @@ export class AboutComponent implements OnInit {
     private sound: SoundService,
     public nav: NavService,
     public responsiveImage: ResponsiveImageService,
+    private content: ContentService,
   ) { 
   }
 
-  get aboutData$() { return this.responsiveImage.aboutDataObservable; } 
+  get aboutData$() { 
+    return this.responsiveImage.aboutDataObservable;
+  } 
 
   ngOnInit() {
+    this.responsiveImage.getAboutData(() => {
+      setTimeout(() => this.content.scrollTick(1), 500)
+    })
   }
 
   play() {

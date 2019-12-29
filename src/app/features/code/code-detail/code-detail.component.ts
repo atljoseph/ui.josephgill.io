@@ -8,6 +8,7 @@ import { ResponsiveImageService } from 'src/app/core/services/responsive-image.s
 import { ICodeContent, ICodePhoto, ICodeBlock } from '../../../core/models/code.types';
 import { CodeArticle } from '../../../core/models/code.model';
 import { Subscription, combineLatest } from 'rxjs';
+import { ContentService } from 'src/app/core/services/content.service';
 
 interface ICodeDetailRouteParams {
   articleKey: string;
@@ -28,18 +29,10 @@ export class CodeDetailComponent implements OnInit, OnDestroy {
     private logger: LogService,
     private route: ActivatedRoute,
     private nav: NavService,
-    public responsiveimage: ResponsiveImageService,
-
+    public responsiveImage: ResponsiveImageService,
+    private content: ContentService,
   )  { 
-    this.subscriptions.add(
-      combineLatest(this.route.params, this.responsiveimage.codeArticlesObservable)
-        .subscribe(([params, articles]) => {
-          const codeArticle = this.codeArticleByKey(articles, params.articleKey);
-          this.logger.log('combineLatest(this.route.params, this.content.codeArticlesObservable).subscribe()', this.handleId, { params, codeArticle });
-          if (!codeArticle) return this.nav.go('code');
-          else this.codeArticle = codeArticle;
-        })
-    );
+    
   }
 
   codeArticleByKey(articles: CodeArticle[], routeKey: string): CodeArticle {
@@ -49,6 +42,20 @@ export class CodeDetailComponent implements OnInit, OnDestroy {
   }
 
   ngOnInit() {
+    this.responsiveImage.getCodeArticles(() => {
+      setTimeout(() => this.content.scrollTick(1), 500)
+    })
+    this.subscriptions.add(
+      combineLatest(this.route.params, this.responsiveImage.codeArticlesObservable)
+        .subscribe(([params, articles]) => {
+          const codeArticle = this.codeArticleByKey(articles, params.articleKey);
+          this.logger.log('combineLatest(this.route.params, this.content.codeArticlesObservable).subscribe()', this.handleId, { params, codeArticle });
+          if (!codeArticle && articles.length > 0) return this.nav.go('code');
+          else {
+            this.codeArticle = codeArticle
+          };
+        })
+    );
   }
 
   ngOnDestroy() {

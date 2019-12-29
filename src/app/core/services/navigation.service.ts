@@ -49,11 +49,11 @@ export class NavService implements IAppInitService {
         this.logger.log('NavigationEnd', this.logHandle, { navStartEvent, url: navStartEvent.url });
 
         this.content.enableScrollDetection();
-        // this.content.triggerResize();
-        this.content.scrollTick(0);
-        setTimeout(() => {
-          this.content.scrollTick(0);
-        }, 75);
+        // // this.content.triggerResize();
+        // this.content.scrollTick(0);
+        // setTimeout(() => {
+        //   this.content.scrollTick(0);
+        // }, 75);
 
       });
   }
