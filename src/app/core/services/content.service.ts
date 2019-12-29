@@ -35,8 +35,6 @@ export class ContentService implements IAppInitService {
   clickContextObservable: BehaviorSubject<IContentClickContext>;
   private clickEventObservable: Observable<IContentClickContext>;
 
-  photoAlbumsObservable: BehaviorSubject<PhotoAlbum[]>;
-
   constructor(
     private httpClient: HttpClient, 
     private logger: LogService,
@@ -50,19 +48,6 @@ export class ContentService implements IAppInitService {
       y: 0,
       event: null
     });
-    this.setupPhotoAlbums();
-  }
-
-  setupPhotoAlbums() {
-    this.photoAlbumsObservable = new BehaviorSubject([])
-    this.httpClient.get(`${environment.assetBaseURL}/photo-albums.json`)
-        .subscribe((data) => {
-          this.photoAlbumsObservable.next(<PhotoAlbum[]> data)
-          this.logger.log('ngOnInit()', this.handleId, { data });
-        }, (err) => {
-          this.photoAlbumsObservable.next([])
-          this.logger.error('ngOnInit()', this.handleId, err);
-      })
   }
 
   setContentElementRef(contentRef?: ElementRef) {

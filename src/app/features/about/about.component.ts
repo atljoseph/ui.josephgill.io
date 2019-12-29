@@ -4,10 +4,7 @@ import { SoundService } from 'src/app/core/services/sound.service';
 import { NavService } from 'src/app/core/services/navigation.service';
 import { ResponsiveImageService } from 'src/app/core/services/responsive-image.service';
 
-import { IAbout, IAboutGroup } from './about.types';
-import {
-  aboutData,
- } from './about.utils';
+import { IAbout, IAboutGroup } from '../../core/models/about.types';
 
 @Component({
   selector: 'app-about',
@@ -16,14 +13,14 @@ import {
 })
 export class AboutComponent implements OnInit {
 
-  aboutGroups = aboutData;
-
   constructor(
     private sound: SoundService,
     public nav: NavService,
     public responsiveImage: ResponsiveImageService,
   ) { 
   }
+
+  get aboutData$() { return this.responsiveImage.aboutDataObservable; } 
 
   ngOnInit() {
   }

@@ -1,13 +1,13 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, OnDestroy } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
 
 import { LogService } from 'src/app/core/services/log.service';
 import { NavService } from 'src/app/core/services/navigation.service';
 import { ResponsiveImageService } from 'src/app/core/services/responsive-image.service';
 
-import { ICodeContent, ICodePhoto, ICodeBlock } from '../code.types';
-import { CodeArticle } from '../code.model';
-import { codeArticleByKey } from '../code.utils';
+import { ICodeContent, ICodePhoto, ICodeBlock } from '../../../core/models/code.types';
+import { CodeArticle } from '../../../core/models/code.model';
+import { Subscription, combineLatest } from 'rxjs';
 
 interface ICodeDetailRouteParams {
   articleKey: string;
@@ -18,10 +18,11 @@ interface ICodeDetailRouteParams {
   templateUrl: './code-detail.component.html',
   styleUrls: ['./code-detail.component.scss']
 })
-export class CodeDetailComponent implements OnInit {
+export class CodeDetailComponent implements OnInit, OnDestroy {
 
   handleId: string = 'PhotoAlbumComponent';
   codeArticle: CodeArticle;
+  subscriptions: Subscription =  new Subscription();
 
   constructor(
     private logger: LogService,
@@ -30,15 +31,28 @@ export class CodeDetailComponent implements OnInit {
     public responsiveimage: ResponsiveImageService,
 
   )  { 
-    this.route.params.subscribe((params: ICodeDetailRouteParams) => {
-      const codeArticle = codeArticleByKey(params.articleKey);
-      this.logger.log('route.params.subscribe()', this.handleId, { params, codeArticle });
-      if (!codeArticle) return this.nav.go('code');
-      else this.codeArticle = codeArticle;
+    this.subscriptions.add(
+      combineLatest(this.route.params, this.responsiveimage.codeArticlesObservable)
+        .subscribe(([params, articles]) => {
+          const codeArticle = this.codeArticleByKey(articles, params.articleKey);
+          this.logger.log('combineLatest(this.route.params, this.content.codeArticlesObservable).subscribe()', this.handleId, { params, codeArticle });
+          if (!codeArticle) return this.nav.go('code');
+          else this.codeArticle = codeArticle;
+        })
+    );
+  }
+
+  codeArticleByKey(articles: CodeArticle[], routeKey: string): CodeArticle {
+    return articles.find((article) => {
+      return article.routeKey.trim().toLowerCase() === routeKey.trim().toLowerCase();
     });
   }
 
   ngOnInit() {
+  }
+
+  ngOnDestroy() {
+    this.subscriptions.unsubscribe();
   }
 
   groupTrackBy(index, group: ICodeContent) { return index + group.title; }

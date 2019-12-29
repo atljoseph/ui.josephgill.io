@@ -1,4 +1,4 @@
-<div class="about-blurb-group" *ngFor="let group of aboutGroups; trackBy: groupTrackBy">
+<div class="about-blurb-group" *ngFor="let group of (aboutData$ | async); trackBy: groupTrackBy">
   <app-shared-scroll-fly-in *ngIf="group.title">
     <ng-template>
       <div class="about-blurb-fly-in">

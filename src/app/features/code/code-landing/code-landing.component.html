@@ -6,7 +6,7 @@
       </div>
     </ng-template>
   </app-shared-scroll-fly-in>
-  <span class="article" *ngFor="let article of codeArticles; trackBy: articleTrackBy" (mouseenter)="article.isHovered = true"
+  <span class="article" *ngFor="let article of (codeArticles$ | async); trackBy: articleTrackBy" (mouseenter)="article.isHovered = true"
     (mouseleave)="article.isHovered = false" (click)="openArticle(article)">
     <app-shared-scroll-fly-in *ngIf="article.title">
       <ng-template>

@@ -5,11 +5,10 @@ import { LogService } from 'src/app/core/services/log.service';
 import { NavService } from 'src/app/core/services/navigation.service';
 import { ResponsiveImageService } from 'src/app/core/services/responsive-image.service';
 
-import { IPhoto, IPhotoGroup } from '../photo-albums.types';
+import { IPhoto, IPhotoGroup } from '../../../core/models/photo-albums.types';
 import { PhotoAlbum } from '../../../core/models/photo-album.model';
 import { HttpClient } from '@angular/common/http';
 
-import { ContentService } from 'src/app/core/services/content.service';
 import { Subscription, combineLatest } from 'rxjs';
 
 interface IPhotoAlbumParams {
@@ -36,11 +35,9 @@ export class PhotoAlbumComponent implements OnInit, OnDestroy {
     private nav: NavService,
     private httpClient: HttpClient, 
     public responsiveimage: ResponsiveImageService,
-    private content: ContentService,
-
   ) { 
     this.subscriptions.add(
-      combineLatest(this.route.params, this.content.photoAlbumsObservable)
+      combineLatest(this.route.params, this.responsiveimage.photoAlbumsObservable)
         .subscribe(([params, albums]) => {
           const photoAlbum = this.photoAlbumByKey(albums, params.photoAlbumKey);
           this.logger.log('combineLatest(this.route.params, this.content.photoAlbumsObservable).subscribe()', this.handleId, { params, photoAlbum });

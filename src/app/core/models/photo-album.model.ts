@@ -1,5 +1,5 @@
 
-import { IPhoto, IPhotoGroup, IPhotoAlbum } from '../../features/photo-albums/photo-albums.types';
+import { IPhoto, IPhotoGroup, IPhotoAlbum } from './photo-albums.types';
 
 export class PhotoAlbum {
     private album: IPhotoAlbum;

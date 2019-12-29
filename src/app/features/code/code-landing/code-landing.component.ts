@@ -3,8 +3,7 @@ import { Component, OnInit } from '@angular/core';
 import { NavService } from 'src/app/core/services/navigation.service';
 import { ResponsiveImageService } from 'src/app/core/services/responsive-image.service';
 
-import { codeArticles } from '../code.utils';
-import { CodeArticle } from '../code.model';
+import { CodeArticle } from '../../../core/models/code.model';
 
 @Component({
   // selector: 'app-code-landing',
@@ -12,8 +11,6 @@ import { CodeArticle } from '../code.model';
   styleUrls: ['./code-landing.component.scss']
 })
 export class CodeLandingComponent implements OnInit {
-
-  codeArticles: CodeArticle[] = codeArticles;
 
   constructor(
     private nav: NavService,
@@ -23,6 +20,9 @@ export class CodeLandingComponent implements OnInit {
   ngOnInit() {
     // console.log(codeArticles);
   }
+
+  get codeArticles$() { return this.responsiveimage.codeArticlesObservable; } 
+
 
   openArticle(articleSelected: CodeArticle) {
     articleSelected.isHovered = false;

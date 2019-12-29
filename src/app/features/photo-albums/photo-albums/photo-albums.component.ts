@@ -5,8 +5,6 @@ import { NavService } from 'src/app/core/services/navigation.service';
 import { ResponsiveImageService } from 'src/app/core/services/responsive-image.service';
 
 import { PhotoAlbum } from '../../../core/models/photo-album.model';
-import { ContentService } from 'src/app/core/services/content.service';
-// import { photoAlbums } from '../photo-albums.utils';
 
 @Component({
   // selector: 'app-photo-albums',
@@ -20,7 +18,6 @@ export class PhotoAlbumsComponent implements OnInit {
     private nav: NavService,
     public responsiveimage: ResponsiveImageService,
     private logger: LogService,
-    private content: ContentService,
     ) { 
       
   }
@@ -29,7 +26,7 @@ export class PhotoAlbumsComponent implements OnInit {
     
   }
 
-  get photoAlbums$() { return this.content.photoAlbumsObservable; } 
+  get photoAlbums$() { return this.responsiveimage.photoAlbumsObservable; } 
 
   openAlbum(albumSelected: PhotoAlbum) {
     albumSelected.isHovered = false;
