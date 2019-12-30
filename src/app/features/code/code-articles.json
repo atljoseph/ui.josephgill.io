@@ -4,7 +4,7 @@
         "description": "Need something a little more friendly when you open your terminal?",
         "routeKey": "customize-your-terminal",
         "tags": ["linux", "unix", "shell", "bash"],
-        "coverPhotoSrc": "custom-terminal-earthing.jpg",
+        "coverPhotoSrc": "code/custom-terminal-earthing.jpg",
         "contentGroups": [
             {
                 "title": "Here's how to do it!",
