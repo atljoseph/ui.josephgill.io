@@ -1,107 +1,555 @@
 [
   {
-    "title": "March & April 2019",
-    "routeKey": "2019-march-and-april",
-    "coverPhotoSrc": "2019-march-and-april/candler-grandy-blue-popsicles-01.jpg",
+    "title": "August & September 2019",
+    "routeKey": "2019-august-september",
+    "coverPhotoSrc": "2019-august-september/candler-fountains-at-piedmont-park-05.jpg",
     "photoGroups": [
       {
         "photos": [
           {
-            "src": "2019-march-and-april/candler-mcdaniel-farm-park-01.jpg"
+            "src": "2019-august-september/amy-daddy-01.jpg"
           },
           {
-            "src": "2019-march-and-april/candler-mcdaniel-farm-park-02.jpg"
+            "src": "2019-august-september/candler-dog-tag-01.jpg"
           },
           {
-            "src": "2019-march-and-april/candler-mcdaniel-farm-park-03.jpg"
+            "src": "2019-august-september/candler-booty-01.jpg"
           },
           {
-            "src": "2019-march-and-april/candler-mcdaniel-farm-park-04.jpg"
+            "src": "2019-august-september/map-piedmont-park-01.jpg"
           },
           {
-            "src": "2019-march-and-april/candler-train-hat-backwards-01.jpg"
+            "src": "2019-august-september/candler-fountains-at-piedmont-park-01.jpg"
           },
           {
-            "src": "2019-march-and-april/sweetwater-creek-park-01.jpg"
+            "src": "2019-august-september/candler-fountains-at-piedmont-park-02.jpg"
           },
           {
-            "src": "2019-march-and-april/candler-sweetwater-creek-park-01.jpg"
+            "src": "2019-august-september/candler-fountains-at-piedmont-park-03.jpg"
           },
           {
-            "src": "2019-march-and-april/candler-sweetwater-creek-park-02.jpg"
+            "src": "2019-august-september/candler-fountains-at-piedmont-park-04.jpg"
           },
           {
-            "src": "2019-march-and-april/candler-sweetwater-creek-park-03.jpg"
+            "src": "2019-august-september/candler-grandy-daddy-beltline-01.jpg"
           },
           {
-            "src": "2019-march-and-april/candler-sweetwater-creek-park-04.jpg"
+            "src": "2019-august-september/candler-papa-beltline-01.jpg"
           },
           {
-            "src": "2019-march-and-april/sweetwater-creek-park-green-trail-clearing-01.jpg"
+            "src": "2019-august-september/hot-air-balloon-festival-beltline-01.jpg"
           },
           {
-            "src": "2019-march-and-april/sweetwater-creek-park-green-trail-clearing-02.jpg"
+            "src": "2019-august-september/candler-grandy-daddy-beltline-02.jpg"
           },
           {
-            "src": "2019-march-and-april/sweetwater-creek-park-green-trail-clearing-03.jpg"
+            "src": "2019-august-september/candler-papa-suwanee-chicken-and-pizza-01.jpg"
           },
           {
-            "src": "2019-march-and-april/candler-sweetwater-creek-park-green-trail-clearing-01.jpg"
+            "src": "2019-august-september/suwanee-chicken-and-pizza-01.jpg"
           },
           {
-            "src": "2019-march-and-april/candler-sweetwater-creek-park-green-trail-clearing-02.jpg"
+            "src": "2019-august-september/candler-papa-suwanee-chicken-and-pizza-02.jpg"
           },
           {
-            "src": "2019-march-and-april/candler-papa-mcdaniel-farm-park-01.jpg"
+            "src": "2019-august-september/candler-grandy-suwanee-chicken-and-pizza-01.jpg"
           },
           {
-            "src": "2019-march-and-april/candler-grandy-mcdaniel-farm-park-01.jpg"
+            "src": "2019-august-september/candler-grandy-suwanee-chicken-and-pizza-02.jpg"
           },
           {
-            "src": "2019-march-and-april/candler-papa-mcdaniel-farm-park-02.jpg"
+            "src": "2019-august-september/dog-tags-01.jpg"
           },
           {
-            "src": "2019-march-and-april/candler-grandy-mcdaniel-farm-park-02.jpg"
+            "src": "2019-august-september/dog-tags-02.jpg"
           },
           {
-            "src": "2019-march-and-april/candler-grandy-mcdaniel-farm-park-03.jpg"
+            "src": "2019-august-september/dog-tags-03.jpg"
           },
           {
-            "src": "2019-march-and-april/candler-grandy-mcdaniel-farm-park-04.jpg"
+            "src": "2019-august-september/gopher-daddy.jpg"
           },
           {
-            "src": "2019-march-and-april/candler-papa-mcdaniel-farm-park-03.jpg"
+            "src": "2019-august-september/gopher-amy.jpg"
           },
           {
-            "src": "2019-march-and-april/candler-papa-mcdaniel-farm-park-04.jpg"
+            "src": "2019-august-september/eva-kiss-with-card-01.jpg"
           },
           {
-            "src": "2019-march-and-april/candler-grandy-mexican-01.jpg"
+            "src": "2019-august-september/amy-xinh-dep-01.jpg"
           },
           {
-            "src": "2019-march-and-april/candler-papa-mcdaniel-farm-park-silo.jpg"
+            "src": "2019-august-september/josh-mcdaniel-farm-park-01.jpg"
           },
           {
-            "src": "2019-march-and-april/candler-grandy-blue-popsicles-01.jpg"
+            "src": "2019-august-september/enjoying-the-rav4-adventure.jpg"
           },
           {
-            "src": "2019-march-and-april/candler-grandy-blue-popsicles-02.jpg"
+            "src": "2019-august-september/candler-at-avalon-with-statue-01.jpg"
           },
           {
-            "src": "2019-march-and-april/candler-grandy-blue-popsicles-03.jpg"
+            "src": "2019-august-september/candler-at-avalon-eating-ice-cream-01.jpg"
           },
           {
-            "src": "2019-march-and-april/candler-grandy-blue-popsicles-04.jpg"
+            "src": "2019-august-september/candler-at-avalon-eating-ice-cream-02.jpg"
           },
           {
-            "src": "2019-march-and-april/candler-grandy-brenda-01.jpg"
+            "src": "2019-august-september/candler-downtown-near-work.jpg"
+          },
+          {
+            "src": "2019-august-september/candler-subway-dragoncon-parade-01.jpg"
+          },
+          {
+            "src": "2019-august-september/subway-dragoncon-parade-01.jpg"
+          },
+          {
+            "src": "2019-august-september/dragoncon-parade-01.jpg"
+          },
+          {
+            "src": "2019-august-september/josh-dragoncon-parade-01.jpg"
+          },
+          {
+            "src": "2019-august-september/candler-dragoncon-parade-01.jpg"
+          },
+          {
+            "src": "2019-august-september/dragoncon-parade-02.jpg"
+          },
+          {
+            "src": "2019-august-september/dragoncon-parade-03.jpg"
+          },
+          {
+            "src": "2019-august-september/dragoncon-parade-04.jpg"
+          },
+          {
+            "src": "2019-august-september/dragoncon-parade-05.jpg"
+          },
+          {
+            "src": "2019-august-september/candler-dragoncon-parade-02.jpg"
+          },
+          {
+            "src": "2019-august-september/candler-amy-in-kitchen-01.jpg"
+          },
+          {
+            "src": "2019-august-september/bbq-at-home-01.jpg"
+          },
+          {
+            "src": "2019-august-september/grandy-papa-israel-01.jpg"
+          },
+          {
+            "src": "2019-august-september/grandy-papa-israel-02.jpg"
+          },
+          {
+            "src": "2019-august-september/grandy-papa-israel-03.jpg"
+          },
+          {
+            "src": "2019-august-september/grandy-papa-israel-04.jpg"
+          },
+          {
+            "src": "2019-august-september/grandy-papa-israel-05.jpg"
+          },
+          {
+            "src": "2019-august-september/grandy-papa-israel-06.jpg"
+          },
+          {
+            "src": "2019-august-september/grandy-papa-israel-07.jpg"
+          },
+          {
+            "src": "2019-august-september/grandy-papa-israel-08.jpg"
+          },
+          {
+            "src": "2019-august-september/candler-soccer-camp-01.jpg"
+          },
+          {
+            "src": "2019-august-september/candler-sunglasses-01.jpg"
+          },
+          {
+            "src": "2019-august-september/candler-trying-orange-juice-01.jpg"
+          },
+          {
+            "src": "2019-august-september/candler-trying-orange-juice-02.jpg"
+          },
+          {
+            "src": "2019-august-september/candler-grandy-papa-01.jpg"
+          },
+          {
+            "src": "2019-august-september/daddy-at-amys-work-01.jpg"
+          },
+          {
+            "src": "2019-august-september/candler-fountains-at-piedmont-park-05.jpg"
+          },
+          {
+            "src": "2019-august-september/candler-beltline-01.jpg"
+          },
+          {
+            "src": "2019-august-september/candler-beltline-02.jpg"
+          },
+          {
+            "src": "2019-august-september/candler-daddy-beltline-01.jpg"
+          },
+          {
+            "src": "2019-august-september/candler-beltline-03.jpg"
+          },
+          {
+            "src": "2019-august-september/bendy-and-the-ink-machine-lego-01.jpg"
+          },
+          {
+            "src": "2019-august-september/bendy-and-the-ink-machine-lego-02.jpg"
+          },
+          {
+            "src": "2019-august-september/candler-golf-driving-range-01.jpg"
+          },
+          {
+            "src": "2019-august-september/candler-pikachu-hat-01.jpg"
           }
         ]
       }
     ]
   },
   {
-    "title": "Christmas, New Years, & Random 2018",
+    "title": "June & July 2019",
+    "routeKey": "2019-june-july",
+    "coverPhotoSrc": "2019-june-july/candler-birthday-chickfila-02.jpg",
+    "photoGroups": [
+      {
+        "photos": [
+          {
+            "src": "2019-june-july/papa-01.jpg"
+          },
+          {
+            "src": "2019-june-july/grandy-purse-01.jpg"
+          },
+          {
+            "src": "2019-june-july/grandy-papa-01.jpg"
+          },
+          {
+            "src": "2019-june-july/candler-mcdaniel-farm-park-stream-01.jpg"
+          },
+          {
+            "src": "2019-june-july/candler-mcdaniel-farm-park-stream-02.jpg"
+          },
+          {
+            "src": "2019-june-july/candler-grandy-ihop-01.jpg"
+          },
+          {
+            "src": "2019-june-july/candler-daddy-amy-ihop-01.jpg"
+          },
+          {
+            "src": "2019-june-july/candler-daddy-amy-ihop-02.jpg"
+          },
+          {
+            "src": "2019-june-july/daddy-candler-01.jpg"
+          },
+          {
+            "src": "2019-june-july/candler-legos-01.jpg"
+          },
+          {
+            "src": "2019-june-july/candler-daddy-in-car.jpg"
+          },
+          {
+            "src": "2019-june-july/marble-machine.jpg"
+          },
+          {
+            "src": "2019-june-july/candler-grandy-papa-amy-01.jpg"
+          },
+          {
+            "src": "2019-june-july/candler-amy-daddy-01.jpg"
+          },
+          {
+            "src": "2019-june-july/candler-amy-01.jpg"
+          },
+          {
+            "src": "2019-june-july/candler-amy-02.jpg"
+          },
+          {
+            "src": "2019-june-july/candler-amy-daddy-mcdaniel-farm-park-01.jpg"
+          },
+          {
+            "src": "2019-june-july/amy-daddy-mcdaniel-farm-park-01.jpg"
+          },
+          {
+            "src": "2019-june-july/amy-daddy-mcdaniel-farm-park-02.jpg"
+          },
+          {
+            "src": "2019-june-july/candler-bryson-park-01.jpg"
+          },
+          {
+            "src": "2019-june-july/candler-birthday-chickfila-01.jpg"
+          },
+          {
+            "src": "2019-june-july/candler-birthday-chickfila-02.jpg"
+          },
+          {
+            "src": "2019-june-july/candler-fountains-at-piedmont-park-01.jpg"
+          },
+          {
+            "src": "2019-june-july/candler-amy-pedicure-01.jpg"
+          },
+          {
+            "src": "2019-june-july/candler-beltline-01.jpg"
+          },
+          {
+            "src": "2019-june-july/candler-beltline-02.jpg"
+          },
+          {
+            "src": "2019-june-july/candler-daddys-car-map.jpg"
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "title": "March, April & May 2019",
+    "routeKey": "2019-march-april-may",
+    "coverPhotoSrc": "2019-march-april-may/candler-amy-frozen-yogurt-01.jpg",
+    "photoGroups": [
+      {
+        "photos": [
+          {
+            "src": "2019-march-april-may/candler-mcdaniel-farm-park-01.jpg"
+          },
+          {
+            "src": "2019-march-april-may/candler-mcdaniel-farm-park-02.jpg"
+          },
+          {
+            "src": "2019-march-april-may/candler-mcdaniel-farm-park-03.jpg"
+          },
+          {
+            "src": "2019-march-april-may/candler-mcdaniel-farm-park-04.jpg"
+          },
+          {
+            "src": "2019-march-april-may/candler-train-hat-backwards-01.jpg"
+          },
+          {
+            "src": "2019-march-april-may/sweetwater-creek-park-01.jpg"
+          },
+          {
+            "src": "2019-march-april-may/candler-sweetwater-creek-park-01.jpg"
+          },
+          {
+            "src": "2019-march-april-may/candler-sweetwater-creek-park-02.jpg"
+          },
+          {
+            "src": "2019-march-april-may/candler-sweetwater-creek-park-03.jpg"
+          },
+          {
+            "src": "2019-march-april-may/candler-sweetwater-creek-park-04.jpg"
+          },
+          {
+            "src": "2019-march-april-may/sweetwater-creek-park-green-trail-clearing-01.jpg"
+          },
+          {
+            "src": "2019-march-april-may/sweetwater-creek-park-green-trail-clearing-02.jpg"
+          },
+          {
+            "src": "2019-march-april-may/sweetwater-creek-park-green-trail-clearing-03.jpg"
+          },
+          {
+            "src": "2019-march-april-may/candler-sweetwater-creek-park-green-trail-clearing-01.jpg"
+          },
+          {
+            "src": "2019-march-april-may/candler-sweetwater-creek-park-green-trail-clearing-02.jpg"
+          },
+          {
+            "src": "2019-march-april-may/daddy-kissing-candler-01.jpg"
+          },
+          {
+            "src": "2019-march-april-may/papas-belly-puckering.jpg"
+          },
+          {
+            "src": "2019-march-april-may/candler-papa-mcdaniel-farm-park-01.jpg"
+          },
+          {
+            "src": "2019-march-april-may/candler-grandy-mcdaniel-farm-park-01.jpg"
+          },
+          {
+            "src": "2019-march-april-may/candler-papa-mcdaniel-farm-park-02.jpg"
+          },
+          {
+            "src": "2019-march-april-may/candler-grandy-mcdaniel-farm-park-02.jpg"
+          },
+          {
+            "src": "2019-march-april-may/candler-grandy-mcdaniel-farm-park-03.jpg"
+          },
+          {
+            "src": "2019-march-april-may/candler-grandy-mcdaniel-farm-park-04.jpg"
+          },
+          {
+            "src": "2019-march-april-may/candler-papa-mcdaniel-farm-park-03.jpg"
+          },
+          {
+            "src": "2019-march-april-may/candler-papa-mcdaniel-farm-park-04.jpg"
+          },
+          {
+            "src": "2019-march-april-may/candler-grandy-mexican-01.jpg"
+          },
+          {
+            "src": "2019-march-april-may/poopy-sticker-01.jpg"
+          },
+          {
+            "src": "2019-march-april-may/candler-papa-mcdaniel-farm-park-silo.jpg"
+          },
+          {
+            "src": "2019-march-april-may/candler-daddys-shoes-01.jpg"
+          },
+          {
+            "src": "2019-march-april-may/candler-daddys-shoes-02.jpg"
+          },
+          {
+            "src": "2019-march-april-may/candler-daddys-shoes-03.jpg"
+          },
+          {
+            "src": "2019-march-april-may/candler-daddys-shoes-04.jpg"
+          },
+          {
+            "src": "2019-march-april-may/candler-amys-house-01.jpg"
+          },
+          {
+            "src": "2019-march-april-may/candler-buggy-blue-tongue.jpg"
+          },
+          {
+            "src": "2019-march-april-may/candler-grandy-blue-popsicles-01.jpg"
+          },
+          {
+            "src": "2019-march-april-may/candler-grandy-blue-popsicles-02.jpg"
+          },
+          {
+            "src": "2019-march-april-may/candler-grandy-blue-popsicles-03.jpg"
+          },
+          {
+            "src": "2019-march-april-may/candler-grandy-blue-popsicles-04.jpg"
+          },
+          {
+            "src": "2019-march-april-may/candler-grandy-brenda-01.jpg"
+          },
+          {
+            "src": "2019-march-april-may/trains-on-road-01.jpg"
+          },
+          {
+            "src": "2019-march-april-may/trains-on-road-02.jpg"
+          },
+          {
+            "src": "2019-march-april-may/trains-on-road-03.jpg"
+          },
+          {
+            "src": "2019-march-april-may/trains-on-road-04.jpg"
+          },
+          {
+            "src": "2019-march-april-may/trains-on-road-05.jpg"
+          },
+          {
+            "src": "2019-march-april-may/candler-sylvester-train-01.jpg"
+          },
+          {
+            "src": "2019-march-april-may/candler-sylvester-train-02.jpg"
+          },
+          {
+            "src": "2019-march-april-may/candler-sylvester-train-03.jpg"
+          },
+          {
+            "src": "2019-march-april-may/candler-sylvester-train-04.jpg"
+          },
+          {
+            "src": "2019-march-april-may/candler-sylvester-train-05.jpg"
+          },
+          {
+            "src": "2019-march-april-may/candler-sylvester-train-06.jpg"
+          },
+          {
+            "src": "2019-march-april-may/candler-sylvester-train-07.jpg"
+          },
+          {
+            "src": "2019-march-april-may/candler-sylvester-train-08.jpg"
+          },
+          {
+            "src": "2019-march-april-may/candler-sylvester-train-09.jpg"
+          },
+          {
+            "src": "2019-march-april-may/candler-sylvester-train-10.jpg"
+          },
+          {
+            "src": "2019-march-april-may/candler-sylvester-train-11.jpg"
+          },
+          {
+            "src": "2019-march-april-may/candler-sylvester-train-12.jpg"
+          },
+          {
+            "src": "2019-march-april-may/candler-sylvester-train-13.jpg"
+          },
+          {
+            "src": "2019-march-april-may/candler-sylvester-train-14.jpg"
+          },
+          {
+            "src": "2019-march-april-may/papa-ted-grandy-bev-frank-cemetery.jpg"
+          },
+          {
+            "src": "2019-march-april-may/candler-guppy-01.jpg"
+          },
+          {
+            "src": "2019-march-april-may/candler-getting-nails-done-at-amys-work.jpg"
+          },
+          {
+            "src": "2019-march-april-may/candler-green-pop-01.jpg"
+          },
+          {
+            "src": "2019-march-april-may/candler-green-pop-02.jpg"
+          },
+          {
+            "src": "2019-march-april-may/candler-green-pop-03.jpg"
+          },
+          {
+            "src": "2019-march-april-may/train-tracks-01.jpg"
+          },
+          {
+            "src": "2019-march-april-may/train-tracks-02.jpg"
+          },
+          {
+            "src": "2019-march-april-may/eva-and-grandfather.jpg"
+          },
+          {
+            "src": "2019-march-april-may/candler-ihop-stuffing-face-01.jpg"
+          },
+          {
+            "src": "2019-march-april-may/candler-mcdaniel-farm-park-05.jpg"
+          },
+          {
+            "src": "2019-march-april-may/candler-mcdaniel-farm-park-06.jpg"
+          },
+          {
+            "src": "2019-march-april-may/candler-mcdaniel-farm-park-07.jpg"
+          },
+          {
+            "src": "2019-march-april-may/candler-mcdaniel-farm-park-08.jpg"
+          },
+          {
+            "src": "2019-march-april-may/candler-mcdaniel-farm-park-09.jpg"
+          },
+          {
+            "src": "2019-march-april-may/candler-with-train-tracks-01.jpg"
+          },
+          {
+            "src": "2019-march-april-may/candler-amy-frozen-yogurt-01.jpg"
+          },
+          {
+            "src": "2019-march-april-may/candler-frozen-yogurt-01.jpg"
+          },
+          {
+            "src": "2019-march-april-may/candler-frozen-yogurt-02.jpg"
+          },
+          {
+            "src": "2019-march-april-may/amy-at-atl-pho-01.jpg"
+          },
+          {
+            "src": "2019-march-april-may/amy-at-atl-pho-02.jpg"
+          },
+          {
+            "src": "2019-march-april-may/eva-dep-gai.jpg"
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "title": "Christmas, New Years & Random 2018",
     "routeKey": "2018-christmas-new-years-and-random",
     "coverPhotoSrc": "2018-christmas-new-years-and-random/candler-guppy-02.jpg",
     "photoGroups": [
@@ -207,6 +655,9 @@
             "src": "2018-christmas-new-years-and-random/breakfast-casserole-02.jpg"
           },
           {
+            "src": "2018-christmas-new-years-and-random/candler-trains-and-legos.jpg"
+          },
+          {
             "src": "2018-christmas-new-years-and-random/breakfast-casserole-03.jpg"
           },
           {
@@ -223,7 +674,7 @@
     ]
   },
   {
-    "title": "Hiking with Daddy",
+    "title": "Sweetwater Creek State Park 2019",
     "routeKey": "2019-sweetwater-creek",
     "coverPhotoSrc": "2019-sweetwater-creek/red-trail-32.jpg",
     "photoGroups": [
@@ -400,7 +851,7 @@
     ]
   },
   {
-    "title": "Riding the SAM Shortline Train",
+    "title": "Riding the SAM Shortline Train 2018",
     "routeKey": "2018-sam-shortline",
     "coverPhotoSrc": "2018-sam-shortline/sam-shortline-candler-grandy-papa-daddy-with-train-1.jpg",
     "photoGroups": [
@@ -529,7 +980,7 @@
     ]
   },
   {
-    "title": "Thanksgiving at Grandy's House",
+    "title": "Thanksgiving at Grandy & Papa's House 2018",
     "routeKey": "thanksgiving-2018",
     "coverPhotoSrc": "2018-thanksgiving-at-grandys/thanksgiving-2018-frank-papa-bev-1.jpg",
     "photoGroups": [
@@ -637,7 +1088,7 @@
     ]
   },
   {
-    "title": "Candler Playing Around",
+    "title": "Candler Playing Around 2018",
     "routeKey": "2018-candler-out-and-about",
     "coverPhotoSrc": "2018-candler-out-and-about/candler-bathtub-trains.jpg",
     "photoGroups": [
@@ -712,7 +1163,7 @@
     ]
   },
   {
-    "title": "Grandy and Papa!",
+    "title": "Grandy and Papa! 2018",
     "routeKey": "2018-grandy-and-papa",
     "coverPhotoSrc": "2018-grandy-and-papa/grandy-and-papa.jpg",
     "photoGroups": [
@@ -763,7 +1214,7 @@
     ]
   },
   {
-    "title": "With Amy & Family",
+    "title": "With Amy & Family 2017",
     "routeKey": "2017-amy-and-family",
     "coverPhotoSrc": "2017-amy-and-family/eva-tina-ngan-thanh.jpg",
     "photoGroups": [
@@ -804,7 +1255,7 @@
     ]
   },
   {
-    "title": "Random Pictures",
+    "title": "Random Pictures 2017",
     "routeKey": "2017-random",
     "coverPhotoSrc": "2017-random/eclipse-2017-2.jpg",
     "photoGroups": [
@@ -845,7 +1296,7 @@
     ]
   },
   {
-    "title": "Christmas 2016",
+    "title": "Christmas Pictures 2016",
     "routeKey": "2016-christmas-at-grandys",
     "coverPhotoSrc": "2016-christmas-at-grandys/grandy-papa-candler-01.jpg",
     "photoGroups": [
