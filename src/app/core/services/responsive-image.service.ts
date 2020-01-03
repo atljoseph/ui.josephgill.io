@@ -29,7 +29,7 @@ export class ResponsiveImageService {
 
   getPhotoAlbums(cb?: Function) {
     if (this.photoAlbumsObservable.value.length === 0) {
-      this.httpClient.get(`${environment.assetBaseURL}/photo-albums.json`)
+      this.httpClient.get(`${environment.assetBaseURL}/photo-albums.json?_cache_buster=${new Date().getTime()}`)
         .subscribe((data) => {
           this.photoAlbumsObservable.next((<IPhotoAlbum[]>data).map(pa => new PhotoAlbum(pa)))
           this.logger.log('setupPhotoAlbums()', this.handleId, { data });
@@ -46,7 +46,7 @@ export class ResponsiveImageService {
 
   getAboutData(cb?: Function) {
     if (this.aboutDataObservable.value.length === 0) {
-      this.httpClient.get(`${environment.assetBaseURL}/about.json`)
+      this.httpClient.get(`${environment.assetBaseURL}/about.json?_cache_buster=${new Date().getTime()}`)
         .subscribe((data) => {
           this.aboutDataObservable.next(<IAboutGroup[]>data)
           this.logger.log('setupAboutData()', this.handleId, { data });
@@ -63,7 +63,7 @@ export class ResponsiveImageService {
 
   getCodeArticles(cb?: Function) {
     if (this.codeArticlesObservable.value.length === 0) {
-      this.httpClient.get(`${environment.assetBaseURL}/code-articles.json`)
+      this.httpClient.get(`${environment.assetBaseURL}/code-articles.json?_cache_buster=${new Date().getTime()}`)
         .subscribe((data) => {
           this.codeArticlesObservable.next((<ICodeArticle[]>data).map(ca => new CodeArticle(ca)))
           this.logger.log('setupCodeArticles()', this.handleId, { data });
