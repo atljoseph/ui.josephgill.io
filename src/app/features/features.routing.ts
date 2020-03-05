@@ -32,10 +32,10 @@ const routes: Routes = [
     path: 'photo-albums/:photoAlbumKey', component: PhotoAlbumComponent//, canActivate: [true]
   },
   {
-    path: 'code', component: CodeLandingComponent//, canActivate: [true]
+    path: 'random', component: CodeLandingComponent//, canActivate: [true]
   },
   {
-    path: 'code/:articleKey', component: CodeDetailComponent//, canActivate: [true]
+    path: 'random/:articleKey', component: CodeDetailComponent//, canActivate: [true]
   },
   //
 ];

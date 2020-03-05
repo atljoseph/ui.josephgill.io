@@ -50,7 +50,7 @@ export class CodeDetailComponent implements OnInit, OnDestroy {
         .subscribe(([params, articles]) => {
           const codeArticle = this.codeArticleByKey(articles, params.articleKey);
           this.logger.log('combineLatest(this.route.params, this.content.codeArticlesObservable).subscribe()', this.handleId, { params, codeArticle });
-          if (!codeArticle && articles.length > 0) return this.nav.go('code');
+          if (!codeArticle && articles.length > 0) return this.nav.go('random');
           else {
             this.codeArticle = codeArticle
           };
