@@ -34,7 +34,7 @@ export class CodeLandingComponent implements OnInit {
 
   openArticle(articleSelected: CodeArticle) {
     articleSelected.isHovered = false;
-    this.nav.go(`/code/${articleSelected.routeKey.trim().toLowerCase()}`);
+    this.nav.go(`/random/${articleSelected.routeKey.trim().toLowerCase()}`);
   }
 
   articleTrackBy(index, article: CodeArticle) { return index + article.routeKey; }
