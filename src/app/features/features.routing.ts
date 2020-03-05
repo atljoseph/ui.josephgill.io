@@ -37,6 +37,13 @@ const routes: Routes = [
   {
     path: 'random/:articleKey', component: CodeDetailComponent//, canActivate: [true]
   },
+  // 'random' used to be called 'code' ... allow that to still work the same as random
+  {
+    path: 'code', component: CodeLandingComponent//, canActivate: [true]
+  },
+  {
+    path: 'code/:articleKey', component: CodeDetailComponent//, canActivate: [true]
+  },
   //
 ];
 
