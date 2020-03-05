@@ -1,54 +1,67 @@
 [
     {
-        "title": "Customize your terminal",
-        "description": "Need something a little more friendly when you open your terminal?",
-        "routeKey": "customize-your-terminal",
-        "tags": ["linux", "unix", "shell", "bash"],
-        "coverPhotoSrc": "code/custom-terminal-earthing.jpg",
+        "routeKey": "grep",
+        "title": "Grep Command",
+        "description": "Find Files by Content",
+        "tags": ["shell", "bash"],
+        "coverCodeBlock": "grep -nri --color \"findme\" ./here",
         "contentGroups": [
             {
-                "title": "Here's how to do it!",
-                "notes": ["This will work on Unix (Mac) and Linux."]
-            },
-            {
-                "title": "1. Open your '.bash_profile' file (using 'vi'):",
+                "title": "Basic Usage",
                 "codeBlocks": [
                     {
-                        "code": "vi ~/.bash_profile",
-                        "notes": [
-                            "Hit 'i' to ENTER edit mode.",
-                            "Use the arrows to navigate.",
-                            "Type in your code just like any other text editor."
-                        ]
+                        "code": "grep -nri --color \"findThis\\|orThat\" ./overThere"
                     }
                 ]
             },
             {
-                "title": "2. Copy this code into the file:",
+                "title": "Search specific directories",
                 "codeBlocks": [
                     {
-                        "code": "export PS1=\"EARTHING \\u @ \\w $ \""
+                        "code": "grep -nri --color \"findThis\\|orThat\" {src,src-hybrid}"
                     }
                 ]
             },
             {
-                "title": "3. Save the file (using 'vi'):",
+                "title": "Search specific file extensions",
                 "codeBlocks": [
                     {
-                        "notes": [
-                            "Hit 'esc' to EXIT edit mode.",
-                            "Type ':wq' to save and close ('write quit').",
-                            "Type ':q' to close without saving ('quit')."
-                        ]
+                        "code": "grep -nri --color \"findThis\\|orThat\" . --include=*.{ts,js,html}"
                     }
                 ]
             },
             {
-                "title": "4. See the result:",
-                "description": "Close & Reopen your Terminal (or Restart if no GUI).",
-                "photos": [{
-                    "src": "code/custom-terminal-earthing.jpg"
-                }]
+                "title": "Exclude specific directories",
+                "codeBlocks": [
+                    {
+                        "code": "grep -nri --color \"findThis\" . --exclude-dir={.git,.idea,vendor}"
+                    }
+                ]
+            },
+            {
+                "title": "Exclude specific file extension",
+                "codeBlocks": [
+                    {
+                        "code": "grep -nri --color \"findThis\" . --exclude={\\*.csv,\\*.txt}"
+                    }
+                ]
+            },
+            {
+                "title": "Flags",
+                "codeBlocks": [
+                    {
+                        "code": "--color: (bool) highlight matched string \n-r: (bool) recursive search \n-i: (bool) ignore case \n-n: (bool)  show line numbers \n--exclude: (string/list) exclude specified files by pattern \n--exclude-dir: (string/list) exclude specified dir \n--include: (string/list) include specific files by  pattern \n-B: (int) number of lines before to show in results \n-A: (int) number of lines after to show in results",
+                        "notes": ["Do not use the `l` flag, as it will produce distorted results."]
+                    }
+                ]
+            },
+            {
+                "title": "A useful alias for bash profile",
+                "codeBlocks": [
+                    {
+                        "code": "alias grep='grep -nri --color'"
+                    }
+                ]
             }
         ]
     },
@@ -56,66 +69,110 @@
         "title": "Directory of a script file",
         "description": "Ever written a script that needs to know what directory it's located within?",
         "routeKey": "directory-of-a-script-file",
-        "tags": ["linux", "unix", "shell", "bash"],
+        "tags": ["shell", "bash"],
         "coverCodeBlock": "THIS_DIR=\"$(dirname ${BASH_SOURCE[0]})\"",
         "contentGroups": [
             {
-                "title": "Here's how to do it!",
-                "notes": ["This will work on Unix (Mac) and Linux."]
+                "notes": ["This will work on Unix (Mac) and Linux, or possibly in Git Bash for Windows."]
             },
             {
-                "title": "1. Create a new script file (using 'vi'):",
+                "title": "Suppose we have a script file",
                 "codeBlocks": [
                     {
-                        "code": "vi ~/test-script.sh",
-                        "notes": [
-                            "Hit 'i' to ENTER edit mode.",
-                            "Use the arrows to navigate.",
-                            "Type in your code just like any other text editor."
-                        ]
+                        "code": "$ cd ~/ \n$ mkdir -p rainbows/and \n$ vi unicorns.sh"
                     }
                 ]
             },
             {
-                "title": "2. Copy this code into the file:",
+                "title": "Relative directory path from the caller",
                 "codeBlocks": [
                     {
-                        "code": "THIS_DIR=\"$(dirname ${BASH_SOURCE[0]}) \ncd \"$THIS_DIR\" \npwd"
+                        "code": "# get the current directory (OF THIS FILE) \nTHIS_DIR=\"$(dirname ${BASH_SOURCE[0]})\" \necho \"$THIS_DIR\""
                     }
                 ]
             },
             {
-                "title": "3. Save the script (using 'vi'):",
+                "title": "Sometimes, absolute path works better",
                 "codeBlocks": [
                     {
-                        "notes": [
-                            "Hit 'esc' to EXIT edit mode.",
-                            "Type ':wq' to save and close ('write quit').",
-                            "Type ':q' to close without saving ('quit')."
-                        ]
+                        "code": "# convert it to absolute path \nTHIS_DIR_ABS=\"$(cd $THIS_DIR; pwd)\" \necho \"$THIS_DIR_ABS\""
                     }
                 ]
             },
             {
-                "title": "4. Run the script:",
+                "title": "Run the script in the local directory",
                 "codeBlocks": [
-                    {
-                        "description": "Move to a some other folder (to prove the point):",
-                        "code": "cd /"
+                    { 
+                        "code": "$ sh unicorns.sh"
                     },
-                    { "code": "sh ~/test-script.sh" }
+                    { 
+                        "description": "Result:",
+                        "code": ". \n/Users/joseph/rainbows/and"
+                    }
                 ]
             },
             {
-                "title": "5. See the result:",
-                "description": "The directory name of the script file is printed in the terminal window!",
-                "photos": [{
-                    "src": "code/dirname-bashsource-0.jpg",
-                    "notes": [
-                        "Normally 'pwd' would print the executing directory ('/' in our case)."
-                    ]
-                }]
-                
+                "title": "And from another directory",
+                "codeBlocks": [
+                    { 
+                        "code": "$ cd ~ \n$ sh rainbows/and/unicorns.sh"
+                    },
+                    { 
+                        "description": "Result:",
+                        "code": "rainbows/and \n/Users/joseph/rainbows/and"
+                    }
+                ]
+            }
+        ]
+    },
+    {
+        "title": "I love Amy!",
+        "routeKey": "i-love-amy",
+        "tags": ["amy", "joseph"],
+        "coverPhotoSrc": "2019-vietnam/rings-01.jpg",
+        "contentGroups": [
+            {
+                "title": "Amy & Joseph"
+            },
+            {
+                "title": "Sitting in a tree",
+                "description": "K-I-S-S-I-N-G"
+            },
+            {
+                "title": "Sitting on a sofa",
+                "description": "... with Joseph F-A-R-T-I-N-G"
+            },
+            {
+                "title": "Beans, Beans ...",
+                "description": "Are good for the heart. \nThe more you eat, the more you fart."
+            },
+            {
+                "title": "So, don't eat beans around Amy!",
+                "photos": [
+                    {
+                        "src": "2019-vietnam/rings-01.jpg"
+                    }
+                ]
+            }
+        ]
+    },
+    {
+        "title": "Ngủ Ngon",
+        "routeKey": "ngu-ngon",
+        "tags": ["amy", "joseph"],
+        "coverPhotoSrc": "2019-vietnam/jasmine-tree-and-amy-01.jpg",
+        "contentGroups": [
+            {
+                "title": "Goodnight, Lover & Wife",
+                "description": "rice & pho"
+            },
+            {
+                "title": "Sweet dreams :)",
+                "photos": [
+                    {
+                        "src": "2019-vietnam/amy-and-joseph-random-01.jpg"
+                    }
+                ]
             }
         ]
     }
