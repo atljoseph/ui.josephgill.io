@@ -30,7 +30,7 @@
     "core-js": "^2.5.4",
     "font-awesome": "^4.7.0",
     "howler": "^2.0.15",
-    "moment": "^2.22.2",
+    "moment": "^2.29.4",
     "rxjs": "~6.3.3",
     "screenfull": "^3.3.3",
     "smoothscroll-polyfill": "^0.4.3",
